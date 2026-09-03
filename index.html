@@ -1308,6 +1308,80 @@
       .btn-search-submit span { display: none; }
       .btn-search-submit { padding: 0.65rem 0.95rem; }
     }
+  
+    /* History & Cache Styles */
+    .history-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 1.25rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm);
+    }
+    .history-card:hover {
+      border-color: var(--border-accent);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .history-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .history-query-text {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      line-height: 1.35;
+    }
+    .history-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+    }
+    .history-verdict-preview {
+      font-size: 0.86rem;
+      color: var(--text-body);
+      line-height: 1.55;
+      background: var(--quote-bg);
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      border-left: 3px solid var(--accent-primary);
+    }
+    .history-actions-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      margin-top: 0.25rem;
+    }
+    .btn-recent-pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 9999px;
+      padding: 0.22rem 0.7rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.2s;
+    }
+    .btn-recent-pill:hover {
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+      background: var(--bg-card-hover);
+    }
+
   </style>
 </head>
 <body>
@@ -1365,6 +1439,15 @@
             </svg>
             Export Brief
           </button>
+
+          <!-- Search History Button -->
+          <button class="btn-nav-action" id="themeHistoryBtn" onclick="switchPortion('history')" title="Search History & Cache">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>History (<strong id="historyCountBadge">0</strong>)</span>
+          </button>
         </div>
       </div>
 
@@ -1389,6 +1472,10 @@
         <button class="nav-tab-btn" onclick="switchPortion('directory')">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m12 6 4 6h-8z"/></svg>
           Legal Aid & Court Directory
+        </button>
+        <button class="nav-tab-btn" id="historyTabBtn" onclick="switchPortion('history')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Search History &amp; Cache (<span id="historyTabCount">0</span>)
         </button>
       </nav>
     </div>
@@ -1436,17 +1523,23 @@
           <span id="searchFeedbackText">Analyzing factual account under Constitutional Law & BNSS 2023...</span>
         </div>
 
-        <!-- Quick Topic Pills -->
+        <!-- Recent Searches Cache Pills (Auto-populated from Browser Cache) -->
+        <div id="recentSearchesBar" style="display: none; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; font-size: 0.8rem;">
+          <span style="color: var(--text-dim); font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em;">Recent History:</span>
+          <div id="recentSearchesPills" style="display: inline-flex; gap: 0.45rem; flex-wrap: wrap;"></div>
+        </div>
+
+        <!-- Quick Topic Pills (Clicking pops up interactive legal remedy directive) -->
         <div class="topics-stream">
           <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); font-weight: 700; margin-right: 0.2rem;">Quick Topics:</span>
-          <button class="topic-pill active" onclick="loadTopicScenario('detention')">🚨 Unlawful Detention (>24h)</button>
-          <button class="topic-pill" onclick="loadTopicScenario('torture')">🩸 Custodial Torture & Beating</button>
-          <button class="topic-pill" onclick="loadTopicScenario('eviction')">🚜 Bulldozer Demolition</button>
-          <button class="topic-pill" onclick="loadTopicScenario('bonded')">⛓️ Withheld Wages & ID</button>
-          <button class="topic-pill" onclick="loadTopicScenario('caste')">🚫 Public Access Denial</button>
-          <button class="topic-pill" onclick="loadTopicScenario('protest')">📢 Peaceful Assembly (Sec 163 BNSS)</button>
-          <button class="topic-pill" onclick="loadTopicScenario('fir')">📝 Refusal to Register FIR</button>
-          <button class="topic-pill" onclick="loadTopicScenario('women')">🛡️ Women Arrest & Custody</button>
+          <button class="topic-pill active" onclick="selectTopicOption('detention')">🚨 Unlawful Detention (>24h)</button>
+          <button class="topic-pill" onclick="selectTopicOption('torture')">🩸 Custodial Torture & Beating</button>
+          <button class="topic-pill" onclick="selectTopicOption('eviction')">🚜 Bulldozer Demolition</button>
+          <button class="topic-pill" onclick="selectTopicOption('bonded')">⛓️ Withheld Wages & ID</button>
+          <button class="topic-pill" onclick="selectTopicOption('caste')">🚫 Public Access Denial</button>
+          <button class="topic-pill" onclick="selectTopicOption('protest')">📢 Peaceful Assembly (Sec 163 BNSS)</button>
+          <button class="topic-pill" onclick="selectTopicOption('fir')">📝 Refusal to Register FIR</button>
+          <button class="topic-pill" onclick="selectTopicOption('women')">🛡️ Women Arrest & Custody</button>
         </div>
       </div>
 
@@ -1713,6 +1806,50 @@
       </div>
     </section>
 
+    <!-- ======================================================================
+         PORTION 6: SEARCH HISTORY & COMPLAINT CACHE
+         ====================================================================== -->
+    <section id="portion-history" class="app-section-view">
+      <div class="section-title-row" style="margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1rem;">
+        <div>
+          <span class="hero-eyebrow">Local Client Storage &amp; Cache</span>
+          <h2 style="font-family: 'Cinzel', serif; font-size: 1.6rem; color: var(--text-heading); margin-top: 0.35rem;">
+            Search History &amp; Complaint Cache
+          </h2>
+          <p style="color: var(--text-muted); font-size: 0.88rem; max-width: 680px; margin-top: 0.25rem;">
+            All your factual inquiries, legal remedy directives, and precedent searches are saved safely in your browser's private offline storage. Re-run or inspect any previous investigation at any time.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+          <button class="btn-nav-action" onclick="exportHistoryLog()" title="Download History Cache">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Export Log
+          </button>
+          <button class="btn-nav-action" style="color: var(--accent-crimson); border-color: rgba(244,63,94,0.3);" onclick="clearSearchHistory()" title="Clear all saved searches">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            Clear Cache
+          </button>
+        </div>
+      </div>
+
+      <!-- History Search / Filter Input -->
+      <div style="margin-bottom: 1.5rem; max-width: 600px;">
+        <input 
+          type="text" 
+          id="historySearchFilterInput" 
+          class="search-field" 
+          placeholder="Filter saved searches by keyword or statute..." 
+          oninput="filterSearchHistory(this.value)"
+          style="width: 100%; background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 0.65rem 1rem; border-radius: 12px; font-size: 0.88rem;"
+        />
+      </div>
+
+      <!-- History List Container -->
+      <div id="historyItemsContainer" style="display: flex; flex-direction: column; gap: 1rem;">
+        <!-- Dynamically rendered -->
+      </div>
+    </section>
+
   </main>
 
   <!-- GEMINI API CONFIG MODAL -->
@@ -1759,6 +1896,77 @@
       <div class="modal-dialog-footer">
         <button class="btn-nav-action" onclick="closeGeminiModal()">Close</button>
         <button class="btn-export-docket" onclick="saveGeminiConfig()">Save Configuration</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE OPTION DETAIL POPUP MODAL -->
+  <div class="modal-overlay" id="optionDetailModal">
+    <div class="modal-dialog" style="max-width: 840px;">
+      <div class="modal-dialog-header">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: var(--bg-card); display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-subtle);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <div>
+            <span class="answer-badge-status" id="optModalSeverityBadge" style="font-size: 0.7rem; margin-bottom: 0.15rem; display: inline-block;">Constitutional Violation</span>
+            <h3 style="font-size: 1.15rem; color: var(--text-heading); margin: 0;" id="optModalHeading">Scenario Details</h3>
+          </div>
+        </div>
+        <button onclick="closeOptionPopup()" style="background:transparent; border:none; color:var(--text-muted); cursor:pointer;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="modal-dialog-body" style="max-height: 70vh; overflow-y: auto;">
+        <!-- Factual Account Trigger -->
+        <div style="background: var(--bg-card); border-left: 4px solid var(--accent-primary); padding: 0.85rem 1.1rem; border-radius: 8px; margin-bottom: 1.25rem;">
+          <div style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: var(--accent-primary); letter-spacing: 0.05em; margin-bottom: 0.2rem;">Factual Grievance Model</div>
+          <div id="optModalQuery" style="font-size: 0.95rem; font-weight: 600; color: var(--text-heading); line-height: 1.5;">...</div>
+        </div>
+
+        <!-- Direct Verdict -->
+        <div style="background: var(--quote-bg); border: 1px solid var(--border-subtle); padding: 1rem 1.2rem; border-radius: 12px; margin-bottom: 1.25rem;">
+          <div style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: var(--accent-primary); letter-spacing: 0.05em; margin-bottom: 0.35rem;">Immediate Legal Verdict &amp; Constitutional Harm</div>
+          <div id="optModalVerdict" style="font-size: 0.9rem; line-height: 1.6; color: var(--text-body);">...</div>
+        </div>
+
+        <!-- 2-Column Grid: Procedural Directives & Governing Statutes -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-bottom: 1.25rem;">
+          <!-- Immediate Action Steps -->
+          <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 1rem;">
+            <div style="font-size: 0.76rem; text-transform: uppercase; font-weight: 700; color: var(--accent-primary); letter-spacing: 0.05em; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              Procedural Action Roadmap
+            </div>
+            <div id="optModalSteps" style="display: flex; flex-direction: column; gap: 0.65rem; font-size: 0.84rem;">
+              <!-- Injected -->
+            </div>
+          </div>
+
+          <!-- Governing Laws & Precedents -->
+          <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 1rem;">
+            <div style="font-size: 0.76rem; text-transform: uppercase; font-weight: 700; color: var(--accent-primary); letter-spacing: 0.05em; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m3 9 18-4"/><path d="m3 15 18-4"/></svg>
+              Statutes &amp; Landmark Precedents
+            </div>
+            <div id="optModalStatutes" style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.85rem;">
+              <!-- Injected -->
+            </div>
+            <div id="optModalPrecedents" style="font-size: 0.82rem; line-height: 1.5; color: var(--text-muted); border-top: 1px dashed var(--border-subtle); padding-top: 0.65rem;">
+              <!-- Injected -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-dialog-footer">
+        <button class="btn-nav-action" onclick="closeOptionPopup()">Close</button>
+        <button class="btn-nav-action" onclick="applyOptionToConsole()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7 13 12 18 17 13"/><line x1="12" y1="6" x2="12" y2="18"/></svg>
+          Scroll to Console
+        </button>
+        <button class="btn-export-docket" onclick="openBriefFromOption()">Export Case Brief</button>
       </div>
     </div>
   </div>
@@ -2442,6 +2650,7 @@
           const geminiResult = await callGeminiLegalEngine(query, userGeminiApiKey);
           if (geminiResult) {
             renderCustomGeminiAnswer(geminiResult, query);
+            saveSearchToHistory(query, geminiResult.category || "AI Constitutional Analysis", geminiResult.verdict, geminiResult.statutes, []);
             finishSearchAnimation(btn, btnText, feedbackBanner);
             return;
           }
@@ -2456,6 +2665,7 @@
         const scenario = matchSemanticScenario(query);
         renderRemedyAnswer(scenario, query);
         streamPrecedentsProgressively(scenario.precedentIds);
+        saveSearchToHistory(query, scenario.category, scenario.verdict, scenario.statutes, scenario.precedentIds);
         finishSearchAnimation(btn, btnText, feedbackBanner);
       }, 400);
     }
@@ -3111,6 +3321,261 @@ Yours faithfully,
       }
     }
 
+    
+    // --------------------------------------------------------------------------
+    // Search History & Browser Data Cache Engine
+    // --------------------------------------------------------------------------
+    let activePopupScenarioKey = 'detention';
+
+    function getSearchHistory() {
+      try {
+        const raw = localStorage.getItem('legal_search_history');
+        return raw ? JSON.parse(raw) : [];
+      } catch (e) {
+        console.warn("Could not read legal_search_history:", e);
+        return [];
+      }
+    }
+
+    function saveSearchToHistory(query, category, verdict, statutes, precedentIds) {
+      if (!query || !query.trim()) return;
+      const cleanQ = query.trim();
+      let history = getSearchHistory();
+      
+      // Avoid immediate duplicate
+      history = history.filter(h => h.query.toLowerCase().trim() !== cleanQ.toLowerCase());
+      
+      let statutesText = "BNSS 2023 • Constitution";
+      if (Array.isArray(statutes) && statutes.length > 0) {
+        statutesText = statutes.map(s => (s.code || s)).slice(0, 3).join(" • ");
+      } else if (typeof statutes === 'string') {
+        statutesText = statutes;
+      }
+
+      const plainVerdict = verdict ? verdict.replace(/<[^>]*>?/gm, '').substring(0, 220) + "..." : "Legal remedy directive formulated under constitutional law.";
+
+      const item = {
+        id: 'hist_' + Date.now(),
+        query: cleanQ,
+        category: category || "Constitutional Rights Violation",
+        statutes: statutesText,
+        verdict: plainVerdict,
+        precedentIds: Array.isArray(precedentIds) ? precedentIds : [],
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', month: 'short', day: 'numeric' }),
+        dateRaw: Date.now()
+      };
+
+      history.unshift(item);
+      if (history.length > 60) history = history.slice(0, 60);
+
+      try {
+        localStorage.setItem('legal_search_history', JSON.stringify(history));
+      } catch (e) {
+        console.warn("Could not save search history to localStorage:", e);
+      }
+
+      updateHistoryBadgesAndList();
+    }
+
+    function updateHistoryBadgesAndList() {
+      const history = getSearchHistory();
+      const countBadge = document.getElementById('historyCountBadge');
+      const tabBadge = document.getElementById('historyTabCount');
+      if (countBadge) countBadge.innerText = history.length;
+      if (tabBadge) tabBadge.innerText = history.length;
+
+      // Update Recent Searches Bar in Hero
+      const recentBar = document.getElementById('recentSearchesBar');
+      const recentPills = document.getElementById('recentSearchesPills');
+      if (recentBar && recentPills) {
+        if (history.length > 0) {
+          recentBar.style.display = 'flex';
+          recentPills.innerHTML = history.slice(0, 4).map(h => `
+            <button class="btn-recent-pill" onclick="reRunHistoryQuery('${escapeHtml(h.query.replace(/'/g, "\\'"))}')" title="Re-run: ${escapeHtml(h.query)}">
+              <span>🕒</span> ${escapeHtml(h.query.length > 25 ? h.query.substring(0, 25) + '...' : h.query)}
+            </button>
+          `).join('') + `
+            <button class="btn-recent-pill" style="color:var(--accent-primary); border-color:var(--accent-primary);" onclick="switchPortion('history')">
+              View All History →
+            </button>
+          `;
+        } else {
+          recentBar.style.display = 'none';
+        }
+      }
+
+      renderHistorySection(history);
+    }
+
+    function renderHistorySection(historyList) {
+      const container = document.getElementById('historyItemsContainer');
+      if (!container) return;
+
+      const history = historyList || getSearchHistory();
+      if (!history || history.length === 0) {
+        container.innerHTML = `
+          <div style="background: var(--bg-card); border: 1px dashed var(--border-subtle); border-radius: 18px; padding: 3rem 1.5rem; text-align: center; color: var(--text-muted);">
+            <div style="font-size: 2.2rem; margin-bottom: 0.6rem;">🕒</div>
+            <h4 style="font-size: 1.1rem; color: var(--text-heading); margin-bottom: 0.35rem;">No Search History Cached Yet</h4>
+            <p style="font-size: 0.86rem; max-width: 500px; margin: 0 auto 1.25rem;">
+              When you describe any rights violation in the Remedy Console or click scenario options, your searches and legal remedy directives will be preserved here in browser storage.
+            </p>
+            <button class="btn-nav-action" onclick="switchPortion('console')">Go to Remedy Console</button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = history.map(item => `
+        <div class="history-card" id="card_${item.id}">
+          <div class="history-card-header">
+            <div style="flex: 1; min-width: 250px;">
+              <div class="history-meta-row" style="margin-bottom: 0.4rem;">
+                <span class="answer-badge-status" style="font-size: 0.68rem; padding: 0.15rem 0.55rem;">${escapeHtml(item.category)}</span>
+                <span style="font-size: 0.74rem; color: var(--text-dim);">🕒 ${escapeHtml(item.timestamp)}</span>
+                <span class="font-mono" style="font-size: 0.74rem; color: var(--caramel-400);">${escapeHtml(item.statutes)}</span>
+              </div>
+              <div class="history-query-text">"${escapeHtml(item.query)}"</div>
+            </div>
+            <div class="history-actions-row">
+              <button class="btn-nav-action" onclick="reRunHistoryQuery('${escapeHtml(item.query.replace(/'/g, "\\'"))}')" style="font-size: 0.78rem; padding: 0.35rem 0.8rem;" title="Re-analyze this query">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                Re-Analyze
+              </button>
+              <button class="btn-nav-action" style="color: var(--accent-crimson); padding: 0.35rem 0.65rem;" onclick="deleteHistoryItem('${item.id}')" title="Delete from cache">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="history-verdict-preview">
+            <strong>Remedy Summary:</strong> ${escapeHtml(item.verdict)}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterSearchHistory(keyword) {
+      const clean = (keyword || '').toLowerCase().trim();
+      const all = getSearchHistory();
+      if (!clean) {
+        renderHistorySection(all);
+        return;
+      }
+      const filtered = all.filter(h => 
+        h.query.toLowerCase().includes(clean) || 
+        h.category.toLowerCase().includes(clean) || 
+        h.statutes.toLowerCase().includes(clean) ||
+        h.verdict.toLowerCase().includes(clean)
+      );
+      renderHistorySection(filtered);
+    }
+
+    function reRunHistoryQuery(query) {
+      switchPortion('console');
+      const input = document.getElementById('masterSearchInput');
+      if (input) {
+        input.value = query;
+        executeLegalAnalysis();
+      }
+    }
+
+    function deleteHistoryItem(id) {
+      let history = getSearchHistory();
+      history = history.filter(h => h.id !== id);
+      localStorage.setItem('legal_search_history', JSON.stringify(history));
+      updateHistoryBadgesAndList();
+    }
+
+    function clearSearchHistory() {
+      if (confirm("Are you sure you want to clear your local search history and complaint cache?")) {
+        localStorage.removeItem('legal_search_history');
+        updateHistoryBadgesAndList();
+      }
+    }
+
+    function exportHistoryLog() {
+      const history = getSearchHistory();
+      if (history.length === 0) {
+        alert("Search history is currently empty.");
+        return;
+      }
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(history, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `legal_search_history_${new Date().toISOString().slice(0,10)}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+    }
+
+    // --------------------------------------------------------------------------
+    // Interactive Options Popup Modal Engine
+    // --------------------------------------------------------------------------
+    function selectTopicOption(scenarioKey) {
+      loadTopicScenario(scenarioKey);
+      openOptionPopup(scenarioKey);
+    }
+
+    function openOptionPopup(scenarioKey) {
+      activePopupScenarioKey = scenarioKey;
+      const scenario = TOPIC_SCENARIOS[scenarioKey];
+      if (!scenario) return;
+
+      document.getElementById('optModalHeading').innerText = scenario.category;
+      document.getElementById('optModalSeverityBadge').innerText = "Constitutional Violation: " + scenario.statutes[1].code;
+      document.getElementById('optModalQuery').innerText = scenario.query;
+      document.getElementById('optModalVerdict').innerHTML = scenario.verdict;
+
+      // Render steps
+      const stepsContainer = document.getElementById('optModalSteps');
+      stepsContainer.innerHTML = scenario.steps.map(s => `
+        <div style="background:var(--bg-surface); padding:0.65rem 0.85rem; border-radius:8px; border:1px solid var(--border-subtle);">
+          <div style="font-weight:700; color:var(--text-heading); margin-bottom:0.15rem;">${escapeHtml(s.timeframe)} — ${escapeHtml(s.title)}</div>
+          <div style="color:var(--text-muted); font-size:0.8rem; line-height:1.45;">${escapeHtml(s.desc)}</div>
+          <div style="font-size:0.74rem; color:var(--caramel-400); margin-top:0.25rem;">Forum: <strong>${escapeHtml(s.forum)}</strong></div>
+        </div>
+      `).join('');
+
+      // Render statutes
+      const statutesContainer = document.getElementById('optModalStatutes');
+      statutesContainer.innerHTML = scenario.statutes.map(st => `
+        <div style="font-size:0.82rem; background:var(--bg-surface); padding:0.4rem 0.65rem; border-radius:6px; border:1px solid var(--border-subtle);">
+          <strong>${escapeHtml(st.code)}</strong>: <span style="color:var(--text-muted);">${escapeHtml(st.title)}</span>
+        </div>
+      `).join('');
+
+      // Render precedents preview
+      const precContainer = document.getElementById('optModalPrecedents');
+      const matched = PRECEDENT_LIBRARY.filter(p => scenario.precedentIds.includes(p.id));
+      precContainer.innerHTML = `
+        <div style="font-weight:700; margin-bottom:0.25rem; color:var(--text-heading);">Landmark Judicial Authorities:</div>
+        ${matched.map(m => `<div>• <strong>${escapeHtml(m.caseName)} (${escapeHtml(m.citation)})</strong>: ${escapeHtml(m.ratio)}</div>`).join('')}
+      `;
+
+      // Save to history cache automatically
+      saveSearchToHistory(scenario.query, scenario.category, scenario.verdict, scenario.statutes, scenario.precedentIds);
+
+      document.getElementById('optionDetailModal').classList.add('open');
+    }
+
+    function closeOptionPopup() {
+      document.getElementById('optionDetailModal').classList.remove('open');
+    }
+
+    function applyOptionToConsole() {
+      closeOptionPopup();
+      switchPortion('console');
+      const target = document.getElementById('remedyAnswerContainer');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function openBriefFromOption() {
+      closeOptionPopup();
+      openBriefExportModal();
+    }
+
     // --------------------------------------------------------------------------
     // App Initialization
     // --------------------------------------------------------------------------
@@ -3124,6 +3589,7 @@ Yours faithfully,
       renderFullLibrary(PRECEDENT_LIBRARY);
       renderCodexTable();
       loadDraftTemplate('habeas');
+      updateHistoryBadgesAndList();
 
       if (userGeminiApiKey) {
         const badge = document.getElementById('geminiEnvBadge');
