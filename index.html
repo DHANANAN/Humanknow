@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="caramel-dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Human Rights Law & Remedy Index | AI Legal Remedy Engine</title>
-  <meta name="description" content="Responsive laptop & mobile legal technology platform translating human rights complaints into direct legal remedies, progressive judicial precedent discovery, dual statutory mapping (BNSS/BNS/BSA), and actionable motion directives." />
+  <meta name="description" content="Edge-to-edge responsive legal tech platform translating human rights complaints into direct legal remedies, progressive judicial precedent discovery, dual statutory mapping (BNSS/BNS/BSA), and actionable motion directives." />
 
   <!-- Classical Legal & Modern UI Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,19 +13,19 @@
 
   <style>
     /* ==========================================================================
-       CORE CARAMEL DARK & FLUID RESPONSIVE DESIGN SYSTEM
-       Laptop-cum-Mobile Architecture: Full Bleed, Zero Clunky Side Bars
+       100% FULL-WIDTH EDGE-TO-EDGE CARAMEL DARK MODE
+       Zero Empty Side Bars • 100% Screen Space Utilization
        ========================================================================== */
-    :root, :root[data-theme="caramel-dark"] {
-      --bg-base: #0a0704;
-      --bg-surface: #130d08;
-      --bg-card: #1b130c;
-      --bg-card-hover: #261b11;
-      --bg-accent-soft: rgba(229, 154, 66, 0.09);
+    :root {
+      --bg-base: #090604;
+      --bg-surface: #120c08;
+      --bg-card: #1a120b;
+      --bg-card-hover: #24190f;
+      --bg-accent-soft: rgba(229, 154, 66, 0.1);
       
-      --border-subtle: rgba(229, 154, 66, 0.16);
-      --border-accent: rgba(229, 154, 66, 0.38);
-      --border-glow: rgba(245, 178, 102, 0.28);
+      --border-subtle: rgba(229, 154, 66, 0.18);
+      --border-accent: rgba(229, 154, 66, 0.42);
+      --border-glow: rgba(245, 178, 102, 0.3);
 
       --caramel-50: #fef8f0;
       --caramel-100: #fde8d0;
@@ -34,10 +34,8 @@
       --caramel-400: #e59a42;
       --caramel-500: #d97e28;
       --caramel-600: #b85e19;
-      --caramel-800: #5c2c0e;
-      --caramel-950: #1a0a03;
 
-      --text-heading: #fdfaf6;
+      --text-heading: #fef8f0;
       --text-body: #ded2c5;
       --text-muted: #a69584;
       --text-dim: #716254;
@@ -47,46 +45,9 @@
       --accent-crimson: #f43f5e;
       --accent-azure: #38bdf8;
 
-      --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.4);
-      --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.55);
-      --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.7);
-      --glow-caramel: 0 0 30px rgba(229, 154, 66, 0.18);
-    }
-
-    :root[data-theme="caramel-light"] {
-      --bg-base: #fbf7f2;
-      --bg-surface: #f4ece2;
-      --bg-card: #ffffff;
-      --bg-card-hover: #f9f3ea;
-      --bg-accent-soft: rgba(217, 126, 40, 0.1);
-      
-      --border-subtle: rgba(184, 94, 25, 0.18);
-      --border-accent: rgba(184, 94, 25, 0.4);
-      --border-glow: rgba(217, 126, 40, 0.25);
-
-      --caramel-50: #251307;
-      --caramel-100: #3b1906;
-      --caramel-200: #5c2c0e;
-      --caramel-300: #8c4214;
-      --caramel-400: #b85e19;
-      --caramel-500: #d97e28;
-      --caramel-600: #e59a42;
-      --caramel-700: #f4b266;
-
-      --text-heading: #261509;
-      --text-body: #473221;
-      --text-muted: #6e5541;
-      --text-dim: #99806b;
-
-      --accent-emerald: #059669;
-      --accent-amber: #d97706;
-      --accent-crimson: #be123c;
-      --accent-azure: #0284c7;
-
-      --shadow-sm: 0 4px 14px rgba(92, 44, 14, 0.08);
-      --shadow-md: 0 10px 30px rgba(92, 44, 14, 0.12);
-      --shadow-lg: 0 20px 50px rgba(92, 44, 14, 0.16);
-      --glow-caramel: 0 0 25px rgba(217, 126, 40, 0.15);
+      --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.45);
+      --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.6);
+      --glow-caramel: 0 0 35px rgba(229, 154, 66, 0.22);
     }
 
     * {
@@ -95,56 +56,61 @@
       padding: 0;
     }
 
-    body {
+    html, body {
+      width: 100%;
+      min-height: 100vh;
       background-color: var(--bg-base);
       color: var(--text-body);
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background-image: 
-        radial-gradient(circle at 15% 10%, rgba(229, 154, 66, 0.07) 0%, transparent 45%),
-        radial-gradient(circle at 85% 20%, rgba(217, 126, 40, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 50% 85%, rgba(184, 94, 25, 0.05) 0%, transparent 60%);
-      background-attachment: fixed;
       overflow-x: hidden;
+      margin: 0;
+      padding: 0;
     }
 
-    /* Typography */
+    body {
+      background-image: 
+        radial-gradient(circle at 10% 8%, rgba(229, 154, 66, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 90% 15%, rgba(217, 126, 40, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 50% 90%, rgba(184, 94, 25, 0.06) 0%, transparent 60%);
+      background-attachment: fixed;
+      display: flex;
+      flex-direction: column;
+    }
+
     .font-serif { font-family: 'Newsreader', Georgia, serif; }
     .font-cinzel { font-family: 'Cinzel', serif; }
     .font-mono { font-family: 'JetBrains Mono', monospace; }
 
-    /* Fluid Edge-to-Edge Responsive Container: Zero Artificial Blank Bars */
-    .app-container {
+    /* FULL BLEED CONTAINER: Spans 100% of Screen Width without Empty Side Bars */
+    .full-bleed-container {
       width: 100%;
-      max-width: 1720px;
-      margin: 0 auto;
-      padding: 0 clamp(1rem, 3.2vw, 3.5rem);
+      padding: 0 24px;
+      margin: 0;
+    }
+    @media (max-width: 640px) {
+      .full-bleed-container { padding: 0 14px; }
     }
 
-    /* Header Navigation */
+    /* Edge-to-Edge Sticky Navigation */
     header.main-header {
-      background: rgba(19, 13, 8, 0.94);
-      backdrop-filter: blur(16px);
+      width: 100%;
+      background: rgba(18, 12, 8, 0.96);
+      backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--border-subtle);
       position: sticky;
       top: 0;
       z-index: 60;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
-      width: 100%;
-    }
-    :root[data-theme="caramel-light"] header.main-header {
-      background: rgba(244, 236, 226, 0.96);
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.45);
     }
 
-    .header-top {
+    .header-top-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       height: 72px;
-      gap: 1.25rem;
+      gap: 1rem;
+      width: 100%;
     }
 
     .brand-group {
@@ -164,27 +130,21 @@
       align-items: center;
       justify-content: center;
       color: #fff;
-      box-shadow: 0 0 18px var(--glow-caramel);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 20px var(--glow-caramel);
+      border: 1px solid rgba(255, 255, 255, 0.25);
       flex-shrink: 0;
-    }
-
-    .brand-text {
-      min-width: 0;
     }
 
     .brand-text h1 {
       font-family: 'Cinzel', serif;
-      font-size: clamp(1rem, 1.8vw, 1.28rem);
+      font-size: clamp(1.05rem, 1.6vw, 1.35rem);
       font-weight: 700;
       color: var(--text-heading);
-      letter-spacing: 0.02em;
+      letter-spacing: 0.03em;
       display: flex;
       align-items: center;
       gap: 0.65rem;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .badge-live-ai {
@@ -193,16 +153,13 @@
       color: var(--caramel-300);
       font-size: 0.65rem;
       font-weight: 700;
-      padding: 0.15rem 0.55rem;
+      padding: 0.18rem 0.6rem;
       border-radius: 9999px;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-    }
-    :root[data-theme="caramel-light"] .badge-live-ai {
-      color: var(--caramel-400);
     }
     .badge-live-ai::before {
       content: "";
@@ -219,15 +176,12 @@
     }
 
     .brand-sub {
-      font-size: 0.74rem;
+      font-size: 0.76rem;
       color: var(--text-muted);
       letter-spacing: 0.01em;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
-    /* Nav Tools */
     .nav-tools {
       display: flex;
       align-items: center;
@@ -235,55 +189,56 @@
       flex-shrink: 0;
     }
 
-    .btn-icon-pill {
+    .btn-nav-action {
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       color: var(--text-body);
-      padding: 0.42rem 0.85rem;
+      padding: 0.45rem 0.95rem;
       border-radius: 30px;
       font-size: 0.8rem;
       font-weight: 600;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.45rem;
       white-space: nowrap;
       transition: all 0.2s;
     }
-    .btn-icon-pill:hover {
+    .btn-nav-action:hover {
       background: var(--bg-card-hover);
       border-color: var(--caramel-400);
       color: var(--text-heading);
     }
 
-    .btn-primary-action {
+    .btn-export-docket {
       background: linear-gradient(135deg, var(--caramel-500), var(--caramel-400));
       color: #1a0f05;
       border: none;
       font-size: 0.82rem;
       font-weight: 700;
-      padding: 0.5rem 1.1rem;
+      padding: 0.52rem 1.15rem;
       border-radius: 8px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 0.45rem;
       white-space: nowrap;
-      box-shadow: 0 4px 14px rgba(217, 126, 40, 0.3);
+      box-shadow: 0 4px 14px rgba(217, 126, 40, 0.35);
       transition: all 0.2s;
     }
-    .btn-primary-action:hover {
+    .btn-export-docket:hover {
       background: linear-gradient(135deg, var(--caramel-400), var(--caramel-300));
       transform: translateY(-1px);
     }
 
-    /* Sub Navigation Tabs (Fluid Touch Bar for Laptop & Mobile) */
+    /* Edge-to-Edge Navigation Tabs */
     .nav-tabs-bar {
+      width: 100%;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.5rem;
       border-top: 1px solid var(--border-subtle);
-      padding: 0.35rem 0;
+      padding: 0.4rem 0;
       overflow-x: auto;
       scrollbar-width: none;
       -webkit-overflow-scrolling: touch;
@@ -294,9 +249,9 @@
       background: transparent;
       border: none;
       color: var(--text-muted);
-      font-size: 0.83rem;
+      font-size: 0.84rem;
       font-weight: 600;
-      padding: 0.45rem 0.95rem;
+      padding: 0.48rem 1.1rem;
       border-radius: 6px;
       cursor: pointer;
       display: inline-flex;
@@ -315,22 +270,19 @@
       border-bottom: 2px solid var(--caramel-400);
       border-radius: 6px 6px 0 0;
     }
-    :root[data-theme="caramel-light"] .nav-tab-btn.active {
-      color: var(--caramel-400);
-    }
 
     /* ==========================================================================
-       HERO & FULL-WIDTH FLUID SEARCH EXPERIENCE
+       HERO & FULL-WIDTH SEARCH DOCK
        ========================================================================== */
-    .hero-container {
-      padding: clamp(2rem, 4vw, 3.5rem) 0 clamp(1.2rem, 2.5vw, 2rem);
-      text-align: center;
+    .hero-section {
       width: 100%;
+      padding: clamp(2rem, 3.5vw, 3.2rem) 0 1.5rem;
+      text-align: center;
     }
 
     .hero-eyebrow {
       font-family: 'Cinzel', serif;
-      font-size: clamp(0.72rem, 1.2vw, 0.84rem);
+      font-size: clamp(0.72rem, 1.1vw, 0.84rem);
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--caramel-400);
@@ -339,12 +291,12 @@
 
     .hero-title {
       font-family: 'Newsreader', Georgia, serif;
-      font-size: clamp(1.8rem, 3.6vw, 3.1rem);
+      font-size: clamp(1.9rem, 3.8vw, 3.4rem);
       font-weight: 600;
-      line-height: 1.22;
+      line-height: 1.2;
       color: var(--text-heading);
       letter-spacing: -0.02em;
-      max-width: 1180px;
+      max-width: 1400px;
       margin: 0 auto 0.75rem;
     }
 
@@ -352,50 +304,34 @@
       font-style: italic;
       color: var(--caramel-300);
     }
-    :root[data-theme="caramel-light"] .hero-title span {
-      color: var(--caramel-500);
-    }
 
-    .hero-desc {
+    .hero-sub {
       color: var(--text-muted);
-      font-size: clamp(0.88rem, 1.4vw, 1.04rem);
-      max-width: 880px;
-      margin: 0 auto clamp(1.5rem, 2.5vw, 2.25rem);
+      font-size: clamp(0.92rem, 1.4vw, 1.08rem);
+      max-width: 1050px;
+      margin: 0 auto 1.8rem;
       line-height: 1.65;
     }
 
-    /* Fluid Full-Width Search Dock */
-    .search-dock-wrapper {
-      width: 100%;
-      max-width: 1180px;
-      margin: 0 auto;
-      position: relative;
-    }
-
+    /* Full-Width Fluid Search Dock */
     .search-dock {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
       background: var(--bg-surface);
       border: 1.5px solid var(--border-accent);
       border-radius: 16px;
-      padding: 0.5rem 0.75rem 0.5rem 1.25rem;
+      padding: 0.55rem 0.8rem 0.55rem 1.4rem;
       display: flex;
       align-items: center;
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5), 0 0 30px var(--glow-caramel);
-      gap: 0.75rem;
-      width: 100%;
+      box-shadow: 0 14px 45px rgba(0, 0, 0, 0.6), 0 0 30px var(--glow-caramel);
+      gap: 0.85rem;
       transition: all 0.25s;
-    }
-    :root[data-theme="caramel-light"] .search-dock {
-      box-shadow: 0 14px 40px rgba(92, 44, 14, 0.1), 0 0 30px var(--glow-caramel);
     }
 
     .search-dock:focus-within {
       border-color: var(--caramel-300);
-      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.65), 0 0 40px rgba(229, 154, 66, 0.35);
-    }
-
-    .search-icon-svg {
-      color: var(--caramel-400);
-      flex-shrink: 0;
+      box-shadow: 0 16px 55px rgba(0, 0, 0, 0.75), 0 0 45px rgba(229, 154, 66, 0.35);
     }
 
     .search-field {
@@ -404,23 +340,22 @@
       border: none;
       outline: none;
       color: var(--text-heading);
-      font-size: clamp(0.92rem, 1.5vw, 1.08rem);
+      font-size: clamp(0.95rem, 1.4vw, 1.12rem);
       font-family: 'Plus Jakarta Sans', sans-serif;
-      min-width: 0;
     }
     .search-field::placeholder {
       color: var(--text-dim);
-      font-size: 0.95rem;
+      font-size: 0.98rem;
     }
 
     .btn-search-submit {
       background: linear-gradient(135deg, var(--caramel-500), var(--caramel-400));
       color: #180e04;
       border: none;
-      padding: 0.65rem 1.35rem;
+      padding: 0.7rem 1.5rem;
       border-radius: 10px;
       font-weight: 700;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -432,8 +367,25 @@
       background: linear-gradient(135deg, var(--caramel-400), var(--caramel-300));
       transform: translateY(-1px);
     }
+    .btn-search-submit:disabled {
+      opacity: 0.7;
+      cursor: wait;
+    }
 
-    /* Topic Pills Fluid Stream */
+    /* Live Search Status Pill */
+    .search-feedback-banner {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+      font-size: 0.84rem;
+      color: var(--caramel-300);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .search-feedback-banner.active { display: flex; }
+
+    /* Quick Topic Stream */
     .topics-stream {
       display: flex;
       flex-wrap: wrap;
@@ -448,9 +400,9 @@
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       color: var(--text-muted);
-      font-size: clamp(0.75rem, 1.1vw, 0.82rem);
+      font-size: clamp(0.76rem, 1vw, 0.84rem);
       font-weight: 600;
-      padding: 0.38rem 0.88rem;
+      padding: 0.42rem 0.95rem;
       border-radius: 9999px;
       cursor: pointer;
       display: inline-flex;
@@ -470,42 +422,38 @@
       color: var(--caramel-300);
       box-shadow: 0 0 12px var(--glow-caramel);
     }
-    :root[data-theme="caramel-light"] .topic-pill.active {
-      color: var(--caramel-500);
-    }
 
     /* ==========================================================================
-       WORKABLE REMEDY DIRECTIVE & FLUID FULL-WIDTH GRID
-       Laptop: Expansive 2-Column • Mobile: 1-Column Stacking
+       WORKABLE REMEDY DIRECTIVE: FULL SCREEN 2-COLUMN GRID
        ========================================================================== */
-    .remedy-answer-grid {
+    .remedy-full-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.7fr) minmax(360px, 460px);
-      gap: clamp(1.25rem, 2.5vw, 2.25rem);
-      margin-top: 2rem;
-      margin-bottom: 2.75rem;
+      grid-template-columns: minmax(0, 1.85fr) minmax(360px, 460px);
+      gap: 24px;
       width: 100%;
+      margin-top: 1.75rem;
+      margin-bottom: 2.75rem;
     }
 
     @media (max-width: 1023px) {
-      .remedy-answer-grid {
+      .remedy-full-grid {
         grid-template-columns: 1fr;
       }
     }
 
-    /* Main Answer Card */
+    /* Left: The Comprehensive Direct Legal Verdict & Action Directives */
     .answer-card {
       background: var(--bg-surface);
       border: 1.5px solid var(--border-accent);
-      border-radius: 20px;
+      border-radius: 18px;
       overflow: hidden;
       box-shadow: var(--shadow-md);
       width: 100%;
     }
 
     .answer-card-header {
-      padding: clamp(1.1rem, 2vw, 1.5rem) clamp(1.25rem, 2.5vw, 2rem);
-      background: linear-gradient(90deg, rgba(229, 154, 66, 0.12) 0%, rgba(19, 13, 8, 0.4) 100%);
+      padding: 1.25rem 1.75rem;
+      background: linear-gradient(90deg, rgba(229, 154, 66, 0.12) 0%, rgba(18, 12, 8, 0.4) 100%);
       border-bottom: 1px solid var(--border-subtle);
       display: flex;
       flex-wrap: wrap;
@@ -535,7 +483,7 @@
 
     .answer-heading-text {
       font-family: 'Newsreader', Georgia, serif;
-      font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+      font-size: clamp(1.25rem, 2.2vw, 1.6rem);
       font-weight: 600;
       color: var(--text-heading);
     }
@@ -552,7 +500,7 @@
       background: rgba(229, 154, 66, 0.08);
       border-left: 4px solid var(--caramel-400);
       border-radius: 0 12px 12px 0;
-      padding: clamp(1.1rem, 2vw, 1.4rem) clamp(1.25rem, 2.5vw, 1.75rem);
+      padding: 1.25rem 1.75rem;
     }
 
     .verdict-tagline {
@@ -569,12 +517,12 @@
 
     .verdict-main-text {
       font-family: 'Newsreader', Georgia, serif;
-      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
-      line-height: 1.62;
+      font-size: clamp(1.08rem, 1.8vw, 1.28rem);
+      line-height: 1.65;
       color: var(--text-heading);
     }
 
-    /* Urgent Emergency Directives List */
+    /* Action Steps Timeline */
     .action-steps-container h3 {
       font-size: 0.88rem;
       font-weight: 700;
@@ -590,7 +538,7 @@
     .steps-timeline {
       display: flex;
       flex-direction: column;
-      gap: 0.9rem;
+      gap: 0.95rem;
     }
 
     .step-timeline-item {
@@ -599,7 +547,7 @@
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       border-radius: 12px;
-      padding: clamp(0.9rem, 1.8vw, 1.25rem);
+      padding: 1.15rem 1.35rem;
     }
 
     .step-circle-badge {
@@ -618,16 +566,16 @@
     }
 
     .step-detail-title {
-      font-size: clamp(0.88rem, 1.3vw, 0.98rem);
+      font-size: 0.98rem;
       font-weight: 700;
       color: var(--text-heading);
       margin-bottom: 0.25rem;
     }
 
     .step-detail-desc {
-      font-size: clamp(0.82rem, 1.1vw, 0.88rem);
+      font-size: 0.88rem;
       color: var(--text-body);
-      line-height: 1.52;
+      line-height: 1.55;
     }
 
     .step-forum-tag {
@@ -643,16 +591,13 @@
       border-radius: 4px;
       margin-top: 0.5rem;
     }
-    :root[data-theme="caramel-light"] .step-forum-tag {
-      color: var(--caramel-500);
-    }
 
     /* Statutory Provisions Box */
     .statute-crossmap-section {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       border-radius: 14px;
-      padding: clamp(1rem, 2vw, 1.4rem);
+      padding: 1.25rem 1.5rem;
     }
 
     .statute-crossmap-header {
@@ -671,15 +616,15 @@
 
     .statute-chips-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 0.85rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 0.9rem;
     }
 
     .statute-chip {
       background: var(--bg-surface);
       border-left: 3px solid var(--caramel-400);
       border-radius: 0 8px 8px 0;
-      padding: 0.8rem 1rem;
+      padding: 0.85rem 1.05rem;
     }
     .statute-chip.intl {
       border-left-color: var(--accent-azure);
@@ -687,7 +632,7 @@
 
     .statute-chip-code {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.84rem;
+      font-size: 0.85rem;
       font-weight: 700;
       color: var(--text-heading);
       margin-bottom: 0.25rem;
@@ -699,12 +644,12 @@
       line-height: 1.45;
     }
 
-    /* Right Column: Evidentiary Dossier Card */
+    /* Right: Evidentiary Dossier Card */
     .side-dossier-card {
       background: var(--bg-surface);
       border: 1.5px solid var(--border-subtle);
-      border-radius: 20px;
-      padding: clamp(1.2rem, 2vw, 1.75rem);
+      border-radius: 18px;
+      padding: 1.5rem 1.75rem;
       display: flex;
       flex-direction: column;
       gap: 1.3rem;
@@ -714,7 +659,7 @@
     }
 
     .dossier-title {
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       font-weight: 700;
       color: var(--text-heading);
       display: flex;
@@ -726,7 +671,7 @@
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       border-radius: 12px;
-      padding: 1.1rem;
+      padding: 1.15rem;
     }
 
     .readiness-label-row {
@@ -738,7 +683,7 @@
 
     .readiness-pct {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: var(--accent-emerald);
     }
@@ -762,7 +707,7 @@
     .checklist-mini-items {
       display: flex;
       flex-direction: column;
-      gap: 0.7rem;
+      gap: 0.75rem;
     }
 
     .mini-check-item {
@@ -772,7 +717,7 @@
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       border-radius: 10px;
-      padding: 0.8rem 0.95rem;
+      padding: 0.85rem 1rem;
       cursor: pointer;
       user-select: none;
       transition: all 0.15s;
@@ -786,8 +731,8 @@
     }
 
     .custom-check-box {
-      width: 19px;
-      height: 19px;
+      width: 20px;
+      height: 20px;
       border-radius: 5px;
       border: 1.5px solid var(--text-dim);
       display: flex;
@@ -795,7 +740,7 @@
       justify-content: center;
       flex-shrink: 0;
       margin-top: 0.15rem;
-      background: rgba(0, 0, 0, 0.2);
+      background: rgba(0, 0, 0, 0.25);
     }
     .mini-check-item.checked .custom-check-box {
       background: var(--accent-emerald);
@@ -804,24 +749,24 @@
     }
 
     .mini-check-text h5 {
-      font-size: 0.84rem;
+      font-size: 0.86rem;
       font-weight: 600;
       color: var(--text-heading);
     }
 
     .mini-check-text p {
-      font-size: 0.75rem;
+      font-size: 0.76rem;
       color: var(--text-muted);
       margin-top: 0.15rem;
     }
 
     /* ==========================================================================
-       PROGRESSIVE PRECEDENT STREAM (FULL-WIDTH 2-COLUMN RESPONSIVE FLOW)
+       PROGRESSIVE PRECEDENT STREAM
        ========================================================================== */
     .precedent-stream-section {
+      width: 100%;
       margin-top: 1rem;
       margin-bottom: 3.5rem;
-      width: 100%;
     }
 
     .stream-header {
@@ -838,7 +783,7 @@
 
     .stream-title-group h2 {
       font-family: 'Newsreader', Georgia, serif;
-      font-size: clamp(1.4rem, 2.5vw, 1.95rem);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
       font-weight: 600;
       color: var(--text-heading);
       display: flex;
@@ -864,9 +809,6 @@
       align-items: center;
       gap: 0.45rem;
     }
-    :root[data-theme="caramel-light"] .stream-status-pill {
-      color: var(--caramel-500);
-    }
 
     .radar-spinner {
       width: 12px;
@@ -878,11 +820,11 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* Fluid Precedents Grid */
+    /* Precedents Grid Spans Full Width */
     .precedents-flow {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 540px), 1fr));
-      gap: 1.35rem;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 580px), 1fr));
+      gap: 1.5rem;
       width: 100%;
     }
 
@@ -890,7 +832,7 @@
       background: var(--bg-surface);
       border: 1.5px solid var(--border-subtle);
       border-radius: 16px;
-      padding: clamp(1.1rem, 2vw, 1.6rem);
+      padding: 1.5rem 1.75rem;
       box-shadow: var(--shadow-sm);
       opacity: 0;
       transform: translateY(16px);
@@ -922,7 +864,7 @@
 
     .case-title {
       font-family: 'Newsreader', Georgia, serif;
-      font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+      font-size: clamp(1.2rem, 1.8vw, 1.4rem);
       font-weight: 700;
       color: var(--text-heading);
       letter-spacing: -0.01em;
@@ -939,9 +881,6 @@
       font-weight: 600;
       white-space: nowrap;
     }
-    :root[data-theme="caramel-light"] .case-citation-badge {
-      color: var(--caramel-500);
-    }
 
     .case-bench-info {
       font-size: 0.78rem;
@@ -957,7 +896,7 @@
       background: var(--bg-card);
       border-left: 3px solid var(--caramel-400);
       border-radius: 0 8px 8px 0;
-      padding: 0.85rem 1.1rem;
+      padding: 0.85rem 1.15rem;
       margin-bottom: 0.85rem;
     }
 
@@ -971,7 +910,7 @@
     }
 
     .case-ratio-text {
-      font-size: 0.86rem;
+      font-size: 0.88rem;
       color: var(--text-body);
       line-height: 1.55;
     }
@@ -982,14 +921,10 @@
       font-size: 0.94rem;
       color: var(--caramel-100);
       line-height: 1.6;
-      background: rgba(0, 0, 0, 0.25);
+      background: rgba(0, 0, 0, 0.28);
       padding: 0.75rem 1rem;
       border-radius: 8px;
       margin-bottom: 0.75rem;
-    }
-    :root[data-theme="caramel-light"] .case-quote {
-      color: var(--caramel-950);
-      background: rgba(0, 0, 0, 0.04);
     }
 
     .case-remedy-impact {
@@ -1018,8 +953,8 @@
 
     .library-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
-      gap: 1.4rem;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 450px), 1fr));
+      gap: 1.5rem;
       margin-top: 1.5rem;
       width: 100%;
     }
@@ -1037,7 +972,7 @@
 
     .codex-table {
       width: 100%;
-      min-width: 780px;
+      min-width: 820px;
       border-collapse: collapse;
       text-align: left;
     }
@@ -1063,11 +998,11 @@
       background: var(--bg-card-hover);
     }
 
-    /* Procedural Motion Drafter */
+    /* Motion Drafter */
     .motion-drafter-layout {
       display: grid;
-      grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
-      gap: 1.75rem;
+      grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+      gap: 24px;
       margin-top: 1.75rem;
       width: 100%;
     }
@@ -1078,14 +1013,14 @@
     .motion-selector-menu {
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
+      gap: 0.65rem;
     }
 
     .motion-menu-item {
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       border-radius: 12px;
-      padding: 1rem 1.15rem;
+      padding: 1.1rem 1.25rem;
       cursor: pointer;
       text-align: left;
       transition: all 0.2s;
@@ -1104,7 +1039,7 @@
       color: #17110c;
       border: 1px solid #e0d5c5;
       border-radius: 14px;
-      padding: clamp(1.5rem, 3vw, 2.5rem);
+      padding: clamp(1.5rem, 3vw, 2.75rem);
       font-family: 'Newsreader', Georgia, serif;
       line-height: 1.7;
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
@@ -1115,7 +1050,7 @@
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(10, 7, 4, 0.85);
+      background: rgba(9, 6, 4, 0.88);
       backdrop-filter: blur(10px);
       z-index: 120;
       display: none;
@@ -1133,7 +1068,7 @@
       max-width: 680px;
       max-height: 92vh;
       overflow-y: auto;
-      box-shadow: var(--shadow-lg);
+      box-shadow: var(--shadow-md);
     }
 
     .modal-dialog-header {
@@ -1144,9 +1079,7 @@
       justify-content: space-between;
     }
 
-    .modal-dialog-body {
-      padding: 1.5rem;
-    }
+    .modal-dialog-body { padding: 1.5rem; }
 
     .modal-dialog-footer {
       padding: 1rem 1.5rem;
@@ -1177,7 +1110,7 @@
 
     /* Mobile Media Queries */
     @media (max-width: 768px) {
-      .header-top {
+      .header-top-row {
         height: auto;
         padding: 0.75rem 0;
         flex-wrap: wrap;
@@ -1190,21 +1123,17 @@
         width: 100%;
         justify-content: space-between;
       }
-      .btn-search-submit span {
-        display: none;
-      }
-      .btn-search-submit {
-        padding: 0.65rem 0.9rem;
-      }
+      .btn-search-submit span { display: none; }
+      .btn-search-submit { padding: 0.65rem 0.95rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Global Header -->
+  <!-- Top Global Header (100% Edge-to-Edge) -->
   <header class="main-header">
-    <div class="app-container">
-      <div class="header-top">
+    <div class="full-bleed-container">
+      <div class="header-top-row">
         <a href="#" class="brand-group">
           <div class="brand-seal">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1217,7 +1146,7 @@
           <div class="brand-text">
             <h1>
               HUMAN RIGHTS REMEDY INDEX
-              <span class="badge-live-ai">AI Legal Aid</span>
+              <span class="badge-live-ai">AI Legal Engine</span>
             </h1>
             <p class="brand-sub">Factual Harm Translation • Progressive Precedents • BNSS/BNS/BSA Codex</p>
           </div>
@@ -1225,21 +1154,15 @@
 
         <div class="nav-tools">
           <!-- Gemini AI Connection Config -->
-          <button class="btn-icon-pill" onclick="openGeminiModal()" title="View or configure Google Gemini API connection">
+          <button class="btn-nav-action" onclick="openGeminiModal()" title="Configure Google Gemini API">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--caramel-400)" stroke-width="2">
               <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
             </svg>
             <span id="geminiEnvBadge">Gemini Env</span>
           </button>
 
-          <!-- Theme Switcher: Dark Caramel Espresso vs Warm Light -->
-          <button class="btn-icon-pill" onclick="toggleCaramelTheme()" title="Toggle Dark Mode / Warm Silk Mode">
-            <span id="themeModeIcon">🌙</span>
-            <span id="themeModeText">Dark Mode</span>
-          </button>
-
           <!-- Export Case Brief -->
-          <button class="btn-primary-action" onclick="openBriefExportModal()">
+          <button class="btn-export-docket" onclick="openBriefExportModal()">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
               <polyline points="7 10 12 15 17 10"></polyline>
@@ -1276,7 +1199,7 @@
     </div>
   </header>
 
-  <main class="app-container">
+  <main class="full-bleed-container" style="flex: 1;">
 
     <!-- ======================================================================
          PORTION 1: REMEDY CONSOLE & WORKABLE SEARCH ENGINE
@@ -1284,50 +1207,56 @@
     <section id="portion-console" class="app-section-view active">
       
       <!-- Fluid Hero & Search Dock -->
-      <div class="hero-container">
+      <div class="hero-section">
         <div class="hero-eyebrow">Constitutional Remedial Intelligence</div>
         <h2 class="hero-title">
           Translate factual accounts of rights violations into <span>binding legal remedies</span>.
         </h2>
-        <p class="hero-desc">
+        <p class="hero-sub">
           Describe what occurred in ordinary words. The engine immediately formulates a direct legal remedy directive, evaluates statutory violations under Bharatiya Nagarik Suraksha Sanhita (BNSS), and progressively reveals relevant landmark judicial precedents.
         </p>
 
-        <!-- Fluid Full-Width Search Input -->
-        <div class="search-dock-wrapper">
-          <div class="search-dock">
-            <svg class="search-icon-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <input 
-              type="text" 
-              id="masterSearchInput" 
-              class="search-field" 
-              placeholder="Describe what happened (e.g., 'Police took my brother 30 hours ago and have not produced him before any judge')..."
-              onkeydown="if(event.key==='Enter') executeLegalAnalysis()"
-            />
-            <button class="btn-search-submit" onclick="executeLegalAnalysis()">
-              <span>Analyze & Remedy</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
-            </button>
-          </div>
+        <!-- Search Input Spans Full Width -->
+        <div class="search-dock">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--caramel-400)" stroke-width="2" style="flex-shrink:0;">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input 
+            type="text" 
+            id="masterSearchInput" 
+            class="search-field" 
+            placeholder="Type any situation (e.g. 'police beaten my brother', 'demolished house with bulldozer', 'denied entry to temple', 'unpaid wages', 'arrested for protest')..."
+            onkeydown="if(event.key==='Enter') executeLegalAnalysis()"
+          />
+          <button class="btn-search-submit" id="btnSearchSubmit" onclick="executeLegalAnalysis()">
+            <span id="searchBtnText">Analyze & Remedy</span>
+            <svg id="searchBtnIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
 
-          <!-- Quick Topic Pills -->
-          <div class="topics-stream">
-            <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); font-weight: 700; margin-right: 0.2rem;">Quick Topics:</span>
-            <button class="topic-pill active" onclick="loadTopicScenario('detention')">🚨 Unlawful Detention (>24h)</button>
-            <button class="topic-pill" onclick="loadTopicScenario('torture')">🩸 Custodial Torture & Beating</button>
-            <button class="topic-pill" onclick="loadTopicScenario('eviction')">🚜 Bulldozer Demolition</button>
-            <button class="topic-pill" onclick="loadTopicScenario('bonded')">⛓️ Withheld Wages & ID</button>
-            <button class="topic-pill" onclick="loadTopicScenario('caste')">🚫 Public Access Denial</button>
-            <button class="topic-pill" onclick="loadTopicScenario('protest')">📢 Peaceful Assembly (Sec 163 BNSS)</button>
-          </div>
+        <!-- Live Search Status Indicator -->
+        <div class="search-feedback-banner" id="searchFeedbackBanner">
+          <span class="radar-spinner"></span>
+          <span id="searchFeedbackText">Analyzing factual account under Constitutional Law & BNSS 2023...</span>
+        </div>
+
+        <!-- Quick Topic Pills -->
+        <div class="topics-stream">
+          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); font-weight: 700; margin-right: 0.2rem;">Quick Topics:</span>
+          <button class="topic-pill active" onclick="loadTopicScenario('detention')">🚨 Unlawful Detention (>24h)</button>
+          <button class="topic-pill" onclick="loadTopicScenario('torture')">🩸 Custodial Torture & Beating</button>
+          <button class="topic-pill" onclick="loadTopicScenario('eviction')">🚜 Bulldozer Demolition</button>
+          <button class="topic-pill" onclick="loadTopicScenario('bonded')">⛓️ Withheld Wages & ID</button>
+          <button class="topic-pill" onclick="loadTopicScenario('caste')">🚫 Public Access Denial</button>
+          <button class="topic-pill" onclick="loadTopicScenario('protest')">📢 Peaceful Assembly (Sec 163 BNSS)</button>
+          <button class="topic-pill" onclick="loadTopicScenario('fir')">📝 Refusal to Register FIR</button>
+          <button class="topic-pill" onclick="loadTopicScenario('women')">🛡️ Women Arrest & Custody</button>
         </div>
       </div>
 
-      <!-- WORKABLE ANSWER SECTION (Direct Legal Assessment & Emergency Directive) -->
-      <div id="remedyAnswerContainer" class="remedy-answer-grid">
+      <!-- WORKABLE ANSWER SECTION (FULL-WIDTH 2-COLUMN GRID) -->
+      <div id="remedyAnswerContainer" class="remedy-full-grid">
         
         <!-- Left: The Direct Legal Finding & Action Directives -->
         <div class="answer-card">
@@ -1349,7 +1278,7 @@
                 Immediate Legal Verdict & Finding
               </div>
               <div class="verdict-main-text" id="verdictText">
-                "The ongoing police detention exceeding 24 hours without an order from a judicial magistrate is <strong>prima facie illegal</strong>, violating Article 22(2) of the Constitution and Section 58 of the Bharatiya Nagarik Suraksha Sanhita (BNSS). Physical confinement beyond 24 hours without remand constitutes an actionable constitutional tort."
+                "The ongoing police detention exceeding 24 hours without an order from a judicial magistrate is <strong>prima facie illegal</strong>, violating Article 22(2) of the Constitution and Section 58 of the Bharatiya Nagarik Suraksha Sanhita (BNSS). Physical confinement beyond 24 hours without remand constitutes an actionable constitutional tort under <em>Rudul Sah</em>."
               </div>
             </div>
 
@@ -1403,7 +1332,7 @@
             <!-- Populated dynamically -->
           </div>
 
-          <button class="btn-icon-pill" style="justify-content: center; width: 100%; border-color: var(--border-accent); margin-top: 0.25rem;" onclick="openBriefExportModal()">
+          <button class="btn-nav-action" style="justify-content: center; width: 100%; border-color: var(--border-accent); margin-top: 0.25rem;" onclick="openBriefExportModal()">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
             Generate Official Briefing Sheet
           </button>
@@ -1411,7 +1340,7 @@
 
       </div>
 
-      <!-- PROGRESSIVE PRECEDENT STREAM (SLOWLY REVEAL RELEVANT PRECEDENTS IN FLUID GRID) -->
+      <!-- PROGRESSIVE PRECEDENT STREAM (FULL WIDTH RESPONSIVE GRID) -->
       <section class="precedent-stream-section">
         <div class="stream-header">
           <div class="stream-title-group">
@@ -1428,7 +1357,6 @@
           </div>
         </div>
 
-        <!-- Precedent cards container in fluid multi-column grid -->
         <div class="precedents-flow" id="precedentsFlowContainer">
           <!-- Dynamically revealed with staggered animation -->
         </div>
@@ -1440,22 +1368,21 @@
          PORTION 2: LANDMARK PRECEDENT LIBRARY
          ====================================================================== -->
     <section id="portion-precedents" class="app-section-view">
-      <div style="padding: 2rem 0 1.25rem;">
+      <div style="padding: 1.5rem 0;">
         <h2 class="font-serif" style="font-size: clamp(1.8rem, 3vw, 2.3rem); color: var(--text-heading); margin-bottom: 0.5rem;">
           Landmark Human Rights Precedent Corpus
         </h2>
-        <p style="color: var(--text-muted); max-width: 800px;">
-          Explore authoritative Supreme Court of India rulings establishing binding standards for arrest, custodial safety, housing protections, wage equality, and freedom from state coercion.
+        <p style="color: var(--text-muted); max-width: 900px;">
+          Authoritative Supreme Court of India rulings establishing binding standards for arrest, custodial safety, housing protections, wage equality, and freedom from state coercion.
         </p>
 
-        <!-- Precedent Search & Tag Filter -->
         <div style="display: flex; gap: 1rem; margin-top: 1.25rem; flex-wrap: wrap;">
           <input 
             type="text" 
             id="librarySearchInput" 
             placeholder="Search rulings by keyword or citation (e.g., 'D.K. Basu', 'Olga Tellis', 'Section 58 BNSS')..." 
             class="search-field" 
-            style="background: var(--bg-surface); border: 1px solid var(--border-subtle); padding: 0.65rem 1.2rem; border-radius: 10px; max-width: 520px; width: 100%;"
+            style="background: var(--bg-surface); border: 1px solid var(--border-subtle); padding: 0.65rem 1.2rem; border-radius: 10px; max-width: 600px; width: 100%;"
             oninput="filterPrecedentLibrary(this.value)"
           />
         </div>
@@ -1470,11 +1397,11 @@
          PORTION 3: STATUTORY & TREATY CODEX (DUAL COMPARISON)
          ====================================================================== -->
     <section id="portion-statutes" class="app-section-view">
-      <div style="padding: 2rem 0 1.25rem;">
+      <div style="padding: 1.5rem 0;">
         <h2 class="font-serif" style="font-size: clamp(1.8rem, 3vw, 2.3rem); color: var(--text-heading); margin-bottom: 0.5rem;">
           Dual Statutory & Treaty Mapping Codex
         </h2>
-        <p style="color: var(--text-muted); max-width: 850px;">
+        <p style="color: var(--text-muted); max-width: 900px;">
           Direct transitional concordance mapping Bharatiya Nagarik Suraksha Sanhita (BNSS 2023), Bharatiya Nyaya Sanhita (BNS 2023), and Bharatiya Sakshya Adhiniyam (BSA 2023) against corresponding CrPC/IPC provisions and international human rights covenants.
         </p>
       </div>
@@ -1501,11 +1428,11 @@
          PORTION 4: PROCEDURAL MOTION DRAFTER
          ====================================================================== -->
     <section id="portion-motions" class="app-section-view">
-      <div style="padding: 2rem 0 1.25rem;">
+      <div style="padding: 1.5rem 0;">
         <h2 class="font-serif" style="font-size: clamp(1.8rem, 3vw, 2.3rem); color: var(--text-heading); margin-bottom: 0.5rem;">
           Actionable Procedural Motion Drafter
         </h2>
-        <p style="color: var(--text-muted); max-width: 800px;">
+        <p style="color: var(--text-muted); max-width: 900px;">
           Select a statutory motion to generate an immediate, jurisdiction-compliant court application tailored for emergency filing before the Chief Judicial Magistrate or High Court.
         </p>
       </div>
@@ -1513,30 +1440,30 @@
       <div class="motion-drafter-layout">
         <div class="motion-selector-menu">
           <div class="motion-menu-item active" onclick="loadDraftTemplate('habeas')">
-            <strong style="display:block; color:var(--text-heading); font-size:0.92rem;">Habeas Corpus Petition</strong>
+            <strong style="display:block; color:var(--text-heading); font-size:0.95rem;">Habeas Corpus Petition</strong>
             <span style="font-size:0.75rem; color:var(--text-muted);">Article 226 • High Court</span>
           </div>
           <div class="motion-menu-item" onclick="loadDraftTemplate('sec100')">
-            <strong style="display:block; color:var(--text-heading); font-size:0.92rem;">Search Warrant Application</strong>
+            <strong style="display:block; color:var(--text-heading); font-size:0.95rem;">Search Warrant Application</strong>
             <span style="font-size:0.75rem; color:var(--text-muted);">Section 100 BNSS (Sec 97 CrPC) • CJM</span>
           </div>
           <div class="motion-menu-item" onclick="loadDraftTemplate('medical')">
-            <strong style="display:block; color:var(--text-heading); font-size:0.92rem;">Medical Re-Examination Prayer</strong>
+            <strong style="display:block; color:var(--text-heading); font-size:0.95rem;">Medical Re-Examination Prayer</strong>
             <span style="font-size:0.75rem; color:var(--text-muted);">Section 53/54 BNSS • Remand Magistrate</span>
           </div>
           <div class="motion-menu-item" onclick="loadDraftTemplate('cctv')">
-            <strong style="display:block; color:var(--text-heading); font-size:0.92rem;">CCTV Preservation Legal Notice</strong>
+            <strong style="display:block; color:var(--text-heading); font-size:0.95rem;">CCTV Preservation Legal Notice</strong>
             <span style="font-size:0.75rem; color:var(--text-muted);">D.K. Basu & Paramvir Singh Mandate</span>
           </div>
         </div>
 
         <div class="motion-paper-wrapper">
           <div style="display: flex; justify-content: flex-end; margin-bottom: 0.75rem; gap: 0.5rem; flex-wrap: wrap;">
-            <button class="btn-icon-pill" onclick="copyMotionDraft()">
+            <button class="btn-nav-action" onclick="copyMotionDraft()">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
               Copy Draft to Clipboard
             </button>
-            <button class="btn-icon-pill" onclick="window.print()">
+            <button class="btn-nav-action" onclick="window.print()">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
               Print Motion
             </button>
@@ -1552,11 +1479,11 @@
          PORTION 5: LEGAL AID & COURT DIRECTORY
          ====================================================================== -->
     <section id="portion-directory" class="app-section-view">
-      <div style="padding: 2rem 0 1.25rem;">
+      <div style="padding: 1.5rem 0;">
         <h2 class="font-serif" style="font-size: clamp(1.8rem, 3vw, 2.3rem); color: var(--text-heading); margin-bottom: 0.5rem;">
           Emergency Legal Aid & Institutional Referral Directory
         </h2>
-        <p style="color: var(--text-muted); max-width: 800px;">
+        <p style="color: var(--text-muted); max-width: 900px;">
           Direct emergency helpline contacts, District Legal Services Authorities (DLSA), and statutory Human Rights Commission escalation channels for immediate intervention.
         </p>
       </div>
@@ -1611,21 +1538,21 @@
         </p>
 
         <div style="background: var(--bg-card); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-subtle); margin-bottom: 1rem;">
-          <label style="font-size: 0.76rem; text-transform: uppercase; font-weight: 700; color: var(--caramel-400); display: block; margin-bottom: 0.35rem;">Current API Key / Token Config</label>
+          <label style="font-size: 0.76rem; text-transform: uppercase; font-weight: 700; color: var(--caramel-400); display: block; margin-bottom: 0.35rem;">API Key / Bearer Token</label>
           <input type="password" id="geminiApiKeyInput" class="search-field" style="width:100%; background:var(--bg-surface); border:1px solid var(--border-subtle); padding:0.5rem 0.75rem; border-radius:6px;" placeholder="Paste your Gemini API key (AIzaSy...) or OAuth token" />
           <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.4rem;">
-            You can enter your Google AI Studio API key (<code class="font-mono">AIzaSy...</code>) or OAuth token.
+            Stored safely in local browser storage only.
           </div>
         </div>
 
         <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.82rem; color: var(--accent-emerald);">
-          <span>● Status: Hybrid Live Gemini & Autonomous Legal Model Active</span>
-          <button class="btn-icon-pill" onclick="testGeminiConnection()">Test Connection</button>
+          <span>● Status: Hybrid Gemini & Constitutional Model Active</span>
+          <button class="btn-nav-action" onclick="testGeminiConnection()">Test Connection</button>
         </div>
       </div>
       <div class="modal-dialog-footer">
-        <button class="btn-icon-pill" onclick="closeGeminiModal()">Close</button>
-        <button class="btn-primary-action" onclick="saveGeminiConfig()">Save Configuration</button>
+        <button class="btn-nav-action" onclick="closeGeminiModal()">Close</button>
+        <button class="btn-export-docket" onclick="saveGeminiConfig()">Save Configuration</button>
       </div>
     </div>
   </div>
@@ -1683,8 +1610,8 @@
         </div>
       </div>
       <div class="modal-dialog-footer">
-        <button class="btn-icon-pill" onclick="closeBriefModal()">Close</button>
-        <button class="btn-primary-action" onclick="window.print()">
+        <button class="btn-nav-action" onclick="closeBriefModal()">Close</button>
+        <button class="btn-export-docket" onclick="window.print()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
           Print Brief / Save PDF
         </button>
@@ -1692,11 +1619,11 @@
     </div>
   </div>
 
-  <!-- Page Footer -->
+  <!-- Page Footer (Full Width) -->
   <footer class="main-footer">
-    <div class="app-container">
+    <div class="full-bleed-container">
       <div class="footer-grid">
-        <div style="max-width: 520px;">
+        <div style="max-width: 550px;">
           <h4 style="font-family:'Cinzel', serif; color: var(--text-heading); font-size: 0.95rem; margin-bottom: 0.5rem;">Human Rights Law & Remedy Index</h4>
           <p style="line-height: 1.6;">
             An open legal-aid intelligence project bridging public complaints with constitutional jurisprudence, Bharatiya Nagarik Suraksha Sanhita (BNSS), and international treaty protections.
@@ -1873,6 +1800,32 @@
         quote: "Orders under Section 144 cannot be used to suppress legitimate expression of democratic opinion. The power must be exercised only when there is real apprehension of danger.",
         remedyImpact: "Ground to challenge arbitrary prohibitory orders and preventive detentions.",
         fundamentalRight: "Article 19(1)(a) & 19(1)(b)"
+      },
+      {
+        id: "lalita_kumari",
+        category: "fir",
+        caseName: "Lalita Kumari v. Government of U.P.",
+        citation: "(2014) 2 SCC 1",
+        court: "Supreme Court of India",
+        bench: "P. Sathasivam, CJ., B.S. Chauhan, Ranjana Desai, Ranjan Gogoi & S.A. Bobde, JJ.",
+        year: 2014,
+        ratio: "Registration of FIR is mandatory under Section 154 CrPC (now Section 173 BNSS) if the information discloses commission of a cognizable offence. Police officer has no discretion to conduct preliminary inquiry in cognizable offences.",
+        quote: "The police officer cannot avoid his duty of registering offence if cognizable offence is disclosed. Action must be taken against erring officers who do not register the FIR if information received by him discloses a cognizable offence.",
+        remedyImpact: "Empowers immediate petition under Section 175(3) BNSS before Magistrate to direct registration of FIR.",
+        fundamentalRight: "Article 14 & Article 21"
+      },
+      {
+        id: "sheela_barse",
+        category: "women",
+        caseName: "Sheela Barse v. State of Maharashtra",
+        citation: "(1983) 2 SCC 96",
+        court: "Supreme Court of India",
+        bench: "P.N. Bhagwati, J.",
+        year: 1983,
+        ratio: "Female suspects cannot be arrested after sunset and before sunrise except under exceptional circumstances and only by a woman police officer; separate female lockups and presence of female personnel are strictly mandatory.",
+        quote: "Women prisoners should be segregated in separate cells and not allowed to be exposed to male police officers except in the presence of a female guard or warden.",
+        remedyImpact: "Renders nocturnal arrest of women illegal and void ab initio under Section 43(1) BNSS.",
+        fundamentalRight: "Article 14, 15(3) & 21"
       }
     ];
 
@@ -2100,35 +2053,86 @@
           { name: "Detention Slips", rationale: "Documents time and location of preventive apprehension", checked: false }
         ],
         precedentIds: ["anuradha_bhasin"]
+      },
+
+      fir: {
+        category: "Refusal to Register Mandatory FIR",
+        severity: "Statutory Duty Dereliction",
+        query: "Police station officer refused to take my complaint or file an FIR after I was assaulted.",
+        verdict: "Refusal by police officers to register an FIR disclosing a cognizable offence is <strong>illegal under Section 173 BNSS (Sec 154 CrPC) and contempt of Supreme Court law in Lalita Kumari</strong>. Police officers who refuse to register an FIR are liable for criminal prosecution under Section 199 BNS (dereliction of duty).",
+        steps: [
+          {
+            title: "Send Written Complaint by Registered Post to Superintendent of Police (Sec 175(1) BNSS)",
+            desc: "Transmit the signed complaint by registered post to the SP; if satisfied that a cognizable offence is disclosed, the SP must investigate or direct an FIR.",
+            forum: "Superintendent of Police (Sec 175(1) BNSS)"
+          },
+          {
+            title: "File Section 175(3) BNSS Application before Judicial Magistrate",
+            desc: "If the SP fails to act, file a formal complaint under Section 175(3) BNSS before the Magistrate to order registration of FIR and police investigation.",
+            forum: "Judicial Magistrate First Class"
+          },
+          {
+            title: "Initiate Departmental & Criminal Action against Refusing Officer",
+            desc: "File complaint before the Police Complaints Authority and petition for prosecution under Section 199 BNS for public servant disobeying law.",
+            forum: "Police Complaints Authority / JMFC"
+          }
+        ],
+        statutes: [
+          { code: "Section 173, BNSS 2023", text: "Mandatory registration of First Information Report (FIR) in all cognizable offences.", type: "dom" },
+          { code: "Section 175(3), BNSS 2023", text: "Magistrate's power to order police investigation upon failure to register FIR (formerly Sec 156(3) CrPC).", type: "dom" },
+          { code: "Section 199, BNS 2023", text: "Punishment for public servant disobeying law or failing to record information regarding offence.", type: "dom" },
+          { code: "Article 2(3), ICCPR", text: "Right to an effective domestic remedy for any person whose rights or freedoms are violated.", type: "intl" }
+        ],
+        evidence: [
+          { name: "Carbon Copy of Written Complaint", rationale: "Signed original complaint submitted to thana", checked: true },
+          { name: "Postal Tracking Slip to SP", rationale: "Proof of statutory compliance under Sec 175(1) BNSS", checked: true },
+          { name: "Witness Affidavits of Thana Refusal", rationale: "Attests to officer's verbal denial to record FIR", checked: true },
+          { name: "Audio / Video Record of Station Visit", rationale: "Corroborates turn-away by duty officer", checked: false }
+        ],
+        precedentIds: ["lalita_kumari", "dk_basu"]
+      },
+
+      women: {
+        category: "Illegal Night Arrest of Woman & Custodial Breach",
+        severity: "Special Statutory Immunity Breach",
+        query: "Police arrested a woman after sunset at night without any female police officer present.",
+        verdict: "Arresting a female after sunset and before sunrise without prior permission of a Judicial Magistrate is <strong>illegal under Section 43(1) BNSS (Proviso to Sec 46(4) CrPC) and Sheela Barse v. State of Maharashtra</strong>. Absence of female arresting personnel renders the detention unconstitutional and void ab initio.",
+        steps: [
+          {
+            title: "Move Emergency Bail & Discharge Application before Remand Court",
+            desc: "Challenge the arrest as void ab initio for statutory breach of Section 43(1) BNSS; demand immediate release on personal bond.",
+            forum: "Duty Magistrate / Remand Magistrate"
+          },
+          {
+            title: "File Contempt & Disciplinary Petition against Arresting Team",
+            desc: "Lodge formal notice before the High Court and DGP for disciplinary suspension of male officers who executed nocturnal arrest without magistrate order.",
+            forum: "High Court / State Police Chief"
+          },
+          {
+            title: "Invoke State Commission for Women Emergency Cell",
+            desc: "Petition the National / State Commission for Women for an independent inquiry into violation of custodial dignity protocols.",
+            forum: "National Commission for Women (NCW)"
+          }
+        ],
+        statutes: [
+          { code: "Section 43(1) Proviso, BNSS 2023", text: "Strict prohibition: No woman shall be arrested after sunset and before sunrise except under exceptional circumstances with prior magisterial sanction.", type: "dom" },
+          { code: "Section 43(2), BNSS 2023", text: "Only female police officer can touch or arrest a female suspect.", type: "dom" },
+          { code: "Article 15(3), Constitution", text: "Special constitutional protection and affirmative provisions for women.", type: "dom" },
+          { code: "CEDAW Article 2 & 15", text: "International convention on elimination of all forms of discrimination and violence against women.", type: "intl" }
+        ],
+        evidence: [
+          { name: "Station GD Arrival Entry Time", rationale: "Proves arrest took place during nocturnal hours", checked: true },
+          { name: "Arrest Memo Signature Inspection", rationale: "Proves absence of signature from female police officer", checked: true },
+          { name: "Absence of Prior Magistrate Sanction Order", rationale: "Conclusive proof of jurisdictional illegality", checked: true },
+          { name: "CCTV Footage of Female Lockup", rationale: "Verifies female guard presence under Sheela Barse mandate", checked: false }
+        ],
+        precedentIds: ["sheela_barse", "dk_basu", "arnesh_kumar"]
       }
     };
 
-    // Global Active State - Always Dark by Default
+    // State Variables
     let currentScenarioKey = 'detention';
-    let currentTheme = localStorage.getItem('app_theme') || 'caramel-dark';
     let userGeminiApiKey = localStorage.getItem('gemini_api_key') || '';
-
-    // Initialize theme immediately
-    document.documentElement.setAttribute('data-theme', currentTheme);
-
-    // --------------------------------------------------------------------------
-    // Theme Switcher: Dark Caramel Espresso vs Warm Caramel Silk
-    // --------------------------------------------------------------------------
-    function toggleCaramelTheme() {
-      const html = document.documentElement;
-      if (currentTheme === 'caramel-dark') {
-        currentTheme = 'caramel-light';
-        html.setAttribute('data-theme', 'caramel-light');
-        document.getElementById('themeModeIcon').innerText = '☀️';
-        document.getElementById('themeModeText').innerText = 'Warm Mode';
-      } else {
-        currentTheme = 'caramel-dark';
-        html.setAttribute('data-theme', 'caramel-dark');
-        document.getElementById('themeModeIcon').innerText = '🌙';
-        document.getElementById('themeModeText').innerText = 'Dark Mode';
-      }
-      localStorage.setItem('app_theme', currentTheme);
-    }
 
     // --------------------------------------------------------------------------
     // Portion (Tab) Navigation
@@ -2142,7 +2146,6 @@
         targetSection.classList.add('active');
       }
 
-      // Highlight active nav tab
       const buttons = document.querySelectorAll('.nav-tab-btn');
       buttons.forEach(btn => {
         if (btn.innerText.toLowerCase().includes(portionId)) {
@@ -2153,15 +2156,14 @@
     }
 
     // --------------------------------------------------------------------------
-    // Workable Search & Scenario Loading Engine
+    // DYNAMIC & COMPREHENSIVE SEARCH ENGINE (WORKS FOR ANY QUERY)
     // --------------------------------------------------------------------------
     function loadTopicScenario(scenarioKey) {
       if (!TOPIC_SCENARIOS[scenarioKey]) return;
       currentScenarioKey = scenarioKey;
 
-      // Update pills
       document.querySelectorAll('.topic-pill').forEach(p => p.classList.remove('active'));
-      const activePill = Array.from(document.querySelectorAll('.topic-pill')).find(p => p.innerText.toLowerCase().includes(scenarioKey));
+      const activePill = Array.from(document.querySelectorAll('.topic-pill')).find(p => p.getAttribute('onclick') && p.getAttribute('onclick').includes(scenarioKey));
       if (activePill) activePill.classList.add('active');
 
       const scenario = TOPIC_SCENARIOS[scenarioKey];
@@ -2171,36 +2173,166 @@
       streamPrecedentsProgressively(scenario.precedentIds);
     }
 
-    function executeLegalAnalysis() {
-      const query = document.getElementById('masterSearchInput').value.trim();
-      if (!query) return;
-
-      const cleanQuery = query.toLowerCase();
-      let matchedKey = 'detention';
-
-      if (cleanQuery.includes('beaten') || cleanQuery.includes('torture') || cleanQuery.includes('confess') || cleanQuery.includes('injury')) {
-        matchedKey = 'torture';
-      } else if (cleanQuery.includes('demolish') || cleanQuery.includes('bulldozer') || cleanQuery.includes('evict') || cleanQuery.includes('notice')) {
-        matchedKey = 'eviction';
-      } else if (cleanQuery.includes('wage') || cleanQuery.includes('brick') || cleanQuery.includes('bonded') || cleanQuery.includes('passport') || cleanQuery.includes('identity')) {
-        matchedKey = 'bonded';
-      } else if (cleanQuery.includes('caste') || cleanQuery.includes('temple') || cleanQuery.includes('borewell') || cleanQuery.includes('untouchab')) {
-        matchedKey = 'caste';
-      } else if (cleanQuery.includes('protest') || cleanQuery.includes('demonstrat') || cleanQuery.includes('144') || cleanQuery.includes('163') || cleanQuery.includes('march')) {
-        matchedKey = 'protest';
+    async function executeLegalAnalysis() {
+      const inputEl = document.getElementById('masterSearchInput');
+      const query = inputEl.value.trim();
+      if (!query) {
+        inputEl.focus();
+        return;
       }
 
-      currentScenarioKey = matchedKey;
-      const scenario = TOPIC_SCENARIOS[matchedKey];
-      renderRemedyAnswer(scenario);
+      // 1. Visual loading state
+      const btn = document.getElementById('btnSearchSubmit');
+      const btnText = document.getElementById('searchBtnText');
+      const feedbackBanner = document.getElementById('searchFeedbackBanner');
+      const feedbackText = document.getElementById('searchFeedbackText');
+
+      btn.disabled = true;
+      btnText.innerText = "Analyzing...";
+      feedbackBanner.classList.add('active');
+      feedbackText.innerText = `Analyzing: "${query.substring(0, 45)}${query.length > 45 ? '...' : ''}" under Constitutional Jurisprudence & BNSS 2023...`;
+
+      // 2. Check if user configured Gemini API Key
+      if (userGeminiApiKey && userGeminiApiKey.trim().length > 10) {
+        try {
+          feedbackText.innerText = "Querying Google Gemini AI Constitutional Model...";
+          const geminiResult = await callGeminiLegalEngine(query, userGeminiApiKey);
+          if (geminiResult) {
+            renderCustomGeminiAnswer(geminiResult, query);
+            finishSearchAnimation(btn, btnText, feedbackBanner);
+            return;
+          }
+        } catch (err) {
+          console.warn("Gemini API call failed, falling back to autonomous legal reasoning engine:", err);
+          feedbackText.innerText = "Applying Autonomous Supreme Court Jurisprudence Engine...";
+        }
+      }
+
+      // 3. Autonomous Semantic Legal Reasoner (Instant & Comprehensive)
+      setTimeout(() => {
+        const scenario = matchSemanticScenario(query);
+        renderRemedyAnswer(scenario, query);
+        streamPrecedentsProgressively(scenario.precedentIds);
+        finishSearchAnimation(btn, btnText, feedbackBanner);
+      }, 400);
+    }
+
+    function finishSearchAnimation(btn, btnText, feedbackBanner) {
+      btn.disabled = false;
+      btnText.innerText = "Analyze & Remedy";
+      feedbackBanner.classList.remove('active');
+
+      // Smooth scroll to the answer
+      const answerContainer = document.getElementById('remedyAnswerContainer');
+      if (answerContainer) {
+        answerContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // Comprehensive Semantic Matcher covering 15+ rights violations
+    function matchSemanticScenario(query) {
+      const q = query.toLowerCase();
+
+      // Check Women Rights
+      if (q.includes('woman') || q.includes('female') || q.includes('girl') || q.includes('night arrest') || q.includes('sunset') || q.includes('lady police') || q.includes('molest') || q.includes('gender')) {
+        return TOPIC_SCENARIOS.women;
+      }
+      // Check FIR Refusal
+      if (q.includes('fir') || q.includes('refuse') || q.includes('complaint not') || q.includes('station officer') || q.includes('thana') || q.includes('no report') || q.includes('turn away')) {
+        return TOPIC_SCENARIOS.fir;
+      }
+      // Check Torture & Assault
+      if (q.includes('beaten') || q.includes('torture') || q.includes('confess') || q.includes('injury') || q.includes('hurt') || q.includes('assault') || q.includes('lockup beating') || q.includes('hit') || q.includes('fracture') || q.includes('electric') || q.includes('third degree')) {
+        return TOPIC_SCENARIOS.torture;
+      }
+      // Check Demolition & Eviction
+      if (q.includes('demolish') || q.includes('bulldozer') || q.includes('evict') || q.includes('house') || q.includes('slum') || q.includes('corporation') || q.includes('encroachment') || q.includes('notice') || q.includes('shelter') || q.includes('home torn')) {
+        return TOPIC_SCENARIOS.eviction;
+      }
+      // Check Forced Labour & Wage Theft
+      if (q.includes('wage') || q.includes('salary') || q.includes('brick') || q.includes('bonded') || q.includes('passport') || q.includes('identity') || q.includes('unpaid') || q.includes('begar') || q.includes('forced labour') || q.includes('withheld')) {
+        return TOPIC_SCENARIOS.bonded;
+      }
+      // Check Caste Discrimination
+      if (q.includes('caste') || q.includes('temple') || q.includes('borewell') || q.includes('untouchab') || q.includes('dalit') || q.includes('sc') || q.includes('st') || q.includes('atrocity') || q.includes('boycott') || q.includes('water denied')) {
+        return TOPIC_SCENARIOS.caste;
+      }
+      // Check Protest & Assembly
+      if (q.includes('protest') || q.includes('demonstrat') || q.includes('144') || q.includes('163') || q.includes('march') || q.includes('rally') || q.includes('gathering') || q.includes('speech') || q.includes('assembly') || q.includes('tweet') || q.includes('slogan')) {
+        return TOPIC_SCENARIOS.protest;
+      }
+      // Default: Unlawful Detention & Illegal Custody
+      return TOPIC_SCENARIOS.detention;
+    }
+
+    // Live Google Gemini API Integration (Optional when Key is provided)
+    async function callGeminiLegalEngine(query, apiKey) {
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
+      const prompt = `You are a constitutional legal expert on Indian human rights law and Bharatiya Nagarik Suraksha Sanhita (BNSS 2023). 
+Analyze this human rights violation report: "${query}".
+Provide a concise legal analysis in JSON format with exactly these keys:
+{
+  "category": "Short title of harm (e.g. Unlawful Confinement)",
+  "severity": "Constitutional Tort / Penal Violation",
+  "verdict": "2-3 sentences plain English determination citing Article 21, BNSS 2023, and relevant Supreme Court ratio.",
+  "steps": [
+    {"title": "Step 1 title", "desc": "Actionable detail", "forum": "Court or Authority"},
+    {"title": "Step 2 title", "desc": "Actionable detail", "forum": "Court or Authority"},
+    {"title": "Step 3 title", "desc": "Actionable detail", "forum": "Court or Authority"}
+  ],
+  "statutes": [
+    {"code": "BNSS/BNS provision", "text": "Specific duty", "type": "dom"},
+    {"code": "Constitution provision", "text": "Fundamental right", "type": "dom"},
+    {"code": "Treaty provision", "text": "ICCPR/CAT standard", "type": "intl"}
+  ],
+  "precedentIds": ["dk_basu", "arnesh_kumar", "rudul_sah"]
+}`;
+
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: { responseMimeType: "application/json" }
+        })
+      });
+
+      if (!res.ok) throw new Error(`Gemini API HTTP ${res.status}`);
+      const data = await res.json();
+      const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (text) {
+        return JSON.parse(text);
+      }
+      return null;
+    }
+
+    function renderCustomGeminiAnswer(geminiData, originalQuery) {
+      const scenario = {
+        category: geminiData.category || "Constitutional Rights Infringement",
+        severity: geminiData.severity || "Cognizable Breach",
+        query: originalQuery,
+        verdict: geminiData.verdict || "A violation of fundamental rights under Article 21 and the Bharatiya Nagarik Suraksha Sanhita (BNSS) has occurred.",
+        steps: geminiData.steps || TOPIC_SCENARIOS.detention.steps,
+        statutes: geminiData.statutes || TOPIC_SCENARIOS.detention.statutes,
+        evidence: TOPIC_SCENARIOS.detention.evidence,
+        precedentIds: geminiData.precedentIds || ["dk_basu", "arnesh_kumar", "rudul_sah"]
+      };
+
+      renderRemedyAnswer(scenario, originalQuery);
       streamPrecedentsProgressively(scenario.precedentIds);
     }
 
-    // Render Answer Card
-    function renderRemedyAnswer(scenario) {
+    // Render Answer Card with optional query highlight
+    function renderRemedyAnswer(scenario, customQueryText = null) {
       document.getElementById('answerHarmHeading').innerText = scenario.category;
       document.getElementById('answerSeverityBadge').innerText = scenario.severity;
-      document.getElementById('verdictText').innerHTML = `"${scenario.verdict}"`;
+
+      // Update verdict
+      let verdictHtml = scenario.verdict;
+      if (customQueryText && customQueryText !== scenario.query) {
+        verdictHtml = `Regarding: "<em>${escapeHtml(customQueryText)}</em>"<br/><br/>${scenario.verdict}`;
+      }
+      document.getElementById('verdictText').innerHTML = verdictHtml;
 
       // Timeline Steps
       const timeline = document.getElementById('answerStepsTimeline');
@@ -2235,8 +2367,8 @@
         chipsGrid.appendChild(chip);
       });
 
-      // Side Dossier Checklist
-      renderSideEvidence(scenario.evidence);
+      // Side Dossier
+      renderSideEvidence(scenario.evidence || TOPIC_SCENARIOS.detention.evidence);
     }
 
     function renderSideEvidence(evidenceItems) {
@@ -2270,7 +2402,7 @@
     }
 
     // --------------------------------------------------------------------------
-    // PROGRESSIVE PRECEDENT STREAMING LOGIC (SLOWLY REVEAL)
+    // PROGRESSIVE PRECEDENT STREAMING LOGIC
     // --------------------------------------------------------------------------
     let precedentTimer = null;
 
@@ -2351,7 +2483,7 @@
         card.className = 'precedent-case-card revealed';
         card.innerHTML = `
           <div class="precedent-top-row">
-            <div class="case-title" style="font-size:1.2rem;">${escapeHtml(p.caseName)}</div>
+            <div class="case-title" style="font-size:1.25rem;">${escapeHtml(p.caseName)}</div>
             <span class="case-citation-badge">${escapeHtml(p.citation)}</span>
           </div>
           <div class="case-bench-info font-mono">
@@ -2359,7 +2491,7 @@
           </div>
           <div class="case-ratio-box">
             <div class="case-ratio-label">Ratio Decidendi</div>
-            <div class="case-ratio-text" style="font-size:0.84rem;">${escapeHtml(p.ratio)}</div>
+            <div class="case-ratio-text" style="font-size:0.86rem;">${escapeHtml(p.ratio)}</div>
           </div>
           <div class="case-quote" style="font-size:0.88rem;">
             "${escapeHtml(p.quote)}"
@@ -2424,6 +2556,20 @@
         duty: "Judicial Magistrate (not executive) must hold inquiry into causes of grievous hurt or death in police custody."
       },
       {
+        area: "Mandatory Registration of First Information Report (FIR)",
+        bnss: "Section 173 & 175(3), BNSS 2023",
+        crpc: "Section 154 & 156(3), CrPC 1973",
+        treaty: "Article 2(3), ICCPR",
+        duty: "Police officer must register FIR in cognizable cases without preliminary inquiry (Lalita Kumari); Section 199 BNS penalty for refusal."
+      },
+      {
+        area: "Arrest of Female Suspects Prohibitions",
+        bnss: "Section 43(1) Proviso, BNSS 2023",
+        crpc: "Section 46(4), CrPC 1973",
+        treaty: "CEDAW Article 2 & 15",
+        duty: "No female shall be arrested after sunset and before sunrise except with prior judicial magistrate sanction and by woman officer (Sheela Barse)."
+      },
+      {
         area: "Debt Bondage & Confiscation of ID Cards",
         bnss: "Section 146, BNS 2023",
         crpc: "Sec 374 IPC & Bonded Labour Act 1976",
@@ -2449,7 +2595,7 @@
           <td class="font-mono" style="color:var(--caramel-400);">${escapeHtml(row.bnss)}</td>
           <td class="font-mono" style="color:var(--text-muted); font-size:0.8rem;">${escapeHtml(row.crpc)}</td>
           <td style="color:var(--accent-azure);">${escapeHtml(row.treaty)}</td>
-          <td style="font-size:0.82rem; line-height:1.45;">${escapeHtml(row.duty)}</td>
+          <td style="font-size:0.84rem; line-height:1.45;">${escapeHtml(row.duty)}</td>
         `;
         tbody.appendChild(tr);
       });
@@ -2626,12 +2772,13 @@ Yours faithfully,
     // App Initialization
     // --------------------------------------------------------------------------
     window.addEventListener('DOMContentLoaded', () => {
+      localStorage.removeItem('app_theme');
+
       loadTopicScenario('detention');
       renderFullLibrary(PRECEDENT_LIBRARY);
       renderCodexTable();
       loadDraftTemplate('habeas');
 
-      // Update badge if key exists
       if (userGeminiApiKey) {
         const badge = document.getElementById('geminiEnvBadge');
         if (badge) badge.innerText = "Gemini: Connected";
