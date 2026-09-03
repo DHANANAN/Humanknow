@@ -16,12 +16,12 @@
        100% FULL-WIDTH EDGE-TO-EDGE CARAMEL DARK MODE
        Zero Empty Side Bars • 100% Screen Space Utilization
        ========================================================================== */
-    :root {
+    :root, [data-theme="dark"] {
       --bg-base: #090604;
       --bg-surface: #120c08;
       --bg-card: #1a120b;
       --bg-card-hover: #24190f;
-      --bg-accent-soft: rgba(229, 154, 66, 0.1);
+      --bg-accent-soft: rgba(229, 154, 66, 0.12);
       
       --border-subtle: rgba(229, 154, 66, 0.18);
       --border-accent: rgba(229, 154, 66, 0.42);
@@ -48,6 +48,44 @@
       --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.45);
       --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.6);
       --glow-caramel: 0 0 35px rgba(229, 154, 66, 0.22);
+      --header-bg: rgba(18, 12, 8, 0.96);
+      --quote-bg: rgba(0, 0, 0, 0.28);
+    }
+
+    [data-theme="light"] {
+      --bg-base: #f7efe4;
+      --bg-surface: #ffffff;
+      --bg-card: #fcf9f4;
+      --bg-card-hover: #f5ece0;
+      --bg-accent-soft: rgba(184, 94, 25, 0.08);
+
+      --border-subtle: rgba(184, 94, 25, 0.2);
+      --border-accent: rgba(184, 94, 25, 0.45);
+      --border-glow: rgba(217, 126, 40, 0.2);
+
+      --caramel-50: #1a0f05;
+      --caramel-100: #2c1a0a;
+      --caramel-200: #4a2d12;
+      --caramel-300: #8c4510;
+      --caramel-400: #b85e19;
+      --caramel-500: #d97e28;
+      --caramel-600: #e59a42;
+
+      --text-heading: #1e1309;
+      --text-body: #3c2a1c;
+      --text-muted: #6b5340;
+      --text-dim: #947962;
+
+      --accent-emerald: #059669;
+      --accent-amber: #d97706;
+      --accent-crimson: #e11d48;
+      --accent-azure: #0284c7;
+
+      --shadow-sm: 0 4px 14px rgba(60, 42, 28, 0.08);
+      --shadow-md: 0 10px 30px rgba(60, 42, 28, 0.12);
+      --glow-caramel: 0 0 25px rgba(217, 126, 40, 0.18);
+      --header-bg: rgba(255, 255, 255, 0.96);
+      --quote-bg: rgba(229, 154, 66, 0.12);
     }
 
     * {
@@ -66,6 +104,7 @@
       overflow-x: hidden;
       margin: 0;
       padding: 0;
+      transition: background-color 0.25s ease, color 0.25s ease;
     }
 
     body {
@@ -95,13 +134,14 @@
     /* Edge-to-Edge Sticky Navigation */
     header.main-header {
       width: 100%;
-      background: rgba(18, 12, 8, 0.96);
+      background: var(--header-bg);
       backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--border-subtle);
       position: sticky;
       top: 0;
       z-index: 60;
       box-shadow: 0 4px 25px rgba(0, 0, 0, 0.45);
+      transition: background 0.25s ease, border-color 0.25s ease;
     }
 
     .header-top-row {
@@ -453,7 +493,7 @@
 
     .answer-card-header {
       padding: 1.25rem 1.75rem;
-      background: linear-gradient(90deg, rgba(229, 154, 66, 0.12) 0%, rgba(18, 12, 8, 0.4) 100%);
+      background: linear-gradient(90deg, rgba(229, 154, 66, 0.14) 0%, var(--bg-card) 100%);
       border-bottom: 1px solid var(--border-subtle);
       display: flex;
       flex-wrap: wrap;
@@ -740,7 +780,7 @@
       justify-content: center;
       flex-shrink: 0;
       margin-top: 0.15rem;
-      background: rgba(0, 0, 0, 0.25);
+      background: var(--bg-card);
     }
     .mini-check-item.checked .custom-check-box {
       background: var(--accent-emerald);
@@ -919,9 +959,10 @@
       font-family: 'Newsreader', Georgia, serif;
       font-style: italic;
       font-size: 0.94rem;
-      color: var(--caramel-100);
+      color: var(--text-heading);
       line-height: 1.6;
-      background: rgba(0, 0, 0, 0.28);
+      background: var(--quote-bg);
+      border-left: 2px solid var(--caramel-400);
       padding: 0.75rem 1rem;
       border-radius: 8px;
       margin-bottom: 0.75rem;
@@ -1153,6 +1194,24 @@
         </a>
 
         <div class="nav-tools">
+          <!-- Theme Toggle (Caramel Light / Dark) -->
+          <button class="btn-nav-action" id="themeToggleBtn" onclick="toggleTheme()" title="Switch Theme (Caramel Light / Dark)">
+            <span id="themeToggleIconWrap">
+              <svg id="themeToggleIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--caramel-400)" stroke-width="2">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+            </span>
+            <span id="themeToggleLabel">Caramel Light</span>
+          </button>
+
           <!-- Gemini AI Connection Config -->
           <button class="btn-nav-action" onclick="openGeminiModal()" title="Configure Google Gemini API">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--caramel-400)" stroke-width="2">
@@ -2769,10 +2828,57 @@ Yours faithfully,
     }
 
     // --------------------------------------------------------------------------
+    // Theme Management (Caramel Light & Dark Mode)
+    // --------------------------------------------------------------------------
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(newTheme);
+      localStorage.setItem('app_theme', newTheme);
+    }
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      const label = document.getElementById('themeToggleLabel');
+      const iconWrap = document.getElementById('themeToggleIconWrap');
+
+      if (theme === 'light') {
+        if (label) label.innerText = "Dark Caramel";
+        if (iconWrap) {
+          iconWrap.innerHTML = `
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--caramel-400)" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          `;
+        }
+      } else {
+        if (label) label.innerText = "Caramel Light";
+        if (iconWrap) {
+          iconWrap.innerHTML = `
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--caramel-400)" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          `;
+        }
+      }
+    }
+
+    // --------------------------------------------------------------------------
     // App Initialization
     // --------------------------------------------------------------------------
     window.addEventListener('DOMContentLoaded', () => {
-      localStorage.removeItem('app_theme');
+      // Initialize Theme (Defaults to Light Caramel to unblock user)
+      const storedTheme = localStorage.getItem('app_theme');
+      const initialTheme = (storedTheme === 'dark') ? 'dark' : 'light';
+      applyTheme(initialTheme);
 
       loadTopicScenario('detention');
       renderFullLibrary(PRECEDENT_LIBRARY);
