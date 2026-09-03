@@ -2,29 +2,30 @@
 <html lang="en" data-theme="caramel-dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Human Rights Law & Remedy Index | AI Legal Aid & Remedy Engine</title>
-  <meta name="description" content="AI-assisted legal platform translating everyday factual human rights violations into direct actionable remedies, progressive judicial precedent analysis, dual statutory mapping (BNSS/BNS/BSA), and procedural filing directives." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Human Rights Law & Remedy Index | AI Legal Remedy Engine</title>
+  <meta name="description" content="Responsive laptop & mobile legal technology platform translating human rights complaints into direct legal remedies, progressive judicial precedent discovery, dual statutory mapping (BNSS/BNS/BSA), and actionable motion directives." />
 
-  <!-- Premium Typography: Playfair Display / Newsreader for Law Titles, Plus Jakarta Sans for UI, JetBrains Mono for Statutes -->
+  <!-- Classical Legal & Modern UI Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     /* ==========================================================================
-       CARAMEL DESIGN SYSTEM (DARK & WARM SILK MODES)
+       CORE CARAMEL DARK & FLUID RESPONSIVE DESIGN SYSTEM
+       Laptop-cum-Mobile Architecture: Full Bleed, Zero Clunky Side Bars
        ========================================================================== */
-    :root[data-theme="caramel-dark"] {
-      --bg-base: #0e0a07;
-      --bg-surface: #17110c;
-      --bg-card: #201710;
-      --bg-card-hover: #2a1e16;
-      --bg-accent-soft: rgba(229, 154, 66, 0.1);
+    :root, :root[data-theme="caramel-dark"] {
+      --bg-base: #0a0704;
+      --bg-surface: #130d08;
+      --bg-card: #1b130c;
+      --bg-card-hover: #261b11;
+      --bg-accent-soft: rgba(229, 154, 66, 0.09);
       
-      --border-subtle: rgba(229, 154, 66, 0.18);
-      --border-accent: rgba(229, 154, 66, 0.4);
-      --border-glow: rgba(245, 178, 102, 0.3);
+      --border-subtle: rgba(229, 154, 66, 0.16);
+      --border-accent: rgba(229, 154, 66, 0.38);
+      --border-glow: rgba(245, 178, 102, 0.28);
 
       --caramel-50: #fef8f0;
       --caramel-100: #fde8d0;
@@ -33,35 +34,35 @@
       --caramel-400: #e59a42;
       --caramel-500: #d97e28;
       --caramel-600: #b85e19;
-      --caramel-700: #8c4214;
-      --caramel-900: #3b1906;
+      --caramel-800: #5c2c0e;
+      --caramel-950: #1a0a03;
 
-      --text-heading: #fef8f0;
-      --text-body: #dfd2c4;
+      --text-heading: #fdfaf6;
+      --text-body: #ded2c5;
       --text-muted: #a69584;
       --text-dim: #716254;
 
       --accent-emerald: #10b981;
       --accent-amber: #f59e0b;
-      --accent-crimson: #e11d48;
+      --accent-crimson: #f43f5e;
       --accent-azure: #38bdf8;
 
-      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
-      --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.45);
-      --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.6);
-      --glow-caramel: 0 0 25px rgba(229, 154, 66, 0.2);
+      --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.4);
+      --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.55);
+      --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.7);
+      --glow-caramel: 0 0 30px rgba(229, 154, 66, 0.18);
     }
 
     :root[data-theme="caramel-light"] {
-      --bg-base: #fbf7f1;
-      --bg-surface: #f4ece1;
+      --bg-base: #fbf7f2;
+      --bg-surface: #f4ece2;
       --bg-card: #ffffff;
-      --bg-card-hover: #f9f4ec;
-      --bg-accent-soft: rgba(217, 126, 40, 0.12);
+      --bg-card-hover: #f9f3ea;
+      --bg-accent-soft: rgba(217, 126, 40, 0.1);
       
-      --border-subtle: rgba(184, 94, 25, 0.2);
-      --border-accent: rgba(184, 94, 25, 0.45);
-      --border-glow: rgba(217, 126, 40, 0.3);
+      --border-subtle: rgba(184, 94, 25, 0.18);
+      --border-accent: rgba(184, 94, 25, 0.4);
+      --border-glow: rgba(217, 126, 40, 0.25);
 
       --caramel-50: #251307;
       --caramel-100: #3b1906;
@@ -71,7 +72,6 @@
       --caramel-500: #d97e28;
       --caramel-600: #e59a42;
       --caramel-700: #f4b266;
-      --caramel-900: #fde8d0;
 
       --text-heading: #261509;
       --text-body: #473221;
@@ -83,80 +83,76 @@
       --accent-crimson: #be123c;
       --accent-azure: #0284c7;
 
-      --shadow-sm: 0 4px 12px rgba(92, 44, 14, 0.08);
-      --shadow-md: 0 10px 25px rgba(92, 44, 14, 0.12);
-      --shadow-lg: 0 20px 40px rgba(92, 44, 14, 0.16);
-      --glow-caramel: 0 0 20px rgba(217, 126, 40, 0.15);
+      --shadow-sm: 0 4px 14px rgba(92, 44, 14, 0.08);
+      --shadow-md: 0 10px 30px rgba(92, 44, 14, 0.12);
+      --shadow-lg: 0 20px 50px rgba(92, 44, 14, 0.16);
+      --glow-caramel: 0 0 25px rgba(217, 126, 40, 0.15);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      transition: background-color 0.25s ease, border-color 0.25s ease, color 0.2s ease;
     }
 
     body {
       background-color: var(--bg-base);
       color: var(--text-body);
-      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       line-height: 1.6;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       background-image: 
-        radial-gradient(circle at 10% 10%, rgba(229, 154, 66, 0.08) 0%, transparent 45%),
-        radial-gradient(circle at 90% 25%, rgba(217, 126, 40, 0.06) 0%, transparent 50%),
-        radial-gradient(circle at 50% 85%, rgba(140, 66, 20, 0.06) 0%, transparent 60%);
+        radial-gradient(circle at 15% 10%, rgba(229, 154, 66, 0.07) 0%, transparent 45%),
+        radial-gradient(circle at 85% 20%, rgba(217, 126, 40, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 50% 85%, rgba(184, 94, 25, 0.05) 0%, transparent 60%);
       background-attachment: fixed;
+      overflow-x: hidden;
     }
 
-    /* Typography Classes */
-    .font-serif {
-      font-family: 'Newsreader', Georgia, serif;
-    }
-    .font-cinzel {
-      font-family: 'Cinzel', serif;
-    }
-    .font-mono {
-      font-family: 'JetBrains Mono', monospace;
-    }
+    /* Typography */
+    .font-serif { font-family: 'Newsreader', Georgia, serif; }
+    .font-cinzel { font-family: 'Cinzel', serif; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
 
-    /* Container */
+    /* Fluid Edge-to-Edge Responsive Container: Zero Artificial Blank Bars */
     .app-container {
-      max-width: 1380px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
       width: 100%;
+      max-width: 1720px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 3.2vw, 3.5rem);
     }
 
-    /* Header & Navigation */
+    /* Header Navigation */
     header.main-header {
-      background: rgba(23, 17, 12, 0.92);
-      backdrop-filter: blur(14px);
+      background: rgba(19, 13, 8, 0.94);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-subtle);
       position: sticky;
       top: 0;
-      z-index: 50;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+      z-index: 60;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+      width: 100%;
     }
     :root[data-theme="caramel-light"] header.main-header {
-      background: rgba(244, 236, 225, 0.94);
+      background: rgba(244, 236, 226, 0.96);
     }
 
     .header-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 74px;
-      gap: 1.5rem;
+      height: 72px;
+      gap: 1.25rem;
     }
 
     .brand-group {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.9rem;
       text-decoration: none;
+      min-width: 0;
     }
 
     .brand-seal {
@@ -168,31 +164,38 @@
       align-items: center;
       justify-content: center;
       color: #fff;
-      box-shadow: 0 0 16px var(--glow-caramel);
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 0 18px var(--glow-caramel);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       flex-shrink: 0;
+    }
+
+    .brand-text {
+      min-width: 0;
     }
 
     .brand-text h1 {
       font-family: 'Cinzel', serif;
-      font-size: 1.18rem;
+      font-size: clamp(1rem, 1.8vw, 1.28rem);
       font-weight: 700;
       color: var(--text-heading);
       letter-spacing: 0.02em;
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .badge-live-ai {
-      background: linear-gradient(135deg, rgba(229, 154, 66, 0.2), rgba(217, 126, 40, 0.3));
+      background: rgba(229, 154, 66, 0.18);
       border: 1px solid var(--caramel-400);
       color: var(--caramel-300);
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       font-weight: 700;
-      padding: 0.15rem 0.6rem;
+      padding: 0.15rem 0.55rem;
       border-radius: 9999px;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
       display: inline-flex;
       align-items: center;
@@ -201,7 +204,6 @@
     :root[data-theme="caramel-light"] .badge-live-ai {
       color: var(--caramel-400);
     }
-
     .badge-live-ai::before {
       content: "";
       width: 6px;
@@ -211,37 +213,42 @@
       box-shadow: 0 0 8px var(--caramel-300);
       animation: pulseGlow 1.8s infinite;
     }
-
     @keyframes pulseGlow {
       0%, 100% { opacity: 1; transform: scale(1); }
       50% { opacity: 0.4; transform: scale(0.85); }
     }
 
     .brand-sub {
-      font-size: 0.78rem;
+      font-size: 0.74rem;
       color: var(--text-muted);
-      letter-spacing: 0.02em;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    /* Nav Actions */
+    /* Nav Tools */
     .nav-tools {
       display: flex;
       align-items: center;
-      gap: 0.9rem;
+      gap: 0.75rem;
+      flex-shrink: 0;
     }
 
     .btn-icon-pill {
-      background: var(--bg-card);
+      background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       color: var(--text-body);
-      padding: 0.45rem 0.9rem;
+      padding: 0.42rem 0.85rem;
       border-radius: 30px;
       font-size: 0.8rem;
       font-weight: 600;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
+      gap: 0.4rem;
+      white-space: nowrap;
+      transition: all 0.2s;
     }
     .btn-icon-pill:hover {
       background: var(--bg-card-hover);
@@ -249,55 +256,37 @@
       color: var(--text-heading);
     }
 
-    .btn-gemini-status {
-      background: rgba(229, 154, 66, 0.12);
-      border: 1px solid var(--border-accent);
-      color: var(--caramel-300);
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 0.45rem 0.9rem;
-      border-radius: 30px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-    }
-    :root[data-theme="caramel-light"] .btn-gemini-status {
-      color: var(--caramel-400);
-    }
-    .btn-gemini-status:hover {
-      background: rgba(229, 154, 66, 0.22);
-      box-shadow: 0 0 12px var(--glow-caramel);
-    }
-
     .btn-primary-action {
       background: linear-gradient(135deg, var(--caramel-500), var(--caramel-400));
-      color: #120a04;
+      color: #1a0f05;
       border: none;
       font-size: 0.82rem;
       font-weight: 700;
-      padding: 0.55rem 1.15rem;
+      padding: 0.5rem 1.1rem;
       border-radius: 8px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      box-shadow: 0 4px 14px rgba(217, 126, 40, 0.35);
+      gap: 0.45rem;
+      white-space: nowrap;
+      box-shadow: 0 4px 14px rgba(217, 126, 40, 0.3);
+      transition: all 0.2s;
     }
     .btn-primary-action:hover {
       background: linear-gradient(135deg, var(--caramel-400), var(--caramel-300));
       transform: translateY(-1px);
     }
 
-    /* Sub Navigation Tabs */
+    /* Sub Navigation Tabs (Fluid Touch Bar for Laptop & Mobile) */
     .nav-tabs-bar {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
       border-top: 1px solid var(--border-subtle);
-      padding: 0.4rem 0;
+      padding: 0.35rem 0;
       overflow-x: auto;
       scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
     }
     .nav-tabs-bar::-webkit-scrollbar { display: none; }
 
@@ -305,15 +294,16 @@
       background: transparent;
       border: none;
       color: var(--text-muted);
-      font-size: 0.84rem;
+      font-size: 0.83rem;
       font-weight: 600;
-      padding: 0.5rem 1rem;
+      padding: 0.45rem 0.95rem;
       border-radius: 6px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.45rem;
       white-space: nowrap;
+      transition: all 0.2s;
     }
     .nav-tab-btn:hover {
       color: var(--text-heading);
@@ -330,30 +320,31 @@
     }
 
     /* ==========================================================================
-       HERO & SEARCH EXPERIENCE
+       HERO & FULL-WIDTH FLUID SEARCH EXPERIENCE
        ========================================================================== */
     .hero-container {
-      padding: 3rem 0 1.75rem;
+      padding: clamp(2rem, 4vw, 3.5rem) 0 clamp(1.2rem, 2.5vw, 2rem);
       text-align: center;
+      width: 100%;
     }
 
     .hero-eyebrow {
       font-family: 'Cinzel', serif;
-      font-size: 0.82rem;
-      letter-spacing: 0.15em;
+      font-size: clamp(0.72rem, 1.2vw, 0.84rem);
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--caramel-400);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.65rem;
     }
 
     .hero-title {
       font-family: 'Newsreader', Georgia, serif;
-      font-size: 2.5rem;
+      font-size: clamp(1.8rem, 3.6vw, 3.1rem);
       font-weight: 600;
-      line-height: 1.25;
+      line-height: 1.22;
       color: var(--text-heading);
       letter-spacing: -0.02em;
-      max-width: 960px;
+      max-width: 1180px;
       margin: 0 auto 0.75rem;
     }
 
@@ -367,15 +358,16 @@
 
     .hero-desc {
       color: var(--text-muted);
-      font-size: 1.02rem;
-      max-width: 780px;
-      margin: 0 auto 2.25rem;
+      font-size: clamp(0.88rem, 1.4vw, 1.04rem);
+      max-width: 880px;
+      margin: 0 auto clamp(1.5rem, 2.5vw, 2.25rem);
       line-height: 1.65;
     }
 
-    /* Master Search Input */
+    /* Fluid Full-Width Search Dock */
     .search-dock-wrapper {
-      max-width: 920px;
+      width: 100%;
+      max-width: 1180px;
       margin: 0 auto;
       position: relative;
     }
@@ -384,19 +376,21 @@
       background: var(--bg-surface);
       border: 1.5px solid var(--border-accent);
       border-radius: 16px;
-      padding: 0.6rem 1rem 0.6rem 1.4rem;
+      padding: 0.5rem 0.75rem 0.5rem 1.25rem;
       display: flex;
       align-items: center;
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), 0 0 25px var(--glow-caramel);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5), 0 0 30px var(--glow-caramel);
       gap: 0.75rem;
+      width: 100%;
+      transition: all 0.25s;
     }
     :root[data-theme="caramel-light"] .search-dock {
-      box-shadow: 0 12px 35px rgba(92, 44, 14, 0.09), 0 0 25px var(--glow-caramel);
+      box-shadow: 0 14px 40px rgba(92, 44, 14, 0.1), 0 0 30px var(--glow-caramel);
     }
 
     .search-dock:focus-within {
       border-color: var(--caramel-300);
-      box-shadow: 0 14px 45px rgba(0, 0, 0, 0.5), 0 0 35px rgba(229, 154, 66, 0.3);
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.65), 0 0 40px rgba(229, 154, 66, 0.35);
     }
 
     .search-icon-svg {
@@ -410,54 +404,59 @@
       border: none;
       outline: none;
       color: var(--text-heading);
-      font-size: 1.08rem;
+      font-size: clamp(0.92rem, 1.5vw, 1.08rem);
       font-family: 'Plus Jakarta Sans', sans-serif;
+      min-width: 0;
     }
     .search-field::placeholder {
       color: var(--text-dim);
-      font-size: 0.98rem;
+      font-size: 0.95rem;
     }
 
     .btn-search-submit {
       background: linear-gradient(135deg, var(--caramel-500), var(--caramel-400));
-      color: #1a0f06;
+      color: #180e04;
       border: none;
-      padding: 0.65rem 1.4rem;
+      padding: 0.65rem 1.35rem;
       border-radius: 10px;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.45rem;
       flex-shrink: 0;
+      transition: all 0.2s;
     }
     .btn-search-submit:hover {
       background: linear-gradient(135deg, var(--caramel-400), var(--caramel-300));
+      transform: translateY(-1px);
     }
 
-    /* Topic Pill Filter Stream */
+    /* Topic Pills Fluid Stream */
     .topics-stream {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-      gap: 0.6rem;
-      margin-top: 1.5rem;
+      gap: 0.55rem;
+      margin-top: 1.25rem;
+      width: 100%;
     }
 
     .topic-pill {
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       color: var(--text-muted);
-      font-size: 0.82rem;
+      font-size: clamp(0.75rem, 1.1vw, 0.82rem);
       font-weight: 600;
-      padding: 0.42rem 0.95rem;
+      padding: 0.38rem 0.88rem;
       border-radius: 9999px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
+      transition: all 0.2s;
     }
     .topic-pill:hover {
       border-color: var(--caramel-400);
@@ -476,32 +475,19 @@
     }
 
     /* ==========================================================================
-       SECTION / TAB SWITCHING LOGIC
-       ========================================================================== */
-    .app-section-view {
-      display: none;
-      animation: fadeInView 0.35s ease forwards;
-    }
-    .app-section-view.active {
-      display: block;
-    }
-    @keyframes fadeInView {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ==========================================================================
-       ANSWER SECTION: WORKABLE REMEDY DIRECTIVE (DIRECT FINDINGS)
+       WORKABLE REMEDY DIRECTIVE & FLUID FULL-WIDTH GRID
+       Laptop: Expansive 2-Column • Mobile: 1-Column Stacking
        ========================================================================== */
     .remedy-answer-grid {
       display: grid;
-      grid-template-columns: 1fr 380px;
-      gap: 1.75rem;
+      grid-template-columns: minmax(0, 1.7fr) minmax(360px, 460px);
+      gap: clamp(1.25rem, 2.5vw, 2.25rem);
       margin-top: 2rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2.75rem;
+      width: 100%;
     }
 
-    @media (max-width: 1100px) {
+    @media (max-width: 1023px) {
       .remedy-answer-grid {
         grid-template-columns: 1fr;
       }
@@ -511,14 +497,15 @@
     .answer-card {
       background: var(--bg-surface);
       border: 1.5px solid var(--border-accent);
-      border-radius: 18px;
+      border-radius: 20px;
       overflow: hidden;
       box-shadow: var(--shadow-md);
+      width: 100%;
     }
 
     .answer-card-header {
-      padding: 1.4rem 1.75rem;
-      background: linear-gradient(90deg, rgba(229, 154, 66, 0.12) 0%, rgba(23, 17, 12, 0.4) 100%);
+      padding: clamp(1.1rem, 2vw, 1.5rem) clamp(1.25rem, 2.5vw, 2rem);
+      background: linear-gradient(90deg, rgba(229, 154, 66, 0.12) 0%, rgba(19, 13, 8, 0.4) 100%);
       border-bottom: 1px solid var(--border-subtle);
       display: flex;
       flex-wrap: wrap;
@@ -531,46 +518,41 @@
       display: flex;
       align-items: center;
       gap: 0.85rem;
+      flex-wrap: wrap;
     }
 
     .answer-badge-status {
-      background: rgba(225, 29, 72, 0.15);
-      border: 1px solid rgba(225, 29, 72, 0.35);
+      background: rgba(244, 63, 94, 0.16);
+      border: 1px solid rgba(244, 63, 94, 0.35);
       color: #fb7185;
       font-size: 0.72rem;
       font-weight: 700;
-      padding: 0.25rem 0.65rem;
+      padding: 0.22rem 0.65rem;
       border-radius: 6px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
-    .answer-badge-status.good {
-      background: rgba(16, 185, 129, 0.15);
-      border-color: rgba(16, 185, 129, 0.35);
-      color: #34d399;
-    }
-
     .answer-heading-text {
       font-family: 'Newsreader', Georgia, serif;
-      font-size: 1.35rem;
+      font-size: clamp(1.2rem, 2.2vw, 1.5rem);
       font-weight: 600;
       color: var(--text-heading);
     }
 
     .answer-card-body {
-      padding: 1.75rem;
+      padding: clamp(1.25rem, 2.5vw, 2rem);
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1.6rem;
     }
 
     /* Direct Legal Verdict Box */
     .legal-verdict-banner {
-      background: rgba(229, 154, 66, 0.07);
+      background: rgba(229, 154, 66, 0.08);
       border-left: 4px solid var(--caramel-400);
-      border-radius: 0 10px 10px 0;
-      padding: 1.25rem 1.5rem;
+      border-radius: 0 12px 12px 0;
+      padding: clamp(1.1rem, 2vw, 1.4rem) clamp(1.25rem, 2.5vw, 1.75rem);
     }
 
     .verdict-tagline {
@@ -579,7 +561,7 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--caramel-400);
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.4rem;
       display: flex;
       align-items: center;
       gap: 0.45rem;
@@ -587,8 +569,8 @@
 
     .verdict-main-text {
       font-family: 'Newsreader', Georgia, serif;
-      font-size: 1.22rem;
-      line-height: 1.6;
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      line-height: 1.62;
       color: var(--text-heading);
     }
 
@@ -599,7 +581,7 @@
       text-transform: uppercase;
       letter-spacing: 0.06em;
       color: var(--text-muted);
-      margin-bottom: 0.85rem;
+      margin-bottom: 0.9rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -617,34 +599,35 @@
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       border-radius: 12px;
-      padding: 1.1rem;
+      padding: clamp(0.9rem, 1.8vw, 1.25rem);
     }
 
     .step-circle-badge {
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--caramel-600), var(--caramel-400));
       color: #170f08;
       font-weight: 800;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      margin-top: 0.1rem;
     }
 
     .step-detail-title {
-      font-size: 0.95rem;
+      font-size: clamp(0.88rem, 1.3vw, 0.98rem);
       font-weight: 700;
       color: var(--text-heading);
       margin-bottom: 0.25rem;
     }
 
     .step-detail-desc {
-      font-size: 0.85rem;
+      font-size: clamp(0.82rem, 1.1vw, 0.88rem);
       color: var(--text-body);
-      line-height: 1.5;
+      line-height: 1.52;
     }
 
     .step-forum-tag {
@@ -668,8 +651,8 @@
     .statute-crossmap-section {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      padding: 1.25rem;
+      border-radius: 14px;
+      padding: clamp(1rem, 2vw, 1.4rem);
     }
 
     .statute-crossmap-header {
@@ -682,22 +665,21 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
 
     .statute-chips-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
-    }
-    @media (max-width: 640px) {
-      .statute-chips-grid { grid-template-columns: 1fr; }
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0.85rem;
     }
 
     .statute-chip {
       background: var(--bg-surface);
       border-left: 3px solid var(--caramel-400);
       border-radius: 0 8px 8px 0;
-      padding: 0.75rem 0.9rem;
+      padding: 0.8rem 1rem;
     }
     .statute-chip.intl {
       border-left-color: var(--accent-azure);
@@ -705,33 +687,34 @@
 
     .statute-chip-code {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       font-weight: 700;
       color: var(--text-heading);
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.25rem;
     }
 
     .statute-chip-text {
-      font-size: 0.76rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
-      line-height: 1.4;
+      line-height: 1.45;
     }
 
-    /* Right Column: Evidence & Readiness */
+    /* Right Column: Evidentiary Dossier Card */
     .side-dossier-card {
       background: var(--bg-surface);
       border: 1.5px solid var(--border-subtle);
-      border-radius: 18px;
-      padding: 1.5rem;
+      border-radius: 20px;
+      padding: clamp(1.2rem, 2vw, 1.75rem);
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
+      gap: 1.3rem;
       box-shadow: var(--shadow-sm);
       height: fit-content;
+      width: 100%;
     }
 
     .dossier-title {
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: var(--text-heading);
       display: flex;
@@ -743,7 +726,7 @@
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       border-radius: 12px;
-      padding: 1rem;
+      padding: 1.1rem;
     }
 
     .readiness-label-row {
@@ -755,7 +738,7 @@
 
     .readiness-pct {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: var(--accent-emerald);
     }
@@ -779,7 +762,7 @@
     .checklist-mini-items {
       display: flex;
       flex-direction: column;
-      gap: 0.65rem;
+      gap: 0.7rem;
     }
 
     .mini-check-item {
@@ -788,25 +771,31 @@
       gap: 0.75rem;
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      padding: 0.75rem 0.85rem;
+      border-radius: 10px;
+      padding: 0.8rem 0.95rem;
       cursor: pointer;
+      user-select: none;
+      transition: all 0.15s;
+    }
+    .mini-check-item:hover {
+      border-color: var(--caramel-400);
     }
     .mini-check-item.checked {
       background: rgba(16, 185, 129, 0.08);
-      border-color: rgba(16, 185, 129, 0.3);
+      border-color: rgba(16, 185, 129, 0.35);
     }
 
     .custom-check-box {
-      width: 18px;
-      height: 18px;
-      border-radius: 4px;
+      width: 19px;
+      height: 19px;
+      border-radius: 5px;
       border: 1.5px solid var(--text-dim);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
       margin-top: 0.15rem;
+      background: rgba(0, 0, 0, 0.2);
     }
     .mini-check-item.checked .custom-check-box {
       background: var(--accent-emerald);
@@ -815,22 +804,24 @@
     }
 
     .mini-check-text h5 {
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       font-weight: 600;
       color: var(--text-heading);
     }
 
     .mini-check-text p {
-      font-size: 0.74rem;
+      font-size: 0.75rem;
       color: var(--text-muted);
+      margin-top: 0.15rem;
     }
 
     /* ==========================================================================
-       PROGRESSIVE PRECEDENT STREAM (SLOWLY SHOW RELEVANT PRECEDENTS)
+       PROGRESSIVE PRECEDENT STREAM (FULL-WIDTH 2-COLUMN RESPONSIVE FLOW)
        ========================================================================== */
     .precedent-stream-section {
-      margin-top: 2.5rem;
+      margin-top: 1rem;
       margin-bottom: 3.5rem;
+      width: 100%;
     }
 
     .stream-header {
@@ -842,16 +833,17 @@
       margin-bottom: 1.5rem;
       padding-bottom: 1rem;
       border-bottom: 1px solid var(--border-subtle);
+      width: 100%;
     }
 
     .stream-title-group h2 {
       font-family: 'Newsreader', Georgia, serif;
-      font-size: 1.85rem;
+      font-size: clamp(1.4rem, 2.5vw, 1.95rem);
       font-weight: 600;
       color: var(--text-heading);
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
     }
 
     .stream-title-group p {
@@ -886,24 +878,27 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* Precedent Cards Grid */
+    /* Fluid Precedents Grid */
     .precedents-flow {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 540px), 1fr));
+      gap: 1.35rem;
+      width: 100%;
     }
 
     .precedent-case-card {
       background: var(--bg-surface);
       border: 1.5px solid var(--border-subtle);
-      border-radius: 14px;
-      padding: 1.5rem 1.75rem;
+      border-radius: 16px;
+      padding: clamp(1.1rem, 2vw, 1.6rem);
       box-shadow: var(--shadow-sm);
       opacity: 0;
       transform: translateY(16px);
       transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.2s ease;
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
     .precedent-case-card.revealed {
@@ -913,7 +908,7 @@
 
     .precedent-case-card:hover {
       border-color: var(--caramel-400);
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+      box-shadow: var(--shadow-md);
     }
 
     .precedent-top-row {
@@ -922,12 +917,12 @@
       align-items: flex-start;
       justify-content: space-between;
       gap: 0.75rem;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.65rem;
     }
 
     .case-title {
       font-family: 'Newsreader', Georgia, serif;
-      font-size: 1.35rem;
+      font-size: clamp(1.15rem, 1.8vw, 1.35rem);
       font-weight: 700;
       color: var(--text-heading);
       letter-spacing: -0.01em;
@@ -942,6 +937,7 @@
       padding: 0.2rem 0.65rem;
       border-radius: 6px;
       font-weight: 600;
+      white-space: nowrap;
     }
     :root[data-theme="caramel-light"] .case-citation-badge {
       color: var(--caramel-500);
@@ -952,16 +948,17 @@
       color: var(--text-dim);
       margin-bottom: 0.75rem;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.5rem;
     }
 
     .case-ratio-box {
       background: var(--bg-card);
       border-left: 3px solid var(--caramel-400);
       border-radius: 0 8px 8px 0;
-      padding: 0.85rem 1.15rem;
-      margin-bottom: 0.9rem;
+      padding: 0.85rem 1.1rem;
+      margin-bottom: 0.85rem;
     }
 
     .case-ratio-label {
@@ -974,7 +971,7 @@
     }
 
     .case-ratio-text {
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       color: var(--text-body);
       line-height: 1.55;
     }
@@ -982,7 +979,7 @@
     .case-quote {
       font-family: 'Newsreader', Georgia, serif;
       font-style: italic;
-      font-size: 0.96rem;
+      font-size: 0.94rem;
       color: var(--caramel-100);
       line-height: 1.6;
       background: rgba(0, 0, 0, 0.25);
@@ -991,7 +988,7 @@
       margin-bottom: 0.75rem;
     }
     :root[data-theme="caramel-light"] .case-quote {
-      color: var(--caramel-900);
+      color: var(--caramel-950);
       background: rgba(0, 0, 0, 0.04);
     }
 
@@ -1002,32 +999,45 @@
       align-items: center;
       gap: 0.45rem;
       font-weight: 600;
+      margin-top: auto;
     }
 
     /* ==========================================================================
-       SECTION 2: FULL PRECEDENT LIBRARY
+       SECTION VIEWS (TABS)
        ========================================================================== */
+    .app-section-view {
+      display: none;
+      animation: fadeInView 0.3s ease forwards;
+      width: 100%;
+    }
+    .app-section-view.active { display: block; }
+    @keyframes fadeInView {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .library-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1.75rem;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
+      gap: 1.4rem;
+      margin-top: 1.5rem;
+      width: 100%;
     }
 
-    /* ==========================================================================
-       SECTION 3: STATUTORY & TREATY CODEX (DUAL COMPARISON)
-       ========================================================================== */
+    /* Codex Table */
     .codex-table-wrapper {
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       border-radius: 16px;
-      overflow: hidden;
-      margin-top: 2rem;
+      overflow-x: auto;
+      margin-top: 1.75rem;
       box-shadow: var(--shadow-sm);
+      width: 100%;
     }
 
     .codex-table {
       width: 100%;
+      min-width: 780px;
       border-collapse: collapse;
       text-align: left;
     }
@@ -1053,16 +1063,15 @@
       background: var(--bg-card-hover);
     }
 
-    /* ==========================================================================
-       SECTION 4: PROCEDURAL MOTION DRAFTER
-       ========================================================================== */
+    /* Procedural Motion Drafter */
     .motion-drafter-layout {
       display: grid;
-      grid-template-columns: 320px 1fr;
+      grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
       gap: 1.75rem;
-      margin-top: 2rem;
+      margin-top: 1.75rem;
+      width: 100%;
     }
-    @media (max-width: 900px) {
+    @media (max-width: 860px) {
       .motion-drafter-layout { grid-template-columns: 1fr; }
     }
 
@@ -1075,10 +1084,15 @@
     .motion-menu-item {
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
-      border-radius: 10px;
-      padding: 1rem;
+      border-radius: 12px;
+      padding: 1rem 1.15rem;
       cursor: pointer;
       text-align: left;
+      transition: all 0.2s;
+    }
+    .motion-menu-item:hover {
+      border-color: var(--caramel-400);
+      background: var(--bg-card);
     }
     .motion-menu-item.active {
       background: rgba(229, 154, 66, 0.15);
@@ -1086,47 +1100,38 @@
     }
 
     .motion-paper {
-      background: #fdfbf7;
+      background: #fdfaf6;
       color: #17110c;
       border: 1px solid #e0d5c5;
-      border-radius: 12px;
-      padding: 2.5rem;
+      border-radius: 14px;
+      padding: clamp(1.5rem, 3vw, 2.5rem);
       font-family: 'Newsreader', Georgia, serif;
       line-height: 1.7;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-    }
-    .motion-paper h2 {
-      font-family: 'Cinzel', serif;
-      text-align: center;
-      font-size: 1.25rem;
-      margin-bottom: 1.5rem;
-      border-bottom: 2px solid #17110c;
-      padding-bottom: 0.5rem;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+      width: 100%;
     }
 
-    /* ==========================================================================
-       MODALS: GEMINI API CONFIG & CASE BRIEF
-       ========================================================================== */
+    /* Modals */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(14, 10, 7, 0.85);
-      backdrop-filter: blur(8px);
+      background: rgba(10, 7, 4, 0.85);
+      backdrop-filter: blur(10px);
       z-index: 120;
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 1.5rem;
+      padding: 1rem;
     }
     .modal-overlay.open { display: flex; }
 
     .modal-dialog {
       background: var(--bg-surface);
       border: 1px solid var(--border-accent);
-      border-radius: 16px;
+      border-radius: 18px;
       width: 100%;
-      max-width: 650px;
-      max-height: 90vh;
+      max-width: 680px;
+      max-height: 92vh;
       overflow-y: auto;
       box-shadow: var(--shadow-lg);
     }
@@ -1159,6 +1164,7 @@
       padding: 2.5rem 0 1.75rem;
       color: var(--text-muted);
       font-size: 0.82rem;
+      width: 100%;
     }
 
     .footer-grid {
@@ -1167,6 +1173,29 @@
       justify-content: space-between;
       gap: 2rem;
       margin-bottom: 1.5rem;
+    }
+
+    /* Mobile Media Queries */
+    @media (max-width: 768px) {
+      .header-top {
+        height: auto;
+        padding: 0.75rem 0;
+        flex-wrap: wrap;
+      }
+      .brand-group {
+        width: 100%;
+        margin-bottom: 0.25rem;
+      }
+      .nav-tools {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .btn-search-submit span {
+        display: none;
+      }
+      .btn-search-submit {
+        padding: 0.65rem 0.9rem;
+      }
     }
   </style>
 </head>
@@ -1178,7 +1207,7 @@
       <div class="header-top">
         <a href="#" class="brand-group">
           <div class="brand-seal">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M12 3v18"></path>
               <rect width="18" height="18" x="3" y="3" rx="2"></rect>
               <path d="m3 9 18-4"></path>
@@ -1188,59 +1217,59 @@
           <div class="brand-text">
             <h1>
               HUMAN RIGHTS REMEDY INDEX
-              <span class="badge-live-ai">Live Legal Engine</span>
+              <span class="badge-live-ai">AI Legal Aid</span>
             </h1>
-            <p class="brand-sub">Factual Harm Translation • Progressive Judicial Precedents • BNSS/BNS/BSA Codex</p>
+            <p class="brand-sub">Factual Harm Translation • Progressive Precedents • BNSS/BNS/BSA Codex</p>
           </div>
         </a>
 
         <div class="nav-tools">
-          <!-- Gemini AI Environment Status & Config -->
-          <button class="btn-gemini-status" onclick="openGeminiModal()" title="View or configure Google Gemini API connection">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <!-- Gemini AI Connection Config -->
+          <button class="btn-icon-pill" onclick="openGeminiModal()" title="View or configure Google Gemini API connection">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--caramel-400)" stroke-width="2">
               <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
             </svg>
-            <span id="geminiEnvBadge">Gemini Env: Configured</span>
+            <span id="geminiEnvBadge">Gemini Env</span>
           </button>
 
-          <!-- Theme Switcher: Caramel Dark vs Warm Light -->
-          <button class="btn-icon-pill" onclick="toggleCaramelTheme()" title="Toggle between Dark Caramel Espresso & Warm Caramel Silk">
+          <!-- Theme Switcher: Dark Caramel Espresso vs Warm Light -->
+          <button class="btn-icon-pill" onclick="toggleCaramelTheme()" title="Toggle Dark Mode / Warm Silk Mode">
             <span id="themeModeIcon">🌙</span>
-            <span id="themeModeText">Dark Caramel</span>
+            <span id="themeModeText">Dark Mode</span>
           </button>
 
           <!-- Export Case Brief -->
           <button class="btn-primary-action" onclick="openBriefExportModal()">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
               <polyline points="7 10 12 15 17 10"></polyline>
               <line x1="12" y1="15" x2="12" y2="3"></line>
             </svg>
-            Export Case Brief
+            Export Brief
           </button>
         </div>
       </div>
 
-      <!-- Extended Portion Tabs (No One-Page Limit) -->
+      <!-- Extended Portion Tabs (Fluid Scrollable for Laptop & Mobile) -->
       <nav class="nav-tabs-bar">
         <button class="nav-tab-btn active" onclick="switchPortion('console')">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           Remedy Console & Search
         </button>
         <button class="nav-tab-btn" onclick="switchPortion('precedents')">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-0.5-5"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-0.5-5"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
           Landmark Precedent Library
         </button>
         <button class="nav-tab-btn" onclick="switchPortion('statutes')">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
-          BNSS & Treaty Comparative Codex
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
+          BNSS & Treaty Codex
         </button>
         <button class="nav-tab-btn" onclick="switchPortion('motions')">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-          Procedural Motion Drafter
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          Motion Drafter
         </button>
         <button class="nav-tab-btn" onclick="switchPortion('directory')">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m12 6 4 6h-8z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m12 6 4 6h-8z"/></svg>
           Legal Aid & Court Directory
         </button>
       </nav>
@@ -1254,17 +1283,17 @@
          ====================================================================== -->
     <section id="portion-console" class="app-section-view active">
       
-      <!-- Hero & Search Dock -->
+      <!-- Fluid Hero & Search Dock -->
       <div class="hero-container">
         <div class="hero-eyebrow">Constitutional Remedial Intelligence</div>
         <h2 class="hero-title">
           Translate factual accounts of rights violations into <span>binding legal remedies</span>.
         </h2>
         <p class="hero-desc">
-          Describe what occurred in plain, everyday words. The engine immediately formulates a direct legal remedy directive, evaluates statutory violations under Bharatiya Nagarik Suraksha Sanhita (BNSS), and progressively reveals relevant landmark judicial precedents.
+          Describe what occurred in ordinary words. The engine immediately formulates a direct legal remedy directive, evaluates statutory violations under Bharatiya Nagarik Suraksha Sanhita (BNSS), and progressively reveals relevant landmark judicial precedents.
         </p>
 
-        <!-- Search Input -->
+        <!-- Fluid Full-Width Search Input -->
         <div class="search-dock-wrapper">
           <div class="search-dock">
             <svg class="search-icon-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1286,13 +1315,13 @@
 
           <!-- Quick Topic Pills -->
           <div class="topics-stream">
-            <span style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); font-weight: 700; margin-right: 0.2rem;">Quick Topics:</span>
-            <button class="topic-pill active" onclick="loadTopicScenario('detention')">🚨 Unlawful Police Detention (>24h)</button>
+            <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); font-weight: 700; margin-right: 0.2rem;">Quick Topics:</span>
+            <button class="topic-pill active" onclick="loadTopicScenario('detention')">🚨 Unlawful Detention (>24h)</button>
             <button class="topic-pill" onclick="loadTopicScenario('torture')">🩸 Custodial Torture & Beating</button>
-            <button class="topic-pill" onclick="loadTopicScenario('eviction')">🚜 Bulldozer Demolition Without Notice</button>
-            <button class="topic-pill" onclick="loadTopicScenario('bonded')">⛓️ Withheld Wages & ID Confiscation</button>
-            <button class="topic-pill" onclick="loadTopicScenario('caste')">🚫 Public Access Denial (Caste Discrimination)</button>
-            <button class="topic-pill" onclick="loadTopicScenario('protest')">📢 Peaceful Protest Detention (Sec 163 BNSS)</button>
+            <button class="topic-pill" onclick="loadTopicScenario('eviction')">🚜 Bulldozer Demolition</button>
+            <button class="topic-pill" onclick="loadTopicScenario('bonded')">⛓️ Withheld Wages & ID</button>
+            <button class="topic-pill" onclick="loadTopicScenario('caste')">🚫 Public Access Denial</button>
+            <button class="topic-pill" onclick="loadTopicScenario('protest')">📢 Peaceful Assembly (Sec 163 BNSS)</button>
           </div>
         </div>
       </div>
@@ -1320,7 +1349,7 @@
                 Immediate Legal Verdict & Finding
               </div>
               <div class="verdict-main-text" id="verdictText">
-                "The ongoing police detention exceeding 24 hours without an order from a judicial magistrate is <strong>prima facie illegal</strong>, constituting a direct violation of fundamental rights under Article 22(2) of the Constitution and Section 58 of the Bharatiya Nagarik Suraksha Sanhita (BNSS). Physical confinement beyond 24 hours without remand constitutes an actionable constitutional tort."
+                "The ongoing police detention exceeding 24 hours without an order from a judicial magistrate is <strong>prima facie illegal</strong>, violating Article 22(2) of the Constitution and Section 58 of the Bharatiya Nagarik Suraksha Sanhita (BNSS). Physical confinement beyond 24 hours without remand constitutes an actionable constitutional tort."
               </div>
             </div>
 
@@ -1366,7 +1395,7 @@
             <span style="font-size: 0.74rem; color: var(--text-muted);" id="sideReadinessNote">Prima facie standard satisfied for urgent High Court listing</span>
           </div>
 
-          <div style="font-size: 0.78rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); letter-spacing: 0.05em;">
+          <div style="font-size: 0.76rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); letter-spacing: 0.05em;">
             Required Supporting Documents
           </div>
 
@@ -1374,7 +1403,7 @@
             <!-- Populated dynamically -->
           </div>
 
-          <button class="btn-icon-pill" style="justify-content: center; width: 100%; border-color: var(--border-accent);" onclick="openBriefExportModal()">
+          <button class="btn-icon-pill" style="justify-content: center; width: 100%; border-color: var(--border-accent); margin-top: 0.25rem;" onclick="openBriefExportModal()">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
             Generate Official Briefing Sheet
           </button>
@@ -1382,7 +1411,7 @@
 
       </div>
 
-      <!-- PROGRESSIVE PRECEDENT STREAM (SLOWLY REVEAL RELEVANT PRECEDENTS) -->
+      <!-- PROGRESSIVE PRECEDENT STREAM (SLOWLY REVEAL RELEVANT PRECEDENTS IN FLUID GRID) -->
       <section class="precedent-stream-section">
         <div class="stream-header">
           <div class="stream-title-group">
@@ -1399,7 +1428,7 @@
           </div>
         </div>
 
-        <!-- Precedent cards container -->
+        <!-- Precedent cards container in fluid multi-column grid -->
         <div class="precedents-flow" id="precedentsFlowContainer">
           <!-- Dynamically revealed with staggered animation -->
         </div>
@@ -1411,22 +1440,22 @@
          PORTION 2: LANDMARK PRECEDENT LIBRARY
          ====================================================================== -->
     <section id="portion-precedents" class="app-section-view">
-      <div style="padding: 2.5rem 0 1.5rem;">
-        <h2 class="font-serif" style="font-size: 2.2rem; color: var(--text-heading); margin-bottom: 0.5rem;">
+      <div style="padding: 2rem 0 1.25rem;">
+        <h2 class="font-serif" style="font-size: clamp(1.8rem, 3vw, 2.3rem); color: var(--text-heading); margin-bottom: 0.5rem;">
           Landmark Human Rights Precedent Corpus
         </h2>
-        <p style="color: var(--text-muted); max-width: 750px;">
+        <p style="color: var(--text-muted); max-width: 800px;">
           Explore authoritative Supreme Court of India rulings establishing binding standards for arrest, custodial safety, housing protections, wage equality, and freedom from state coercion.
         </p>
 
         <!-- Precedent Search & Tag Filter -->
-        <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+        <div style="display: flex; gap: 1rem; margin-top: 1.25rem; flex-wrap: wrap;">
           <input 
             type="text" 
             id="librarySearchInput" 
             placeholder="Search rulings by keyword or citation (e.g., 'D.K. Basu', 'Olga Tellis', 'Section 58 BNSS')..." 
             class="search-field" 
-            style="background: var(--bg-surface); border: 1px solid var(--border-subtle); padding: 0.6rem 1.2rem; border-radius: 10px; max-width: 480px;"
+            style="background: var(--bg-surface); border: 1px solid var(--border-subtle); padding: 0.65rem 1.2rem; border-radius: 10px; max-width: 520px; width: 100%;"
             oninput="filterPrecedentLibrary(this.value)"
           />
         </div>
@@ -1441,11 +1470,11 @@
          PORTION 3: STATUTORY & TREATY CODEX (DUAL COMPARISON)
          ====================================================================== -->
     <section id="portion-statutes" class="app-section-view">
-      <div style="padding: 2.5rem 0 1.5rem;">
-        <h2 class="font-serif" style="font-size: 2.2rem; color: var(--text-heading); margin-bottom: 0.5rem;">
+      <div style="padding: 2rem 0 1.25rem;">
+        <h2 class="font-serif" style="font-size: clamp(1.8rem, 3vw, 2.3rem); color: var(--text-heading); margin-bottom: 0.5rem;">
           Dual Statutory & Treaty Mapping Codex
         </h2>
-        <p style="color: var(--text-muted); max-width: 800px;">
+        <p style="color: var(--text-muted); max-width: 850px;">
           Direct transitional concordance mapping Bharatiya Nagarik Suraksha Sanhita (BNSS 2023), Bharatiya Nyaya Sanhita (BNS 2023), and Bharatiya Sakshya Adhiniyam (BSA 2023) against corresponding CrPC/IPC provisions and international human rights covenants.
         </p>
       </div>
@@ -1472,11 +1501,11 @@
          PORTION 4: PROCEDURAL MOTION DRAFTER
          ====================================================================== -->
     <section id="portion-motions" class="app-section-view">
-      <div style="padding: 2.5rem 0 1.5rem;">
-        <h2 class="font-serif" style="font-size: 2.2rem; color: var(--text-heading); margin-bottom: 0.5rem;">
+      <div style="padding: 2rem 0 1.25rem;">
+        <h2 class="font-serif" style="font-size: clamp(1.8rem, 3vw, 2.3rem); color: var(--text-heading); margin-bottom: 0.5rem;">
           Actionable Procedural Motion Drafter
         </h2>
-        <p style="color: var(--text-muted); max-width: 750px;">
+        <p style="color: var(--text-muted); max-width: 800px;">
           Select a statutory motion to generate an immediate, jurisdiction-compliant court application tailored for emergency filing before the Chief Judicial Magistrate or High Court.
         </p>
       </div>
@@ -1484,25 +1513,25 @@
       <div class="motion-drafter-layout">
         <div class="motion-selector-menu">
           <div class="motion-menu-item active" onclick="loadDraftTemplate('habeas')">
-            <strong style="display:block; color:var(--text-heading); font-size:0.9rem;">Habeas Corpus Petition</strong>
+            <strong style="display:block; color:var(--text-heading); font-size:0.92rem;">Habeas Corpus Petition</strong>
             <span style="font-size:0.75rem; color:var(--text-muted);">Article 226 • High Court</span>
           </div>
           <div class="motion-menu-item" onclick="loadDraftTemplate('sec100')">
-            <strong style="display:block; color:var(--text-heading); font-size:0.9rem;">Search Warrant Application</strong>
+            <strong style="display:block; color:var(--text-heading); font-size:0.92rem;">Search Warrant Application</strong>
             <span style="font-size:0.75rem; color:var(--text-muted);">Section 100 BNSS (Sec 97 CrPC) • CJM</span>
           </div>
           <div class="motion-menu-item" onclick="loadDraftTemplate('medical')">
-            <strong style="display:block; color:var(--text-heading); font-size:0.9rem;">Medical Re-Examination Prayer</strong>
+            <strong style="display:block; color:var(--text-heading); font-size:0.92rem;">Medical Re-Examination Prayer</strong>
             <span style="font-size:0.75rem; color:var(--text-muted);">Section 53/54 BNSS • Remand Magistrate</span>
           </div>
           <div class="motion-menu-item" onclick="loadDraftTemplate('cctv')">
-            <strong style="display:block; color:var(--text-heading); font-size:0.9rem;">CCTV Preservation Legal Notice</strong>
+            <strong style="display:block; color:var(--text-heading); font-size:0.92rem;">CCTV Preservation Legal Notice</strong>
             <span style="font-size:0.75rem; color:var(--text-muted);">D.K. Basu & Paramvir Singh Mandate</span>
           </div>
         </div>
 
         <div class="motion-paper-wrapper">
-          <div style="display: flex; justify-content: flex-end; margin-bottom: 0.75rem; gap: 0.5rem;">
+          <div style="display: flex; justify-content: flex-end; margin-bottom: 0.75rem; gap: 0.5rem; flex-wrap: wrap;">
             <button class="btn-icon-pill" onclick="copyMotionDraft()">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
               Copy Draft to Clipboard
@@ -1523,11 +1552,11 @@
          PORTION 5: LEGAL AID & COURT DIRECTORY
          ====================================================================== -->
     <section id="portion-directory" class="app-section-view">
-      <div style="padding: 2.5rem 0 1.5rem;">
-        <h2 class="font-serif" style="font-size: 2.2rem; color: var(--text-heading); margin-bottom: 0.5rem;">
+      <div style="padding: 2rem 0 1.25rem;">
+        <h2 class="font-serif" style="font-size: clamp(1.8rem, 3vw, 2.3rem); color: var(--text-heading); margin-bottom: 0.5rem;">
           Emergency Legal Aid & Institutional Referral Directory
         </h2>
-        <p style="color: var(--text-muted); max-width: 750px;">
+        <p style="color: var(--text-muted); max-width: 800px;">
           Direct emergency helpline contacts, District Legal Services Authorities (DLSA), and statutory Human Rights Commission escalation channels for immediate intervention.
         </p>
       </div>
@@ -1603,7 +1632,7 @@
 
   <!-- CASE BRIEF EXPORT MODAL -->
   <div class="modal-overlay" id="briefModal">
-    <div class="modal-dialog" style="max-width: 840px;">
+    <div class="modal-dialog" style="max-width: 860px;">
       <div class="modal-dialog-header">
         <h3 style="font-size: 1.1rem; color: var(--text-heading);">Official Case Assessment & Filing Directive</h3>
         <button onclick="closeBriefModal()" style="background:transparent; border:none; color:var(--text-muted); cursor:pointer;">
@@ -1612,7 +1641,7 @@
       </div>
       <div class="modal-dialog-body">
         <div class="motion-paper" id="briefPrintArea" style="background:#fff; color:#17110c;">
-          <div style="border-bottom: 2px solid #17110c; padding-bottom: 0.5rem; margin-bottom: 1.25rem; display: flex; justify-content: space-between;">
+          <div style="border-bottom: 2px solid #17110c; padding-bottom: 0.5rem; margin-bottom: 1.25rem; display: flex; justify-content: space-between; flex-wrap:wrap; gap:0.5rem;">
             <div>
               <div style="font-family:'Cinzel', serif; font-size:0.75rem; font-weight:700; color:#b85e19;">HUMAN RIGHTS LAW & REMEDY INDEX</div>
               <h2 style="font-size:1.3rem; margin:0.25rem 0; text-align:left; border:none; padding:0;">PRELIMINARY LEGAL BRIEF & DIRECTIVE</h2>
@@ -1656,7 +1685,7 @@
       <div class="modal-dialog-footer">
         <button class="btn-icon-pill" onclick="closeBriefModal()">Close</button>
         <button class="btn-primary-action" onclick="window.print()">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
           Print Brief / Save PDF
         </button>
       </div>
@@ -1667,7 +1696,7 @@
   <footer class="main-footer">
     <div class="app-container">
       <div class="footer-grid">
-        <div style="max-width: 450px;">
+        <div style="max-width: 520px;">
           <h4 style="font-family:'Cinzel', serif; color: var(--text-heading); font-size: 0.95rem; margin-bottom: 0.5rem;">Human Rights Law & Remedy Index</h4>
           <p style="line-height: 1.6;">
             An open legal-aid intelligence project bridging public complaints with constitutional jurisprudence, Bharatiya Nagarik Suraksha Sanhita (BNSS), and international treaty protections.
@@ -1854,7 +1883,6 @@
       detention: {
         category: "Unlawful Police Detention (>24 Hours)",
         severity: "Constitutional Tort",
-        isGood: false,
         query: "Police took my brother 30 hours ago and have not produced him before any judge.",
         verdict: "The ongoing police detention exceeding 24 hours without an order from a judicial magistrate is <strong>strictly illegal</strong>, violating Article 22(2) of the Constitution and Section 58 of the Bharatiya Nagarik Suraksha Sanhita (BNSS). Physical confinement beyond 24 hours without remand constitutes an actionable constitutional tort under <em>Rudul Sah</em>.",
         steps: [
@@ -1892,7 +1920,6 @@
       torture: {
         category: "Custodial Torture & Coerced Confession",
         severity: "Gross Criminal Assault",
-        isGood: false,
         query: "My friend was beaten in police lockup to force a confession for a theft case.",
         verdict: "Custodial torture to extract confessions constitutes a <strong>flagrant violation of Article 20(3) (self-incrimination) and Article 21 (human dignity)</strong>. Under Section 23 of Bharatiya Sakshya Adhiniyam (BSA 2023), all lockup confessions are inadmissible in court. Officers face personal prosecution under Sections 115 and 118 of Bharatiya Nyaya Sanhita (BNS).",
         steps: [
@@ -1930,7 +1957,6 @@
       eviction: {
         category: "Arbitrary Bulldozer Demolition",
         severity: "Violation of Right to Shelter",
-        isGood: false,
         query: "Municipal authorities arrived with bulldozers to demolish our settlement without any written notice or relocation plan.",
         verdict: "Demolition of residential structures without adequate statutory show-cause notice and rehabilitation assessment constitutes a <strong>breach of the Right to Life under Article 21</strong> (Olga Tellis & Sudama Singh). Instant executive bulldozer action violates mandatory natural justice (audi alteram partem).",
         steps: [
@@ -1968,7 +1994,6 @@
       bonded: {
         category: "Forced Labour & Withheld Identity",
         severity: "Article 23 Violation",
-        isGood: false,
         query: "The brick kiln owner took our identity cards and refuses to pay our wages until the work season ends.",
         verdict: "Withholding identity documents and wages to restrict worker mobility is a <strong>direct form of forced labour and debt bondage prohibited under Article 23</strong> and the Bonded Labour System (Abolition) Act 1976. Under <em>Bandhua Mukti Morcha</em>, labour extracted under sub-minimum wage conditions triggers an automatic presumption of bondage.",
         steps: [
@@ -2006,7 +2031,6 @@
       caste: {
         category: "Caste Boycott & Public Denial",
         severity: "Atrocity Act Violation",
-        isGood: false,
         query: "Our community was blocked by dominant caste members from entering the public temple and taking water from the municipal borewell.",
         verdict: "Blocking access to public wells or places of worship on grounds of caste is <strong>strictly prohibited under Article 15(2) and Article 17 (Abolition of Untouchability)</strong>. It constitutes a non-bailable cognizable atrocity under Section 3(1)(za) and (zb) of the SC/ST (Prevention of Atrocities) Act 1989. FIR registration is mandatory without preliminary inquiry.",
         steps: [
@@ -2044,7 +2068,6 @@
       protest: {
         category: "Peaceful Assembly & Prohibitory Orders",
         severity: "Civil Liberties Infringement",
-        isGood: false,
         query: "Police dispersed our peaceful demonstration and detained organizers using Section 163 BNSS.",
         verdict: "Peaceful protest without arms is a <strong>fundamental right under Article 19(1)(a) and 19(1)(b)</strong>. Under <em>Anuradha Bhasin</em>, prohibitory orders under Section 163 BNSS (formerly Sec 144 CrPC) cannot be invoked arbitrarily to silence dissent without demonstrable apprehension of imminent danger.",
         steps: [
@@ -2080,10 +2103,13 @@
       }
     };
 
-    // Global Active State
+    // Global Active State - Always Dark by Default
     let currentScenarioKey = 'detention';
-    let currentTheme = 'caramel-dark';
+    let currentTheme = localStorage.getItem('app_theme') || 'caramel-dark';
     let userGeminiApiKey = localStorage.getItem('gemini_api_key') || '';
+
+    // Initialize theme immediately
+    document.documentElement.setAttribute('data-theme', currentTheme);
 
     // --------------------------------------------------------------------------
     // Theme Switcher: Dark Caramel Espresso vs Warm Caramel Silk
@@ -2094,13 +2120,14 @@
         currentTheme = 'caramel-light';
         html.setAttribute('data-theme', 'caramel-light');
         document.getElementById('themeModeIcon').innerText = '☀️';
-        document.getElementById('themeModeText').innerText = 'Warm Caramel';
+        document.getElementById('themeModeText').innerText = 'Warm Mode';
       } else {
         currentTheme = 'caramel-dark';
         html.setAttribute('data-theme', 'caramel-dark');
         document.getElementById('themeModeIcon').innerText = '🌙';
-        document.getElementById('themeModeText').innerText = 'Dark Caramel';
+        document.getElementById('themeModeText').innerText = 'Dark Mode';
       }
+      localStorage.setItem('app_theme', currentTheme);
     }
 
     // --------------------------------------------------------------------------
@@ -2253,7 +2280,6 @@
 
       if (precedentTimer) clearInterval(precedentTimer);
 
-      const statusPill = document.getElementById('precedentStreamStatus');
       const statusText = document.getElementById('streamStatusText');
       const spinner = document.getElementById('streamSpinner');
       spinner.style.display = 'inline-block';
@@ -2262,7 +2288,6 @@
       const matchedPrecedents = PRECEDENT_LIBRARY.filter(p => precedentIds.includes(p.id));
       let currentIdx = 0;
 
-      // Progressively stream each precedent card with realistic delay
       precedentTimer = setInterval(() => {
         if (currentIdx >= matchedPrecedents.length) {
           clearInterval(precedentTimer);
@@ -2305,14 +2330,13 @@
         `;
 
         container.appendChild(card);
-        // Force reflow and reveal animation
         requestAnimationFrame(() => {
           card.classList.add('revealed');
         });
 
         currentIdx++;
         statusText.innerText = `Streaming precedent stream (${currentIdx} of ${matchedPrecedents.length} loaded)...`;
-      }, 550); // 550ms staggered interval for smooth, deliberate discovery
+      }, 550);
     }
 
     // --------------------------------------------------------------------------
@@ -2554,7 +2578,7 @@ Yours faithfully,
     function saveGeminiConfig() {
       userGeminiApiKey = document.getElementById('geminiApiKeyInput').value.trim();
       localStorage.setItem('gemini_api_key', userGeminiApiKey);
-      document.getElementById('geminiEnvBadge').innerText = userGeminiApiKey ? "Gemini: Connected" : "Gemini Env: Active";
+      document.getElementById('geminiEnvBadge').innerText = userGeminiApiKey ? "Gemini: Connected" : "Gemini Env";
       closeGeminiModal();
       alert("Gemini Environment configuration saved to local browser storage!");
     }
@@ -2606,6 +2630,12 @@ Yours faithfully,
       renderFullLibrary(PRECEDENT_LIBRARY);
       renderCodexTable();
       loadDraftTemplate('habeas');
+
+      // Update badge if key exists
+      if (userGeminiApiKey) {
+        const badge = document.getElementById('geminiEnvBadge');
+        if (badge) badge.innerText = "Gemini: Connected";
+      }
     });
   </script>
 </body>
