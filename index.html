@@ -1382,6 +1382,124 @@
       background: var(--bg-card-hover);
     }
 
+  
+    /* Floating Options Dock & Hover Preview Popup */
+    .options-dock-container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 1.5rem auto 0;
+      position: relative;
+    }
+    .options-dock-header {
+      text-align: center;
+      margin-bottom: 0.65rem;
+    }
+    .dock-label {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .options-dock {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.65rem 1.1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 9999px;
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(12px);
+      width: fit-content;
+      max-width: 100%;
+      margin: 0 auto;
+      transition: all 0.25s ease;
+    }
+    @media (max-width: 768px) {
+      .options-dock {
+        border-radius: 20px;
+        padding: 0.5rem;
+      }
+    }
+    .dock-item-wrap {
+      position: relative;
+      display: inline-block;
+    }
+    .dock-pill {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-body);
+      font-size: clamp(0.78rem, 1.1vw, 0.85rem);
+      font-weight: 600;
+      padding: 0.45rem 1.05rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+      white-space: nowrap;
+    }
+    .dock-pill:hover, .dock-pill.active {
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+      background: var(--bg-card-hover);
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.16);
+    }
+    .dock-pill.active {
+      border-color: var(--accent-primary);
+      background: var(--bg-accent-soft);
+    }
+
+    /* Floating Hover Preview Card */
+    .dock-hover-popup {
+      position: absolute;
+      z-index: 120;
+      width: 380px;
+      max-width: calc(100vw - 32px);
+      background: var(--bg-surface);
+      border: 1.5px solid var(--accent-primary);
+      border-radius: 18px;
+      padding: 1.1rem 1.25rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18), 0 0 25px var(--border-glow);
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px) scale(0.96);
+      transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
+    }
+    .dock-hover-popup.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+
+    /* Highlighted History Tab in Navigation Bar */
+    #historyTabBtn {
+      background: var(--bg-accent-soft);
+      border: 1px solid var(--border-accent);
+      color: var(--accent-primary);
+      border-radius: 9999px;
+      margin-left: 0.65rem;
+      padding: 0.38rem 1rem;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1);
+    }
+    #historyTabBtn:hover {
+      background: var(--accent-primary);
+      color: #ffffff;
+      border-color: var(--accent-primary);
+      transform: translateY(-1px);
+    }
+
   </style>
 </head>
 <body>
@@ -1529,17 +1647,85 @@
           <div id="recentSearchesPills" style="display: inline-flex; gap: 0.45rem; flex-wrap: wrap;"></div>
         </div>
 
-        <!-- Quick Topic Pills (Clicking pops up interactive legal remedy directive) -->
-        <div class="topics-stream">
-          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); font-weight: 700; margin-right: 0.2rem;">Quick Topics:</span>
-          <button class="topic-pill active" onclick="selectTopicOption('detention')">🚨 Unlawful Detention (>24h)</button>
-          <button class="topic-pill" onclick="selectTopicOption('torture')">🩸 Custodial Torture & Beating</button>
-          <button class="topic-pill" onclick="selectTopicOption('eviction')">🚜 Bulldozer Demolition</button>
-          <button class="topic-pill" onclick="selectTopicOption('bonded')">⛓️ Withheld Wages & ID</button>
-          <button class="topic-pill" onclick="selectTopicOption('caste')">🚫 Public Access Denial</button>
-          <button class="topic-pill" onclick="selectTopicOption('protest')">📢 Peaceful Assembly (Sec 163 BNSS)</button>
-          <button class="topic-pill" onclick="selectTopicOption('fir')">📝 Refusal to Register FIR</button>
-          <button class="topic-pill" onclick="selectTopicOption('women')">🛡️ Women Arrest & Custody</button>
+        <!-- Quick Topic Options Dock (Interactive Dock with Hover Preview & Detail Popup) -->
+        <div class="options-dock-container">
+          <div class="options-dock-header">
+            <span class="dock-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m3 9 18-4"/><path d="m3 15 18-4"/></svg>
+              Quick Grievance Dock (Hover to Preview • Click to Inspect &amp; Apply):
+            </span>
+          </div>
+
+          <div class="options-dock" id="optionsDockPillsBar">
+            <!-- Option 1: Detention -->
+            <div class="dock-item-wrap" onmouseenter="showHoverPopup(event, 'detention')" onmouseleave="hideHoverPopup()">
+              <button class="dock-pill active" onclick="selectTopicOption('detention')">
+                <span>⚖️</span>
+                <span>Unlawful Detention (&gt;24h)</span>
+              </button>
+            </div>
+
+            <!-- Option 2: Torture -->
+            <div class="dock-item-wrap" onmouseenter="showHoverPopup(event, 'torture')" onmouseleave="hideHoverPopup()">
+              <button class="dock-pill" onclick="selectTopicOption('torture')">
+                <span>🛑</span>
+                <span>Custodial Torture &amp; Beating</span>
+              </button>
+            </div>
+
+            <!-- Option 3: Eviction -->
+            <div class="dock-item-wrap" onmouseenter="showHoverPopup(event, 'eviction')" onmouseleave="hideHoverPopup()">
+              <button class="dock-pill" onclick="selectTopicOption('eviction')">
+                <span>🚜</span>
+                <span>Bulldozer Demolition</span>
+              </button>
+            </div>
+
+            <!-- Option 4: Bonded Labor -->
+            <div class="dock-item-wrap" onmouseenter="showHoverPopup(event, 'bonded')" onmouseleave="hideHoverPopup()">
+              <button class="dock-pill" onclick="selectTopicOption('bonded')">
+                <span>⛓️</span>
+                <span>Withheld Wages &amp; ID</span>
+              </button>
+            </div>
+
+            <!-- Option 5: Caste / Public Access -->
+            <div class="dock-item-wrap" onmouseenter="showHoverPopup(event, 'caste')" onmouseleave="hideHoverPopup()">
+              <button class="dock-pill" onclick="selectTopicOption('caste')">
+                <span>🚫</span>
+                <span>Public Access Denial</span>
+              </button>
+            </div>
+
+            <!-- Option 6: Protest -->
+            <div class="dock-item-wrap" onmouseenter="showHoverPopup(event, 'protest')" onmouseleave="hideHoverPopup()">
+              <button class="dock-pill" onclick="selectTopicOption('protest')">
+                <span>📢</span>
+                <span>Peaceful Assembly (Sec 163)</span>
+              </button>
+            </div>
+
+            <!-- Option 7: FIR Refusal -->
+            <div class="dock-item-wrap" onmouseenter="showHoverPopup(event, 'fir')" onmouseleave="hideHoverPopup()">
+              <button class="dock-pill" onclick="selectTopicOption('fir')">
+                <span>📝</span>
+                <span>Refusal to Register FIR</span>
+              </button>
+            </div>
+
+            <!-- Option 8: Women Arrest -->
+            <div class="dock-item-wrap" onmouseenter="showHoverPopup(event, 'women')" onmouseleave="hideHoverPopup()">
+              <button class="dock-pill" onclick="selectTopicOption('women')">
+                <span>🛡️</span>
+                <span>Women Arrest &amp; Custody</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Floating Hover Preview Card (Dock Popup) -->
+          <div id="dockHoverPopup" class="dock-hover-popup">
+            <!-- Dynamically populated on hover -->
+          </div>
         </div>
       </div>
 
@@ -3506,6 +3692,67 @@ Yours faithfully,
       document.body.appendChild(downloadAnchor);
       downloadAnchor.click();
       downloadAnchor.remove();
+    }
+
+        // --------------------------------------------------------------------------
+    // Options Dock Hover Preview Popup Logic
+    // --------------------------------------------------------------------------
+    let hoverPopupTimer = null;
+
+    function showHoverPopup(event, scenarioKey) {
+      const popup = document.getElementById('dockHoverPopup');
+      const scenario = TOPIC_SCENARIOS[scenarioKey];
+      if (!popup || !scenario) return;
+
+      clearTimeout(hoverPopupTimer);
+
+      const matchedPrecedent = PRECEDENT_LIBRARY.find(p => scenario.precedentIds.includes(p.id)) || PRECEDENT_LIBRARY[0];
+      const step1 = scenario.steps[0] || { timeframe: "0 - 24 Hours", title: "Immediate Remedy Directive", forum: "Magistrate" };
+
+      popup.innerHTML = `
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.45rem;">
+          <span class="answer-badge-status" style="font-size: 0.68rem; padding: 0.15rem 0.55rem;">${escapeHtml(scenario.statutes[1].code)}</span>
+          <span style="font-size: 0.72rem; color: var(--accent-primary); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">Hover Preview</span>
+        </div>
+        <h4 style="font-size: 0.98rem; font-weight: 700; color: var(--text-heading); margin-bottom: 0.35rem; line-height: 1.3;">
+          ${escapeHtml(scenario.category)}
+        </h4>
+        <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin-bottom: 0.65rem;">
+          ${escapeHtml(scenario.query)}
+        </p>
+        <div style="background: var(--bg-card); padding: 0.5rem 0.75rem; border-radius: 8px; font-size: 0.78rem; border-left: 3px solid var(--accent-primary); margin-bottom: 0.55rem;">
+          <strong style="color:var(--text-heading);">${escapeHtml(step1.timeframe)}:</strong> ${escapeHtml(step1.title)} (${escapeHtml(step1.forum)})
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.74rem; color: var(--text-dim); border-top: 1px dashed var(--border-subtle); padding-top: 0.45rem;">
+          <span>Authority: <strong>${escapeHtml(matchedPrecedent.caseName)}</strong></span>
+          <span style="color: var(--accent-primary); font-weight: 700;">Click to Inspect &amp; Apply →</span>
+        </div>
+      `;
+
+      // Position near the hovered dock pill
+      const targetWrap = event.currentTarget;
+      const dockContainer = document.querySelector('.options-dock-container');
+      if (targetWrap && dockContainer) {
+        const wrapRect = targetWrap.getBoundingClientRect();
+        const contRect = dockContainer.getBoundingClientRect();
+
+        let left = (wrapRect.left - contRect.left) + (wrapRect.width / 2) - 190;
+        if (left < 10) left = 10;
+        if (left + 380 > contRect.width) left = Math.max(10, contRect.width - 390);
+
+        popup.style.left = `${left}px`;
+        popup.style.top = `${wrapRect.bottom - contRect.top + 8}px`;
+      }
+
+      popup.classList.add('visible');
+    }
+
+    function hideHoverPopup() {
+      const popup = document.getElementById('dockHoverPopup');
+      if (!popup) return;
+      hoverPopupTimer = setTimeout(() => {
+        popup.classList.remove('visible');
+      }, 70);
     }
 
     // --------------------------------------------------------------------------
