@@ -1,0 +1,2634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Human Rights Law & Remedy Index | Pilot Legal Aid Engine</title>
+  <meta name="description" content="AI-assisted legal technology platform translating non-technical factual descriptions of human rights violations into formal taxonomies, dual domestic and international statutory mappings, and procedural remedies." />
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-primary: #0a1128;
+      --bg-secondary: #0f172a;
+      --panel-bg: #1e293b;
+      --panel-card: #141e33;
+      --panel-hover: #27354f;
+      --border-subtle: rgba(148, 163, 184, 0.15);
+      --border-accent: rgba(56, 189, 248, 0.25);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      
+      --accent-emerald: #10b981;
+      --accent-emerald-glow: rgba(16, 185, 129, 0.2);
+      --accent-amber: #f59e0b;
+      --accent-amber-glow: rgba(245, 158, 11, 0.2);
+      --accent-cyan: #38bdf8;
+      --accent-rose: #f43f5e;
+      --accent-indigo: #818cf8;
+      
+      --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      font-family: var(--font-ui);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.04) 0%, transparent 45%),
+        radial-gradient(circle at 50% 80%, rgba(129, 140, 248, 0.04) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    /* Monospace Utility */
+    .font-mono {
+      font-family: var(--font-mono);
+    }
+
+    /* Container */
+    .app-container {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      width: 100%;
+    }
+
+    /* Top Navigation */
+    header.top-nav {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      gap: 1.5rem;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      border: 1px solid var(--border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+      color: var(--accent-cyan);
+    }
+
+    .brand-titles h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-titles p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+    }
+
+    .badge-pilot {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--accent-cyan);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .badge-pilot::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: var(--accent-cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent-cyan);
+      animation: pulseDot 2s infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    /* Clinical Mode Switch */
+    .clinical-toggle-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--panel-card);
+      border: 1px solid var(--border-subtle);
+      padding: 0.35rem 0.75rem;
+      border-radius: 30px;
+    }
+
+    .clinical-label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .clinical-switch {
+      position: relative;
+      display: inline-block;
+      width: 38px;
+      height: 20px;
+    }
+
+    .clinical-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #334155;
+      transition: .3s;
+      border-radius: 20px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 14px;
+      width: 14px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .3s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: var(--accent-emerald);
+      box-shadow: 0 0 10px var(--accent-emerald-glow);
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(18px);
+    }
+
+    .btn-export {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn-export:hover {
+      background: linear-gradient(135deg, #1d4ed8, #1e40af);
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+      transform: translateY(-1px);
+    }
+
+    /* Hero Search Section */
+    .hero-section {
+      padding: 2.75rem 0 1.5rem;
+      text-align: center;
+    }
+
+    .hero-heading {
+      font-size: 2.1rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(180deg, #ffffff 30%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-sub {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      max-width: 780px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+
+    /* Search Input Box */
+    .search-box-container {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .search-input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: var(--panel-bg);
+      border: 1.5px solid rgba(56, 189, 248, 0.35);
+      border-radius: 14px;
+      padding: 0.5rem 1rem 0.5rem 1.25rem;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(56, 189, 248, 0.08);
+      transition: all 0.25s ease;
+    }
+
+    .search-input-wrapper:focus-within {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 8px 35px rgba(0, 0, 0, 0.5), 0 0 25px rgba(56, 189, 248, 0.2);
+    }
+
+    .search-icon {
+      color: var(--accent-cyan);
+      margin-right: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .search-input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-size: 1.05rem;
+      font-family: var(--font-ui);
+      padding: 0.6rem 0;
+    }
+
+    .search-input::placeholder {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+    }
+
+    .search-clear-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-dim);
+      cursor: pointer;
+      padding: 0.4rem;
+      border-radius: 6px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.15s;
+    }
+
+    .search-clear-btn:hover {
+      color: var(--text-main);
+    }
+
+    /* Taxonomy Pills */
+    .taxonomy-presets {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-top: 1.25rem;
+    }
+
+    .preset-label {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-right: 0.4rem;
+    }
+
+    .pill-btn {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 0.4rem 0.85rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .pill-btn:hover {
+      background: var(--panel-hover);
+      color: #fff;
+      border-color: var(--accent-cyan);
+      transform: translateY(-1px);
+    }
+
+    .pill-btn.active {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent-cyan);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+    }
+
+    /* Main Workspace Layout */
+    .workspace-layout {
+      margin-top: 2rem;
+      margin-bottom: 3.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Query Match Status Header */
+    .query-meta-banner {
+      background: linear-gradient(90deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.8) 100%);
+      border: 1px solid var(--border-subtle);
+      border-left: 4px solid var(--accent-emerald);
+      border-radius: 10px;
+      padding: 0.9rem 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .query-meta-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .meta-tag-category {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: var(--accent-emerald);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .query-meta-text {
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+
+    .query-confidence {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .confidence-meter {
+      width: 70px;
+      height: 6px;
+      background: #334155;
+      border-radius: 9999px;
+      overflow: hidden;
+      display: inline-block;
+    }
+
+    .confidence-fill {
+      height: 100%;
+      background: var(--accent-emerald);
+      width: 95%;
+    }
+
+    /* 3-Tier Grid */
+    .tier-matrix-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 1024px) {
+      .tier-matrix-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Card Panels */
+    .matrix-card {
+      background: var(--panel-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      transition: border-color 0.2s;
+    }
+
+    .matrix-card:hover {
+      border-color: rgba(148, 163, 184, 0.3);
+    }
+
+    .card-header {
+      padding: 1.15rem 1.25rem;
+      background: rgba(30, 41, 59, 0.5);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-tier-title {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .tier-indicator {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .indicator-t1 {
+      background: rgba(244, 63, 94, 0.18);
+      color: var(--accent-rose);
+      border: 1px solid rgba(244, 63, 94, 0.3);
+    }
+
+    .indicator-t2 {
+      background: rgba(56, 189, 248, 0.18);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .indicator-t3 {
+      background: rgba(16, 185, 129, 0.18);
+      color: var(--accent-emerald);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .card-title-text {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .card-body {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      flex: 1;
+    }
+
+    /* Item Blocks Inside Cards */
+    .info-block {
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 0.9rem 1rem;
+    }
+
+    .info-block-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .info-block-val {
+      font-size: 0.95rem;
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .meta-tag {
+      font-size: 0.73rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      font-weight: 600;
+      background: #1e293b;
+      color: #cbd5e1;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .tag-severity-crit {
+      background: rgba(244, 63, 94, 0.15);
+      color: #fb7185;
+      border-color: rgba(244, 63, 94, 0.3);
+    }
+
+    .tag-severity-high {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+
+    .tag-right {
+      background: rgba(129, 140, 248, 0.15);
+      color: #a5b4fc;
+      border-color: rgba(129, 140, 248, 0.3);
+    }
+
+    /* Tier 2: Dual Column Mapping Matrix Layout */
+    .dual-mapping-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .sub-section-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .sub-section-title.intl {
+      color: var(--accent-cyan);
+    }
+
+    .sub-section-title.dom {
+      color: var(--accent-amber);
+    }
+
+    .statute-entry {
+      background: rgba(15, 23, 42, 0.6);
+      border-left: 3px solid var(--accent-cyan);
+      border-radius: 0 8px 8px 0;
+      padding: 0.75rem 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .statute-entry.dom-entry {
+      border-left-color: var(--accent-amber);
+    }
+
+    .statute-code {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .statute-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .transitional-note {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.08);
+      padding: 0.2rem 0.45rem;
+      border-radius: 4px;
+      display: inline-block;
+      margin-top: 0.4rem;
+    }
+
+    /* Tier 3: Procedural Steps */
+    .procedural-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .procedural-step {
+      display: flex;
+      gap: 0.75rem;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 0.8rem;
+      position: relative;
+    }
+
+    .step-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: var(--accent-emerald);
+      font-size: 0.78rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    .step-content h4 {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.2rem;
+    }
+
+    .step-content p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .step-forum-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--accent-amber);
+      background: rgba(245, 158, 11, 0.12);
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      margin-top: 0.4rem;
+    }
+
+    /* Interactive Evidence & Filing Builder Section */
+    .evidence-section {
+      background: var(--panel-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 1.75rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .evidence-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .evidence-title-group h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .evidence-title-group p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    /* Evidence Progress Bar */
+    .evidence-progress-container {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .progress-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+    }
+
+    .progress-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .progress-status-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      letter-spacing: 0.03em;
+    }
+
+    .status-partial {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--accent-amber);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .status-ready {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-emerald);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 10px;
+      background: #334155;
+      border-radius: 9999px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #f59e0b 0%, #10b981 100%);
+      width: 66%;
+      transition: width 0.4s ease;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+    }
+
+    .progress-threshold-text {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Checklist Items */
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 0.9rem;
+    }
+
+    .evidence-item-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 0.9rem 1.1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .evidence-item-card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      background: rgba(30, 41, 59, 0.5);
+    }
+
+    .evidence-item-card.checked {
+      background: rgba(16, 185, 129, 0.08);
+      border-color: rgba(16, 185, 129, 0.35);
+    }
+
+    .custom-checkbox {
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      border: 1.5px solid #64748b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+      transition: all 0.15s ease;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .evidence-item-card.checked .custom-checkbox {
+      background: var(--accent-emerald);
+      border-color: var(--accent-emerald);
+      box-shadow: 0 0 8px var(--accent-emerald-glow);
+    }
+
+    .checkbox-icon {
+      display: none;
+      color: #fff;
+    }
+
+    .evidence-item-card.checked .checkbox-icon {
+      display: block;
+    }
+
+    .evidence-item-text {
+      flex: 1;
+    }
+
+    .evidence-item-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mandatory-pill {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      background: rgba(244, 63, 94, 0.15);
+      color: var(--accent-rose);
+      border: 1px solid rgba(244, 63, 94, 0.3);
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+    }
+
+    .corroborating-pill {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+    }
+
+    .evidence-item-rationale {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+      line-height: 1.35;
+    }
+
+    /* Add custom evidence input */
+    .add-evidence-row {
+      margin-top: 1.25rem;
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .custom-evidence-input {
+      flex: 1;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 0.55rem 1rem;
+      color: #fff;
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
+    }
+
+    .custom-evidence-input:focus {
+      outline: none;
+      border-color: var(--accent-cyan);
+    }
+
+    .btn-add-evidence {
+      background: #334155;
+      color: #fff;
+      border: none;
+      padding: 0.55rem 1rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn-add-evidence:hover {
+      background: #475569;
+    }
+
+    /* Academic & Compliance Metrics Panel */
+    .compliance-footer-panel {
+      background: var(--panel-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .compliance-footer-panel {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .metric-box {
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .metric-box-title {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .metric-box-title svg {
+      color: var(--accent-cyan);
+    }
+
+    .metric-box-content {
+      font-size: 0.85rem;
+      color: var(--text-main);
+      line-height: 1.45;
+    }
+
+    .gap-pill {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      background: rgba(244, 63, 94, 0.12);
+      color: #fb7185;
+      border: 1px solid rgba(244, 63, 94, 0.3);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      margin-top: 0.4rem;
+    }
+
+    /* Modal / Print Sheet Styles */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 7, 18, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #0f172a;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 860px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-header {
+      padding: 1.25rem 1.75rem;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #1e293b;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .modal-header h3 {
+      font-size: 1.15rem;
+      color: #fff;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .modal-body {
+      padding: 2rem;
+      color: #1e293b;
+      background: #ffffff;
+      font-family: 'Inter', -apple-system, sans-serif;
+    }
+
+    .brief-paper {
+      background: #fff;
+      color: #0f172a;
+      line-height: 1.6;
+    }
+
+    .brief-paper h1 {
+      font-size: 1.4rem;
+      border-bottom: 2px solid #0f172a;
+      padding-bottom: 0.4rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .brief-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.25rem 0;
+    }
+
+    .brief-section-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #475569;
+      border-bottom: 1px solid #cbd5e1;
+      padding-bottom: 0.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .brief-mono-box {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      padding: 0.6rem;
+      border-radius: 6px;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-footer {
+      padding: 1rem 1.75rem;
+      border-top: 1px solid var(--border-subtle);
+      background: #1e293b;
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      position: sticky;
+      bottom: 0;
+    }
+
+    .btn-secondary {
+      background: #334155;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      background: #475569;
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: #fff !important;
+        color: #000 !important;
+      }
+      header.top-nav,
+      .hero-section,
+      .taxonomy-presets,
+      .nav-actions,
+      .add-evidence-row,
+      .modal-header,
+      .modal-footer,
+      footer {
+        display: none !important;
+      }
+      .modal-backdrop {
+        position: static !important;
+        background: transparent !important;
+        display: block !important;
+        padding: 0 !important;
+      }
+      .modal-content {
+        max-width: 100% !important;
+        box-shadow: none !important;
+        border: none !important;
+      }
+      .modal-body {
+        padding: 0 !important;
+      }
+    }
+
+    /* Footer */
+    footer.page-footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border-subtle);
+      background: rgba(10, 17, 40, 0.95);
+      padding: 1.5rem 0;
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-cyan);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="top-nav">
+    <div class="app-container nav-inner">
+      <a href="#" class="nav-brand">
+        <div class="brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3v18"></path>
+            <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+            <path d="m3 9 18-4"></path>
+            <path d="m3 15 18-4"></path>
+          </svg>
+        </div>
+        <div class="brand-titles">
+          <h1>
+            Human Rights Law & Remedy Index
+            <span class="badge-pilot">Pilot Legal Aid Engine</span>
+          </h1>
+          <p>Factual Harm Parsing • Statutory-Treaty Cross Mapping • Procedural Remedy Directives</p>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <!-- Clinical Mode Toggle -->
+        <div class="clinical-toggle-wrap" title="Switch between layperson explanations and practitioner clinical citations">
+          <label class="clinical-label" for="clinicalModeToggle">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            <span id="clinicalModeLabel">Layperson Mode</span>
+          </label>
+          <label class="clinical-switch">
+            <input type="checkbox" id="clinicalModeToggle" onchange="toggleClinicalMode(this.checked)" />
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <!-- Export Brief Button -->
+        <button class="btn-export" onclick="openExportModal()" title="Export clean Case Brief for filing or printing">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Export Case Brief
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="app-container">
+    
+    <!-- Hero & Search -->
+    <section class="hero-section">
+      <h2 class="hero-heading">Instant Legal Taxonomy & Remedy Formulation</h2>
+      <p class="hero-sub">
+        Enter real-world facts in ordinary language. The engine dynamically classifies constitutional violations, correlates international covenants with Indian statutes (BNSS, BNS, BSA), and issues filing directives.
+      </p>
+
+      <!-- Search Bar -->
+      <div class="search-box-container">
+        <div class="search-input-wrapper">
+          <svg class="search-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input 
+            type="text" 
+            id="factualQueryInput" 
+            class="search-input" 
+            placeholder="Describe what happened in plain words (e.g., 'Police detained someone for over 24 hours without producing them before a magistrate')..." 
+            oninput="handleSearchInput(this.value)"
+          />
+          <button id="clearSearchBtn" class="search-clear-btn" onclick="clearSearch()" title="Clear Search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Quick-Select Taxonomy Pills -->
+        <div class="taxonomy-presets">
+          <span class="preset-label">Preset Scenarios:</span>
+          <button class="pill-btn active" id="pill-detention" onclick="loadScenario('detention')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 14.14 14.14"/></svg>
+            Unlawful Detention
+          </button>
+          <button class="pill-btn" id="pill-torture" onclick="loadScenario('torture')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+            Custodial Violence
+          </button>
+          <button class="pill-btn" id="pill-eviction" onclick="loadScenario('eviction')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Housing Eviction
+          </button>
+          <button class="pill-btn" id="pill-bonded" onclick="loadScenario('bonded')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="8" x2="16" y1="10" y2="10"/><line x1="8" x2="12" y1="14" y2="14"/></svg>
+            Workplace Exploitation
+          </button>
+          <button class="pill-btn" id="pill-access" onclick="loadScenario('access')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/></svg>
+            Discriminatory Access
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Workspace -->
+    <div class="workspace-layout">
+
+      <!-- Query Meta Summary Bar -->
+      <div class="query-meta-banner">
+        <div class="query-meta-left">
+          <span class="meta-tag-category" id="bannerCategoryTag">Tier 1 Classified</span>
+          <span class="query-meta-text" id="bannerQueryDisplay">Loading scenario facts...</span>
+        </div>
+        <div class="query-confidence">
+          <span>Remedy Confidence:</span>
+          <div class="confidence-meter">
+            <div class="confidence-fill" id="confidenceFill"></div>
+          </div>
+          <strong id="confidenceScore" class="font-mono" style="color: var(--accent-emerald);">98.4%</strong>
+        </div>
+      </div>
+
+      <!-- The 3-Tier Output Matrix -->
+      <div class="tier-matrix-grid">
+
+        <!-- Tier 1: Violation Taxonomy Engine -->
+        <div class="matrix-card">
+          <div class="card-header">
+            <div class="card-tier-title">
+              <span class="tier-indicator indicator-t1">Tier 1</span>
+              <span class="card-title-text">Violation Taxonomy Engine</span>
+            </div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-rose)" stroke-width="2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div class="card-body">
+            <div class="info-block">
+              <div class="info-block-label">Parsed Legal Harm Classification</div>
+              <div class="info-block-val" id="t1HarmClassification">Unlawful Police Detention / Violation of Personal Liberty</div>
+              <div class="tag-container" id="t1HarmTags">
+                <span class="meta-tag tag-severity-crit">Critical Severity</span>
+                <span class="meta-tag tag-right">Liberty & Security</span>
+                <span class="meta-tag">Due Process Violation</span>
+              </div>
+            </div>
+
+            <div class="info-block">
+              <div class="info-block-label">Fundamental Right Infringed</div>
+              <div class="info-block-val" id="t1FundamentalRight" style="color: var(--accent-cyan);">Article 21 & Article 22(2)</div>
+              <p class="statute-desc" style="margin-top: 0.4rem;" id="t1RightDescription">
+                Right to life, personal liberty, and mandatory production before nearest judicial magistrate within 24 hours of arrest.
+              </p>
+            </div>
+
+            <div class="info-block">
+              <div class="info-block-label">Jurisdictional Severity Tier</div>
+              <div class="info-block-val" id="t1JurisdictionTier">Constitutional & Superior Magisterial</div>
+              <p class="statute-desc" style="margin-top: 0.4rem;" id="t1JurisdictionDesc">
+                Urgent habeas corpus writ jurisdiction concurrent with Section 100 BNSS search warrants.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tier 2: Dual Legal Mapping Matrix -->
+        <div class="matrix-card">
+          <div class="card-header">
+            <div class="card-tier-title">
+              <span class="tier-indicator indicator-t2">Tier 2</span>
+              <span class="card-title-text">Dual Legal Mapping Matrix</span>
+            </div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <div class="card-body">
+            <!-- International Standards -->
+            <div class="dual-mapping-container">
+              <div class="sub-section-title intl">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                International Treaty Standards
+              </div>
+              <div id="t2InternationalContainer">
+                <!-- Injected via JS -->
+              </div>
+
+              <!-- Domestic Codes -->
+              <div class="sub-section-title dom" style="margin-top: 0.5rem;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
+                Domestic Statutory Codes (BNSS / BNS / BSA)
+              </div>
+              <div id="t2DomesticContainer">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tier 3: Procedural Remedy Directives -->
+        <div class="matrix-card">
+          <div class="card-header">
+            <div class="card-tier-title">
+              <span class="tier-indicator indicator-t3">Tier 3</span>
+              <span class="card-title-text">Procedural Remedy Directives</span>
+            </div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-emerald)" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <div class="card-body">
+            <div class="info-block">
+              <div class="info-block-label">Competent Adjudicatory Forums</div>
+              <div id="t3ForumList" class="procedural-list">
+                <!-- Forum items injected -->
+              </div>
+            </div>
+
+            <div class="info-block" style="flex: 1;">
+              <div class="info-block-label">Urgent Statutory Motions to File</div>
+              <div id="t3ActionSteps" class="procedural-list" style="margin-top: 0.5rem;">
+                <!-- Action steps injected -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Interactive Evidence & Filing Builder -->
+      <section class="evidence-section">
+        <div class="evidence-header">
+          <div class="evidence-title-group">
+            <h3>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              Interactive Evidence & Filing Builder
+            </h3>
+            <p>Corroborate mandatory evidentiary documents to satisfy prima facie statutory filing thresholds.</p>
+          </div>
+
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="btn-secondary" onclick="selectAllEvidence(true)">Select All</button>
+            <button class="btn-secondary" onclick="selectAllEvidence(false)">Clear All</button>
+          </div>
+        </div>
+
+        <!-- Evidence Progress Bar -->
+        <div class="evidence-progress-container">
+          <div class="progress-top-row">
+            <div class="progress-label">
+              <span>Evidentiary Threshold Readiness:</span>
+              <strong id="evidencePercentText" class="font-mono" style="color: var(--accent-emerald);">66%</strong>
+            </div>
+            <span id="evidenceStatusBadge" class="progress-status-badge status-partial">Prima Facie Threshold Satisfied</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-bar-fill" id="evidenceProgressBar"></div>
+          </div>
+          <div class="progress-threshold-text">
+            <span>Minimum 50% required for ex-parte relief</span>
+            <span id="evidenceCountText">2 of 3 documents verified</span>
+          </div>
+        </div>
+
+        <!-- Interactive Checklist Items Grid -->
+        <div class="checklist-grid" id="evidenceChecklistGrid">
+          <!-- Populated dynamically via JS -->
+        </div>
+
+        <!-- Custom Evidence Input -->
+        <div class="add-evidence-row">
+          <input type="text" id="customEvidenceInput" class="custom-evidence-input" placeholder="Add custom supporting document (e.g. 'CCTV footage requisition notice to shopkeeper', 'Signed affidavit of neighbor')..." onkeydown="if(event.key==='Enter') addCustomEvidence()" />
+          <button class="btn-add-evidence" onclick="addCustomEvidence()">+ Add Document</button>
+        </div>
+      </section>
+
+      <!-- Academic & Compliance Metrics Footer -->
+      <section class="compliance-footer-panel">
+        <div class="metric-box">
+          <div class="metric-box-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            Statutory-Treaty Compliance Gap
+          </div>
+          <div class="metric-box-content" id="complianceGapText">
+            ICCPR Art 9(3) commands prompt judicial review, matched domestically under Art 22(2) & Sec 58 BNSS. However, compliance gaps frequently arise through unrecorded informal detentions prior to formal GD arrest entry.
+          </div>
+          <div>
+            <span class="gap-pill" id="complianceGapBadge">Critical Enforcement Lag</span>
+          </div>
+        </div>
+
+        <div class="metric-box">
+          <div class="metric-box-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><rect width="20" height="5" x="2" y="7"/></svg>
+            Forum Escalation Hierarchy
+          </div>
+          <div class="metric-box-content" id="forumHierarchyText">
+            <strong>Immediate:</strong> CJM / Area Judicial Magistrate under Sec 100 BNSS.<br />
+            <strong>Constitutional:</strong> High Court of competent jurisdiction under Article 226 for Habeas Corpus / Writ of Mandamus.
+          </div>
+        </div>
+
+        <div class="metric-box">
+          <div class="metric-box-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-0.5-5"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+            Burden of Proof & Evidentiary Standard
+          </div>
+          <div class="metric-box-content" id="burdenOfProofText">
+            Once physical detention is admitted or substantiated by GD entry or witness testimony, the evidentiary burden shifts strictly onto the State under Section 109 BSA to justify the legal authority of ongoing custody.
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Export Case Brief Modal -->
+  <div class="modal-backdrop" id="exportModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Case Briefing Sheet (Official Filing Docket)
+        </h3>
+        <button onclick="closeExportModal()" style="background:transparent; border:none; color: #fff; cursor: pointer;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="modal-body" id="modalPrintArea">
+        <div class="brief-paper">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 1rem;">
+            <div>
+              <span style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.05em; font-weight:700; color:#2563eb;">Human Rights Law & Remedy Index • Clinical Brief</span>
+              <h1>PRELIMINARY LEGAL ASSESSMENT & FILING DIRECTIVE</h1>
+            </div>
+            <div style="text-align:right; font-size:0.8rem; color:#64748b;" id="briefTimestamp">
+              Generated: 03 Sep 2026
+            </div>
+          </div>
+
+          <div style="background:#f1f5f9; padding:0.85rem 1rem; border-left: 4px solid #2563eb; margin-bottom:1.5rem; font-size:0.95rem;">
+            <strong>Alleged Factual Harm:</strong> <span id="briefFactQuery">...</span>
+          </div>
+
+          <div class="brief-grid">
+            <div>
+              <div class="brief-section-title">1. Legal Taxonomy & Rights Impaired</div>
+              <div class="brief-mono-box">
+                <strong>Harm Category:</strong> <span id="briefHarm">...</span><br/>
+                <strong>Constitutional Provisions:</strong> <span id="briefRights">...</span><br/>
+                <strong>Severity Classification:</strong> <span id="briefSeverity">Critical</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="brief-section-title">2. Target Judicial Forum</div>
+              <div class="brief-mono-box">
+                <strong>Primary Court:</strong> <span id="briefForumPrimary">...</span><br/>
+                <strong>Constitutional Forum:</strong> High Court (Article 226)<br/>
+                <strong>Urgency Threshold:</strong> Immediate Ex-Parte Action
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-bottom:1.25rem;">
+            <div class="brief-section-title">3. Statutory & Treaty Grounds</div>
+            <div id="briefStatutoryGrounds" style="font-size:0.88rem; line-height:1.5;">
+              <!-- Injected -->
+            </div>
+          </div>
+
+          <div style="margin-bottom:1.25rem;">
+            <div class="brief-section-title">4. Recommended Procedural Motions</div>
+            <ol id="briefMotionsList" style="padding-left:1.25rem; font-size:0.88rem; line-height:1.6;">
+              <!-- Injected -->
+            </ol>
+          </div>
+
+          <div>
+            <div class="brief-section-title">5. Evidentiary Readiness Matrix (<span id="briefEvidenceScore">66%</span>)</div>
+            <ul id="briefEvidenceItems" style="padding-left:1.25rem; font-size:0.85rem; line-height:1.5;">
+              <!-- Injected -->
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="closeExportModal()">Close</button>
+        <button class="btn-export" onclick="window.print()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+          Print / Save as PDF
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Footer -->
+  <footer class="page-footer">
+    <div class="app-container footer-inner">
+      <p>Human Rights Law & Remedy Index • Open Public Legal Technology Architecture</p>
+      <div class="footer-links">
+        <a href="https://github.com/DHANANAN/Humanknow.git" target="_blank">GitHub Repository</a>
+        <span>•</span>
+        <span>Bharatiya Nagarik Suraksha Sanhita (BNSS) & Constitution of India Mapped</span>
+        <span>•</span>
+        <span>ICCPR / ICESCR / CAT Compliant</span>
+      </div>
+      <p style="font-size: 0.72rem; color: #475569; margin-top: 0.25rem;">
+        Notice: This platform provides legal taxonomy and procedural structuring for educational and preliminary legal-aid triage. It does not replace formal advocate representation.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Core Legal Application Engine -->
+  <script>
+    // -------------------------------------------------------------
+    // Comprehensive Legal Datasets & Pre-Loaded Scenarios
+    // -------------------------------------------------------------
+    const LEGAL_DATASETS = {
+      detention: {
+        id: "detention",
+        category: "Unlawful Detention",
+        sampleQuery: "Police took my brother 30 hours ago and have not produced him before any judge.",
+        keywords: ["detained", "police", "hours", "magistrate", "judge", "lockup", "custody", "illegal", "unlawful", "brother", "arrest", "warrant", "station"],
+        t1: {
+          harm: "Unlawful Police Detention / Violation of Personal Liberty",
+          tags: ["Critical Severity", "Liberty & Security", "Due Process Violation", "Habeas Corpus"],
+          fundamentalRight: "Article 21 & Article 22(2), Constitution of India",
+          rightDescription: "Mandatory constitutional obligation that every person arrested and detained in custody shall be produced before the nearest magistrate within a period of 24 hours of such arrest.",
+          jurisdictionTier: "Chief Judicial Magistrate & High Court (Concurrent)",
+          jurisdictionDesc: "Magisterial search warrant under Sec 100 BNSS and extraordinary constitutional writ jurisdiction under Article 226."
+        },
+        t2: {
+          international: [
+            {
+              treaty: "Article 9(1) & 9(3), ICCPR",
+              title: "Freedom from Arbitrary Arrest & Right to Prompt Judicial Review",
+              operativeText: "Anyone arrested or detained on a criminal charge shall be brought promptly before a judge or other officer authorized by law to exercise judicial power and shall be entitled to trial within a reasonable time or to release.",
+              commentary: "Human Rights Committee General Comment No. 35 defines 'promptly' as not exceeding 48 hours, with Indian domestic law mandating a stricter 24-hour ceiling."
+            },
+            {
+              treaty: "Body of Principles (UN Res 43/173)",
+              title: "Principle 11 & 37: Judicial Scrutiny of Detention",
+              operativeText: "A person shall not be kept in detention without being given an effective opportunity to be heard promptly by a judicial or other authority.",
+              commentary: "Non-derogable procedural guarantee against enforced disappearance."
+            }
+          ],
+          domestic: [
+            {
+              code: "Section 58, BNSS 2023",
+              title: "Person arrested not to be detained more than 24 hours",
+              transitional: "Corresponding to Section 57, CrPC 1973",
+              desc: "No police officer shall detain in custody a person arrested without warrant for a longer period than under all the circumstances of the case is reasonable, and such period shall not, in the absence of a special order of a Magistrate under Section 187 BNSS (Sec 167 CrPC), exceed twenty-four hours exclusive of the time necessary for the journey."
+            },
+            {
+              code: "Article 22(2), Constitution of India",
+              title: "Fundamental Right Against Unlawful Police Custody",
+              transitional: "Non-derogable Fundamental Right (Part III)",
+              desc: "Every person arrested and detained in custody shall be produced before the nearest magistrate within twenty-four hours, excluding journey time; no such person shall be detained beyond that period without the authority of a magistrate."
+            },
+            {
+              code: "Section 100, BNSS 2023",
+              title: "Power to issue search warrant for persons wrongfully confined",
+              transitional: "Corresponding to Section 97, CrPC 1973",
+              desc: "If any District Magistrate, Sub-divisional Magistrate or Magistrate of the first class has reason to believe that any person is confined under such circumstances that the confinement amounts to an offence, he may issue a search-warrant."
+            }
+          ]
+        },
+        t3: {
+          forums: [
+            {
+              name: "Chief Judicial Magistrate / Duty Magistrate",
+              role: "Immediate Magisterial Jurisdiction",
+              urgency: "Immediate (Hours 0-24)"
+            },
+            {
+              name: "High Court of the State",
+              role: "Constitutional Writ Jurisdiction (Article 226)",
+              urgency: "Urgent (Hours 24-48)"
+            },
+            {
+              name: "State Human Rights Commission (SHRC)",
+              role: "Inquiry into Misconduct & Interim Relief",
+              urgency: "Post-Production Complaint"
+            }
+          ],
+          actionSteps: [
+            {
+              title: "File Urgent Application under Section 100 BNSS (Sec 97 CrPC)",
+              desc: "Move an emergency search warrant application before the Chief Judicial Magistrate citing unrecorded confinement in excess of 24 hours, seeking appointment of an independent advocate commissioner to raid the police station."
+            },
+            {
+              title: "Issue Immediate Telegram / Speed Post Notice to Superintendent of Police",
+              desc: "Dispatch formal intimation of illegal confinement with timestamped postal/email receipts to establish state notice and fix official liability under D.K. Basu guidelines."
+            },
+            {
+              title: "File Writ Petition of Habeas Corpus under Article 226",
+              desc: "Approach the High Court for a writ commanding the police to produce the corpus of the detainee before the bench immediately."
+            }
+          ]
+        },
+        evidence: [
+          {
+            id: "ev_gd",
+            name: "Copy of General Diary (GD) / Station Diary Entry",
+            type: "mandatory",
+            rationale: "Proves exact timestamp of apprehension and detention at the local station.",
+            checked: true
+          },
+          {
+            id: "ev_memo",
+            name: "Arrest Memo with Attestation by Family / Independent Witness",
+            type: "mandatory",
+            rationale: "Mandatory under Section 47 BNSS (Sec 41B CrPC); absence proves clandestine confinement.",
+            checked: true
+          },
+          {
+            id: "ev_comm",
+            name: "Timestamped Communications / Call Records with Police Station",
+            type: "corroborating",
+            rationale: "Establishes timeline of inquiries made by family showing police evasiveness.",
+            checked: false
+          },
+          {
+            id: "ev_cctv",
+            name: "Preservation Notice for Police Station CCTV Footage",
+            type: "corroborating",
+            rationale: "Paramvir Singh Saini v. Baljit Singh Supreme Court mandate for 18-month CCTV retention.",
+            checked: false
+          }
+        ],
+        complianceGap: "ICCPR Art 9(3) commands prompt judicial review, matched domestically under Art 22(2) & Sec 58 BNSS. However, severe compliance gaps persist due to informal detention ('informal questioning') preceding official GD entry.",
+        burdenOfProof: "Once physical apprehension is prima facie demonstrated by witness affidavits or CDR, the burden shifts entirely to the State under Section 109 BSA to prove lawful magisterial remand."
+      },
+
+      torture: {
+        id: "torture",
+        category: "Custodial Violence",
+        sampleQuery: "My friend was beaten in police lockup to force a confession for a theft case.",
+        keywords: ["beaten", "torture", "confession", "lockup", "police", "injury", "custodial", "bruises", "assaulted", "forced", "violence", "theft", "third-degree"],
+        t1: {
+          harm: "Custodial Torture / Involuntary Confession / Bodily Integrity Breach",
+          tags: ["Critical Severity", "Right to Life & Dignity", "Self-Incrimination", "Gross Human Rights Abuse"],
+          fundamentalRight: "Article 20(3) & Article 21, Constitution of India",
+          rightDescription: "Absolute constitutional prohibition against testimonial compulsion ('No person accused of any offence shall be compelled to be a witness against himself') and right to live with human dignity free from torture.",
+          jurisdictionTier: "Judicial Magistrate First Class, Sessions Court & Human Rights Commission",
+          jurisdictionDesc: "Mandatory judicial magisterial inquiry under Sec 196 BNSS and independent medical examination under Sec 53/54 BNSS."
+        },
+        t2: {
+          international: [
+            {
+              treaty: "Article 7, ICCPR & UN CAT Principles",
+              title: "Absolute Prohibition of Torture and Cruel Treatment",
+              operativeText: "No one shall be subjected to torture or to cruel, inhuman or degrading treatment or punishment. In particular, no one shall be subjected without his free consent to medical or scientific experimentation.",
+              commentary: "Non-derogable customary international norm (jus cogens). Principles of the UN Convention Against Torture apply universally."
+            },
+            {
+              treaty: "Article 14(3)(g), ICCPR",
+              title: "Protection Against Compelled Self-Incrimination",
+              operativeText: "In the determination of any criminal charge against him, everyone shall be entitled not to be compelled to testify against himself or to confess guilt.",
+              commentary: "Coerced statements cannot be admitted as evidence in any judicial forum."
+            }
+          ],
+          domestic: [
+            {
+              code: "Section 23, BSA 2023",
+              title: "Confession to police officer not to be proved",
+              transitional: "Corresponding to Section 25, Indian Evidence Act 1872",
+              desc: "No confession made to a police officer shall be proved as against a person accused of any offence, establishing total inadmissibility of lockup confessions."
+            },
+            {
+              code: "Section 53 & Section 54, BNSS 2023",
+              title: "Mandatory Medical Examination of Arrested Person",
+              transitional: "Corresponding to Section 54, CrPC 1973",
+              desc: "When any person is arrested, he shall be examined by a medical officer in the service of Central or State Government immediately after arrest. Upon request by the accused alleging torture, the Magistrate must direct independent medical examination."
+            },
+            {
+              code: "Section 196, BNSS 2023",
+              title: "Inquiry by Magistrate into cause of death / injury in custody",
+              transitional: "Corresponding to Section 176(1A), CrPC 1973",
+              desc: "Where any person dies or disappears, or rape is alleged, or grievous hurt occurs in police custody, an inquiry shall be conducted by the Judicial Magistrate or Metropolitan Magistrate within whose local jurisdiction the offence occurred."
+            }
+          ]
+        },
+        t3: {
+          forums: [
+            {
+              name: "Jurisdictional Judicial Magistrate First Class (JMFC)",
+              role: "Immediate Production & Medical Re-examination Order",
+              urgency: "Urgent (Within 12 Hours)"
+            },
+            {
+              name: "National & State Human Rights Commission (NHRC/SHRC)",
+              role: "Independent Investigation & Compensation Recommendation",
+              urgency: "Concurrent Filing"
+            },
+            {
+              name: "Superintendent of Police / Internal Vigilance Cell",
+              role: "Registration of FIR under Sec 115/118 BNS Against Errant Personnel",
+              urgency: "Statutory Complaint"
+            }
+          ],
+          actionSteps: [
+            {
+              title: "Move Application under Section 53/54 BNSS before Remand Magistrate",
+              desc: "Instruct the defense advocate to record physical injuries on the remand order-sheet and obtain a peremptory directive for re-examination by a Medical Board at a Government District Hospital."
+            },
+            {
+              title: "Summon Station CCTV Footage under Supreme Court Guidelines",
+              desc: "File a formal application to seal and seize all station lockup and interrogation corridor digital recordings as per Paramvir Singh Saini v. Baljit Singh."
+            },
+            {
+              title: "Submit Urgent Incident Report to NHRC under Custodial Violence Protocol",
+              desc: "Transmit factual affidavit detailing names, badge numbers, and bodily injuries to trigger automatic NHRC tracking and monitor medical board reports."
+            }
+          ]
+        },
+        evidence: [
+          {
+            id: "ev_mlc",
+            name: "Medico-Legal Certificate (MLC) & Injury Sheet",
+            type: "mandatory",
+            rationale: "Official government doctor documentation of contusions, hematomas, or trauma.",
+            checked: true
+          },
+          {
+            id: "ev_remand_sheet",
+            name: "Court Remand Order-Sheet Recording Visible Injuries",
+            type: "mandatory",
+            rationale: "Contemporaneous judicial record made at the first physical production before JMFC.",
+            checked: true
+          },
+          {
+            id: "ev_officers",
+            name: "Roster of On-Duty Station Officers & Interrogation Log",
+            type: "corroborating",
+            rationale: "Fixes personal presence and culpability of specific police personnel.",
+            checked: false
+          },
+          {
+            id: "ev_photographs",
+            name: "Independent Hospital Treatment Slips & Photographs",
+            type: "corroborating",
+            rationale: "Secondary medical corroboration proving blunt force trauma in custody.",
+            checked: false
+          }
+        ],
+        complianceGap: "India signed the UN Convention Against Torture (CAT) in 1997 but has not ratified it. Domestic legislation lacks a standalone anti-torture statute, relying instead on judicial interpretations of Art 21 and BNSS medical inspection provisions.",
+        burdenOfProof: "Under D.K. Basu v. State of West Bengal, injuries sustained while in exclusive police custody generate a mandatory presumption requiring police to explain the cause under Section 109 BSA."
+      },
+
+      eviction: {
+        id: "eviction",
+        category: "Housing Eviction",
+        sampleQuery: "Municipal authorities arrived with bulldozers to demolish our settlement without any written notice or relocation plan.",
+        keywords: ["demolish", "bulldozers", "settlement", "notice", "eviction", "municipal", "housing", "homes", "slum", "relocation", "shelter", "land"],
+        t1: {
+          harm: "Arbitrary Forced Eviction / Infringement of Right to Shelter",
+          tags: ["Urgent Remedy", "Right to Shelter", "Natural Justice Breach", "Administrative Excess"],
+          fundamentalRight: "Article 21 (Right to Adequate Housing & Livelihood)",
+          rightDescription: "The right to life encompasses the right to shelter and dignified livelihood (Olga Tellis & Sudama Singh jurisprudence). Forced eviction without notice or rehabilitation is prima facie unconstitutional.",
+          jurisdictionTier: "High Court (Writ of Mandamus / Prohibition)",
+          jurisdictionDesc: "Extraordinary writ jurisdiction under Article 226 of the Constitution of India for emergency ad-interim stay."
+        },
+        t2: {
+          international: [
+            {
+              treaty: "Article 11(1), ICESCR",
+              title: "Right to an Adequate Standard of Living Including Housing",
+              operativeText: "States Parties recognize the right of everyone to an adequate standard of living for himself and his family, including adequate food, clothing and housing, and to the continuous improvement of living conditions.",
+              commentary: "CESCR General Comment No. 7 declares forced evictions prima facie incompatible with the Covenant, mandating genuine consultation, adequate notice, and alternative resettlement."
+            },
+            {
+              treaty: "UN Basic Principles on Development-Based Evictions",
+              title: "Due Process Guarantees Prior to Evictions",
+              operativeText: "Evictions shall not result in individuals being rendered homeless or vulnerable to the violation of other human rights.",
+              commentary: "Requires notice periods of minimum 90 days and full relocation infrastructure."
+            }
+          ],
+          domestic: [
+            {
+              code: "Article 21, Constitution of India",
+              title: "Right to Shelter as an Inalienable Component of Life",
+              transitional: "Apex Court Doctrine (Olga Tellis; Sudama Singh; Ujagar Singh)",
+              desc: "Shelter for a human being is not mere protection of life and limb; it is a home where he has opportunities to grow mentally, physically, and socially. Demolition without natural justice constitutes an illegal deprivation of life."
+            },
+            {
+              code: "LARR Act 2013 & Delhi Slum JJ Guidelines",
+              title: "Statutory Rehabilitation and Mandatory Prior Survey",
+              transitional: "Right to Fair Compensation & Resettlement Act 2013",
+              desc: "Mandates comprehensive social impact assessment, statutory identification of eligible dwellers, and provision of alternate housing prior to any eviction drive."
+            },
+            {
+              code: "Municipal Corporation Statutes (e.g., DMC / BMC Act)",
+              title: "Mandatory Prior Show-Cause Notice Period",
+              transitional: "Standard Statutory Procedure (Section 343/368 DMC Act)",
+              desc: "Express statutory bar against demolition without minimum 5 to 15 days written show-cause notice affording the occupant a reasonable opportunity to be heard."
+            }
+          ]
+        },
+        t3: {
+          forums: [
+            {
+              name: "High Court of Competent Jurisdiction",
+              role: "Emergency Vacation / Regular Writ Bench (Article 226)",
+              urgency: "Immediate (Hours 0-6 Before Demolition)"
+            },
+            {
+              name: "State Human Rights Commission (SHRC)",
+              role: "Directive to Suspend Executive Coercion",
+              urgency: "Concurrent Notice"
+            },
+            {
+              name: "Municipal Appellate Tribunal / Civil Court",
+              role: "Statutory Appeal against Demolition Notice",
+              urgency: "Pre-Eviction Challenge"
+            }
+          ],
+          actionSteps: [
+            {
+              title: "File Emergency Writ Petition Seeking Ex-Parte Status Quo Ante",
+              desc: "Draft urgent writ petition under Article 226 asserting violation of natural justice, citing absence of written notice, and praying for immediate interim injunction restraining municipal bulldozers."
+            },
+            {
+              title: "Compile Verified Occupancy Dossier",
+              desc: "Collate voter identification cards, ration cards, Aadhaar documents, and electricity utility bills demonstrating continuous peaceful possession exceeding statutory thresholds."
+            },
+            {
+              title: "Serve Dasti Copy on Municipal Standing Counsel",
+              desc: "Effect immediate formal dasti service upon the government/municipal standing counsel to enable urgent mentioning before the Chief Justice / Roster Bench."
+            }
+          ]
+        },
+        evidence: [
+          {
+            id: "ev_id_residence",
+            name: "Proof of Continuous Residence (Voter ID / Aadhaar / Ration Card)",
+            type: "mandatory",
+            rationale: "Establishes long-standing settled possession and eligibility under rehabilitation schemes.",
+            checked: true
+          },
+          {
+            id: "ev_notice_absence",
+            name: "Affidavit of Non-Service of Statutory Written Show-Cause Notice",
+            type: "mandatory",
+            rationale: "Sworn legal affidavit establishing blatant denial of natural justice (audi alteram partem).",
+            checked: true
+          },
+          {
+            id: "ev_utility_bills",
+            name: "Electricity / Water Utility Receipts & Municipal Property Tax Slips",
+            type: "corroborating",
+            rationale: "Corroborates municipal recognition of the dwelling and payment of public utility tariffs.",
+            checked: false
+          },
+          {
+            id: "ev_geotag_media",
+            name: "Geotagged Video Footage & Photographs of Demolition Activity",
+            type: "corroborating",
+            rationale: "Timestamped photographic evidence proving imminent or ongoing destructive action.",
+            checked: false
+          }
+        ],
+        complianceGap: "ICESCR General Comment 7 strictly forbids evictions that render persons homeless. Domestic executive practices ('instant bulldozer actions') frequently bypass municipal show-cause notice mandates, necessitating urgent judicial intervention.",
+        burdenOfProof: "The burden rests upon the municipal authority to place on record proof of valid statutory notice, survey reports, and rehabilitation compliance before dispossessing settled occupants."
+      },
+
+      bonded: {
+        id: "bonded",
+        category: "Workplace Exploitation",
+        sampleQuery: "The brick kiln owner took our identity cards and refuses to pay our wages until the work season ends.",
+        keywords: ["kiln", "brick", "identity", "wages", "owner", "bonded", "forced", "labour", "season", "passports", "cards", "withholding", "workplace", "unpaid"],
+        t1: {
+          harm: "Forced Labour / Debt Bondage / Unlawful Retention of Identity",
+          tags: ["High Severity", "Anti-Trafficking", "Article 23 Breach", "Socio-Economic Coercion"],
+          fundamentalRight: "Article 23 & Article 21, Constitution of India",
+          rightDescription: "Traffic in human beings and begar and other similar forms of forced labour are prohibited, and any contravention of this provision shall be an offence punishable in accordance with law.",
+          jurisdictionTier: "District Magistrate / Sub-Divisional Magistrate (Statutory Executive)",
+          jurisdictionDesc: "Summary magisterial trial powers vested under the Bonded Labour System (Abolition) Act 1976."
+        },
+        t2: {
+          international: [
+            {
+              treaty: "Article 8(3), ICCPR",
+              title: "Prohibition of Forced or Compulsory Labour",
+              operativeText: "No one shall be required to perform forced or compulsory labour. State parties must suppress and criminalize all forms of bondage.",
+              commentary: "Guarantees full freedom of occupational mobility and remuneration."
+            },
+            {
+              treaty: "ILO Forced Labour Convention No. 29 & 105",
+              title: "Abolition of Debt Bondage & Coercive Retention of Documents",
+              operativeText: "Withholding wages or retaining identity documents to restrict worker freedom constitutes definitive indicators of forced labour.",
+              commentary: "Ratified by India; imposes affirmative duties to inspect and rescue workers."
+            }
+          ],
+          domestic: [
+            {
+              code: "Article 23, Constitution of India",
+              title: "Prohibition of Traffic in Human Beings and Begar",
+              transitional: "Apex Court Doctrine (PUDR v. Union of India / Asiad Workers)",
+              desc: "Payment of anything less than statutory minimum wage, coupled with restrictions on liberty, constitutes 'forced labour' within the meaning of Art 23."
+            },
+            {
+              code: "Bonded Labour System (Abolition) Act 1976",
+              title: "Section 4, 6 & Section 21: Total Extinguishment of Bonded Debt",
+              transitional: "Special Welfare & Criminal Penal Statute",
+              desc: "On commencement of this Act, the bonded labour system shall stand abolished, every bonded labourer shall stand freed and discharged, and the DM/SDM is conferred powers of a Judicial Magistrate to conduct summary trials."
+            },
+            {
+              code: "Code on Wages 2019 / Section 146 BNS",
+              title: "Unlawful Withholding of Remuneration & Wrongful Restraint",
+              transitional: "Replaces Minimum Wages Act 1948 & Sec 374 IPC",
+              desc: "Criminalizes unlawful confinement, extraction of unlawful compulsory labour, and penalizes default in mandatory periodic wage disbursements."
+            }
+          ]
+        },
+        t3: {
+          forums: [
+            {
+              name: "District Magistrate / SDM (Vigilance Committee Chairman)",
+              role: "Summary Magisterial Inquiry & Release Certificate Issuance",
+              urgency: "Immediate (Hours 0-24 for Rescue)"
+            },
+            {
+              name: "District Labour Commissioner / Labour Enforcement Officer",
+              role: "Recovery of Unpaid Wages & Statutory Compensation",
+              urgency: "Statutory Recovery Citation"
+            },
+            {
+              name: "Jurisdictional Police Station (Thana)",
+              role: "Registration of FIR under Section 16, 17, 18 of Bonded Labour Act",
+              urgency: "Immediate Criminal Complaint"
+            }
+          ],
+          actionSteps: [
+            {
+              title: "Submit Urgent Complaint to District Magistrate under Section 12 of Bonded Labour Act",
+              desc: "Request immediate constitution of a joint inspection team (Labour Officer, Police, and SDM) to conduct a spot inspection, seize muster rolls, and rescue the confined workers."
+            },
+            {
+              title: "Demand Issuance of Statutory Release Certificates",
+              desc: "Ensure the Sub-Divisional Magistrate issues formal Release Certificates under the 1976 Act, triggering immediate cash rehabilitation assistance (Rs 30,000 upfront relief)."
+            },
+            {
+              title: "Recover Identity Documents & File Restraint Complaint",
+              desc: "Direct police to recover withheld Aadhaar/voter cards and register charges under Section 127 BNS (wrongful confinement) and Bonded Labour Act."
+            }
+          ]
+        },
+        evidence: [
+          {
+            id: "ev_id_withheld",
+            name: "Affidavit of Withheld Identity Documents (Aadhaar/Passports)",
+            type: "mandatory",
+            rationale: "Direct proof of employer's coercive mechanism restricting worker mobility.",
+            checked: true
+          },
+          {
+            id: "ev_work_log",
+            name: "Handwritten Work Log / Production Slips / Brick Count Vouchers",
+            type: "mandatory",
+            rationale: "Evidences performance of labour and quantum of unpaid statutory wages.",
+            checked: true
+          },
+          {
+            id: "ev_witness_co",
+            name: "Corroborative Testimonies of Fellow Workers & Families",
+            type: "corroborating",
+            rationale: "Establishes systematic pattern of workplace debt bondage and confinement.",
+            checked: false
+          },
+          {
+            id: "ev_advance_slip",
+            name: "Advance Cash Receipt / Parcha Demonstrating Alleged Debt",
+            type: "corroborating",
+            rationale: "Proves existence of an advance used as leverage to enforce bondage.",
+            checked: false
+          }
+        ],
+        complianceGap: "Despite ILO Convention 29 ratification and the 1976 Act, enforcement suffers from bureaucratic unwillingness of executive magistrates to formally categorize victims as 'bonded' to avoid state rehabilitation liabilities.",
+        burdenOfProof: "Under the Supreme Court's ruling in Bandhua Mukti Morcha, whenever labour is found to be provided for less than the minimum wage, the legal presumption arises that the worker is a bonded labourer."
+      },
+
+      access: {
+        id: "access",
+        category: "Discriminatory Access",
+        sampleQuery: "Our community was blocked by dominant caste members from entering the public temple and taking water from the municipal borewell.",
+        keywords: ["caste", "temple", "borewell", "water", "blocked", "discrimination", "dalit", "access", "public", "dominant", "untouchability", "well"],
+        t1: {
+          harm: "Caste-Based Social Boycott & Public Exclusion / Untouchability",
+          tags: ["Severe Human Rights Violation", "Article 17 Abolition", "SC/ST PoA Act", "Social Exclusion"],
+          fundamentalRight: "Article 15(2) & Article 17, Constitution of India",
+          rightDescription: "Article 17 explicitly abolishes 'Untouchability' and forbids its practice in any form. Article 15(2) guarantees non-discrimination regarding access to shops, public restaurants, wells, tanks, and places of public resort.",
+          jurisdictionTier: "Special Court (SC/ST PoA Act) & Executive Magistrate",
+          jurisdictionDesc: "Designated Special Court under Section 14 SC/ST (PoA) Act with concurrent executive peace powers."
+        },
+        t2: {
+          international: [
+            {
+              treaty: "Article 5, ICERD",
+              title: "Prohibition of Racial & Descent-Based Discrimination",
+              operativeText: "States Parties undertake to guarantee the right of everyone to equality before the law, notably in the enjoyment of access to any place or service intended for use by the general public.",
+              commentary: "CERD General Recommendation XXIX explicitly recognizes descent-based discrimination (caste and analogous systems of inherited status) as violations."
+            },
+            {
+              treaty: "Article 26, ICCPR",
+              title: "Equality Before the Law and Non-Discrimination",
+              operativeText: "All persons are equal before the law and are entitled without any discrimination to the equal protection of the law.",
+              commentary: "Positive duty on the state to proactively prevent private discrimination in public utilities."
+            }
+          ],
+          domestic: [
+            {
+              code: "Article 17 & 15(2), Constitution",
+              title: "Abolition of Untouchability & Non-Discrimination in Public Access",
+              transitional: "Absolute Fundamental Rights",
+              desc: "No citizen shall, on grounds only of religion, race, caste, sex, or place of birth, be subject to any disability, liability, restriction or condition with regard to access to public places maintained wholly or partly out of State funds."
+            },
+            {
+              code: "SC and ST (Prevention of Atrocities) Act 1989",
+              title: "Section 3(1)(za), (zb) & Section 4: Obstructing Public Rights",
+              transitional: "Special Criminal Enactment (Amended 2018)",
+              desc: "Penalizes obstructing or preventing a member of a Scheduled Caste or Scheduled Tribe from using or having access to water sources or any place of public resort with imprisonment up to 5 years."
+            },
+            {
+              code: "Protection of Civil Rights Act 1955",
+              title: "Section 3 & Section 4: Enforcement of Religious/Social Disabilities",
+              transitional: "Original Untouchability Offences Act",
+              desc: "Prescribes imprisonment and fine for enforcing social disabilities in places of worship, water resources, or public burial grounds."
+            }
+          ]
+        },
+        t3: {
+          forums: [
+            {
+              name: "Special Court / Sessions Court (SC/ST PoA Act)",
+              role: "Designated Special Criminal Jurisdiction",
+              urgency: "Immediate Registration & Bail Bar"
+            },
+            {
+              name: "Deputy Superintendent of Police (DSP / ACP)",
+              role: "Mandatory Investigating Officer under PoA Rules",
+              urgency: "Within 30 Days Investigation"
+            },
+            {
+              name: "District Vigilance and Monitoring Committee",
+              role: "Victim Relief & Compensation Disbursement",
+              urgency: "Interim Relief within 7 Days"
+            }
+          ],
+          actionSteps: [
+            {
+              title: "File Written Complaint directly with Superintendent of Police / DSP",
+              desc: "Lodge written complaint invoking Section 3(1)(za) and 3(1)(zb) of SC/ST PoA Act, which triggers immediate statutory FIR registration without preliminary inquiry as per Section 18A."
+            },
+            {
+              title: "Petition District Magistrate for Protective Deployment & Restitution",
+              desc: "Demand administrative requisition of the borewell and police escort for unrestricted access to public water resources under Section 15 of PoA Act."
+            },
+            {
+              title: "Claim Mandatory Financial Relief under SC/ST Rules Annexure I",
+              desc: "Apply to the Social Welfare Officer for immediate release of initial compensation tranche (25% at FIR registration) for victims of caste atrocities."
+            }
+          ]
+        },
+        evidence: [
+          {
+            id: "ev_caste_cert",
+            name: "Caste Certificate Issued by Competent Revenue Authority",
+            type: "mandatory",
+            rationale: "Statutory requirement to invoke provisions of the SC/ST Prevention of Atrocities Act.",
+            checked: true
+          },
+          {
+            id: "ev_complaint_copy",
+            name: "Written Complaint with Receiving Seal from Thana / DSP",
+            type: "mandatory",
+            rationale: "Documents official notification to police and triggers statutory timeline obligations.",
+            checked: true
+          },
+          {
+            id: "ev_video_obstruction",
+            name: "Video / Audio Recording of Obstruction or Social Boycott",
+            type: "corroborating",
+            rationale: "Corroborates active physical blocking and discriminatory verbal abuse in public view.",
+            checked: false
+          },
+          {
+            id: "ev_witness_co_caste",
+            name: "Corroborative Statements of Community Elders & Witnesses",
+            type: "corroborating",
+            rationale: "Demonstrates pervasive community exclusion and collective disability.",
+            checked: false
+          }
+        ],
+        complianceGap: "While statutory protections under the PoA Act are robust on paper, local police frequently delay FIR registration or dilute sections, reflecting deep structural impunity in descent-based violations.",
+        burdenOfProof: "Under Section 8 of the SC/ST PoA Act, if the accused rendered financial or other assistance to the perpetrators, the Special Court shall presume that they committed the atrocity."
+      }
+    };
+
+    // Current State
+    let currentScenarioKey = 'detention';
+    let isClinicalMode = false;
+
+    // -------------------------------------------------------------
+    // Core Engine Logic: Search, Match & Scenario Load
+    // -------------------------------------------------------------
+
+    function loadScenario(scenarioKey) {
+      if (!LEGAL_DATASETS[scenarioKey]) return;
+      currentScenarioKey = scenarioKey;
+
+      // Update Pill Buttons
+      document.querySelectorAll('.pill-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById(`pill-${scenarioKey}`);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const data = LEGAL_DATASETS[scenarioKey];
+      document.getElementById('factualQueryInput').value = data.sampleQuery;
+      document.getElementById('clearSearchBtn').style.display = 'flex';
+
+      renderScenario(data);
+    }
+
+    function renderScenario(data) {
+      // Banner
+      document.getElementById('bannerCategoryTag').innerText = `Tier 1 • ${data.category}`;
+      document.getElementById('bannerQueryDisplay').innerText = `"${data.sampleQuery}"`;
+      document.getElementById('confidenceScore').innerText = "98.4%";
+      document.getElementById('confidenceFill').style.width = "98.4%";
+
+      // Tier 1: Harm Classification
+      document.getElementById('t1HarmClassification').innerText = data.t1.harm;
+      document.getElementById('t1FundamentalRight').innerText = data.t1.fundamentalRight;
+      document.getElementById('t1RightDescription').innerText = data.t1.rightDescription;
+      document.getElementById('t1JurisdictionTier').innerText = data.t1.jurisdictionTier;
+      document.getElementById('t1JurisdictionDesc').innerText = data.t1.jurisdictionDesc;
+
+      const tagContainer = document.getElementById('t1HarmTags');
+      tagContainer.innerHTML = '';
+      data.t1.tags.forEach((tag, idx) => {
+        const span = document.createElement('span');
+        span.className = `meta-tag ${idx === 0 ? 'tag-severity-crit' : idx === 1 ? 'tag-right' : ''}`;
+        span.innerText = tag;
+        tagContainer.appendChild(span);
+      });
+
+      // Tier 2: International Standards
+      const intlContainer = document.getElementById('t2InternationalContainer');
+      intlContainer.innerHTML = '';
+      data.t2.international.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'statute-entry';
+        div.innerHTML = `
+          <div class="statute-code">${escapeHtml(item.treaty)}</div>
+          <div style="font-size:0.85rem; font-weight:600; color:#fff; margin-bottom:0.2rem;">${escapeHtml(item.title)}</div>
+          <div class="statute-desc">${escapeHtml(item.operativeText)}</div>
+          <div class="transitional-note">${escapeHtml(item.commentary)}</div>
+        `;
+        intlContainer.appendChild(div);
+      });
+
+      // Tier 2: Domestic Codes
+      const domContainer = document.getElementById('t2DomesticContainer');
+      domContainer.innerHTML = '';
+      data.t2.domestic.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'statute-entry dom-entry';
+        div.innerHTML = `
+          <div class="statute-code">
+            <span>${escapeHtml(item.code)}</span>
+          </div>
+          <div style="font-size:0.85rem; font-weight:600; color:#fff; margin-bottom:0.2rem;">${escapeHtml(item.title)}</div>
+          <div class="statute-desc">${escapeHtml(item.desc)}</div>
+          <div class="transitional-note font-mono" style="color:var(--accent-amber); background:rgba(245,158,11,0.08);">${escapeHtml(item.transitional)}</div>
+        `;
+        domContainer.appendChild(div);
+      });
+
+      // Tier 3: Competent Forums
+      const forumList = document.getElementById('t3ForumList');
+      forumList.innerHTML = '';
+      data.t3.forums.forEach((f, idx) => {
+        const div = document.createElement('div');
+        div.className = 'procedural-step';
+        div.innerHTML = `
+          <div class="step-num">${idx + 1}</div>
+          <div class="step-content">
+            <h4>${escapeHtml(f.name)}</h4>
+            <p>${escapeHtml(f.role)}</p>
+            <span class="step-forum-badge">${escapeHtml(f.urgency)}</span>
+          </div>
+        `;
+        forumList.appendChild(div);
+      });
+
+      // Tier 3: Action Steps
+      const actionSteps = document.getElementById('t3ActionSteps');
+      actionSteps.innerHTML = '';
+      data.t3.actionSteps.forEach((s, idx) => {
+        const div = document.createElement('div');
+        div.className = 'procedural-step';
+        div.innerHTML = `
+          <div class="step-num" style="background:rgba(56,189,248,0.15); border-color:rgba(56,189,248,0.4); color:var(--accent-cyan);">${idx + 1}</div>
+          <div class="step-content">
+            <h4>${escapeHtml(s.title)}</h4>
+            <p>${escapeHtml(s.desc)}</p>
+          </div>
+        `;
+        actionSteps.appendChild(div);
+      });
+
+      // Interactive Evidence Grid
+      renderEvidenceGrid(data.evidence);
+
+      // Compliance Footer
+      document.getElementById('complianceGapText').innerText = data.complianceGap;
+      document.getElementById('forumHierarchyText').innerHTML = `
+        <strong>Immediate:</strong> ${escapeHtml(data.t3.forums[0].name)} (${escapeHtml(data.t3.forums[0].urgency)})<br/>
+        <strong>Appellate/Constitutional:</strong> ${escapeHtml(data.t3.forums[1] ? data.t3.forums[1].name : 'High Court under Article 226')}
+      `;
+      document.getElementById('burdenOfProofText').innerText = data.burdenOfProof;
+
+      // Update Clinical Mode Content if active
+      applyClinicalModeStyles();
+    }
+
+    // -------------------------------------------------------------
+    // Evidence Checklist & Threshold Calculation
+    // -------------------------------------------------------------
+
+    function renderEvidenceGrid(items) {
+      const grid = document.getElementById('evidenceChecklistGrid');
+      grid.innerHTML = '';
+
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = `evidence-item-card ${item.checked ? 'checked' : ''}`;
+        card.id = `card-${item.id}`;
+        card.onclick = () => toggleEvidenceItem(item.id);
+
+        card.innerHTML = `
+          <div class="custom-checkbox">
+            <svg class="checkbox-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <div class="evidence-item-text">
+            <div class="evidence-item-name">
+              <span>${escapeHtml(item.name)}</span>
+              <span class="${item.type === 'mandatory' ? 'mandatory-pill' : 'corroborating-pill'}">${escapeHtml(item.type)}</span>
+            </div>
+            <div class="evidence-item-rationale">${escapeHtml(item.rationale)}</div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      updateEvidenceProgress();
+    }
+
+    function toggleEvidenceItem(id) {
+      const currentData = LEGAL_DATASETS[currentScenarioKey];
+      const item = currentData.evidence.find(e => e.id === id);
+      if (item) {
+        item.checked = !item.checked;
+        const card = document.getElementById(`card-${id}`);
+        if (card) {
+          card.classList.toggle('checked', item.checked);
+        }
+        updateEvidenceProgress();
+      }
+    }
+
+    function selectAllEvidence(status) {
+      const currentData = LEGAL_DATASETS[currentScenarioKey];
+      currentData.evidence.forEach(item => {
+        item.checked = status;
+        const card = document.getElementById(`card-${item.id}`);
+        if (card) {
+          if (status) card.classList.add('checked');
+          else card.classList.remove('checked');
+        }
+      });
+      updateEvidenceProgress();
+    }
+
+    function addCustomEvidence() {
+      const input = document.getElementById('customEvidenceInput');
+      const val = input.value.trim();
+      if (!val) return;
+
+      const currentData = LEGAL_DATASETS[currentScenarioKey];
+      const newId = 'custom_' + Date.now();
+      const newItem = {
+        id: newId,
+        name: val,
+        type: 'corroborating',
+        rationale: 'User-submitted corroborative document for court filing record.',
+        checked: true
+      };
+
+      currentData.evidence.push(newItem);
+      renderEvidenceGrid(currentData.evidence);
+      input.value = '';
+    }
+
+    function updateEvidenceProgress() {
+      const currentData = LEGAL_DATASETS[currentScenarioKey];
+      const items = currentData.evidence;
+      const total = items.length;
+      const checkedCount = items.filter(i => i.checked).length;
+      const percent = total === 0 ? 0 : Math.round((checkedCount / total) * 100);
+
+      document.getElementById('evidencePercentText').innerText = `${percent}%`;
+      document.getElementById('evidenceProgressBar').style.width = `${percent}%`;
+      document.getElementById('evidenceCountText').innerText = `${checkedCount} of ${total} documents verified`;
+
+      const badge = document.getElementById('evidenceStatusBadge');
+      if (percent < 50) {
+        badge.innerText = 'Insufficient for Ex-Parte Relief';
+        badge.className = 'progress-status-badge';
+        badge.style.background = 'rgba(244, 63, 94, 0.15)';
+        badge.style.color = 'var(--accent-rose)';
+        badge.style.borderColor = 'rgba(244, 63, 94, 0.3)';
+      } else if (percent < 80) {
+        badge.innerText = 'Prima Facie Threshold Satisfied';
+        badge.className = 'progress-status-badge status-partial';
+        badge.style.background = '';
+        badge.style.color = '';
+        badge.style.borderColor = '';
+      } else {
+        badge.innerText = '100% Court-Ready Filing Dossier';
+        badge.className = 'progress-status-badge status-ready';
+        badge.style.background = '';
+        badge.style.color = '';
+        badge.style.borderColor = '';
+      }
+    }
+
+    // -------------------------------------------------------------
+    // Natural Language Search & Semantic Intent Parsing
+    // -------------------------------------------------------------
+
+    function handleSearchInput(val) {
+      const clearBtn = document.getElementById('clearSearchBtn');
+      if (val.trim()) {
+        clearBtn.style.display = 'flex';
+      } else {
+        clearBtn.style.display = 'none';
+        return;
+      }
+
+      const cleanQuery = val.toLowerCase().trim();
+      let bestMatch = null;
+      let highestScore = -1;
+
+      for (const [key, data] of Object.entries(LEGAL_DATASETS)) {
+        let score = 0;
+        data.keywords.forEach(kw => {
+          if (cleanQuery.includes(kw)) {
+            score += 2;
+          }
+        });
+        if (cleanQuery.includes(data.category.toLowerCase())) {
+          score += 4;
+        }
+        if (score > highestScore) {
+          highestScore = score;
+          bestMatch = key;
+        }
+      }
+
+      if (bestMatch && highestScore > 0) {
+        currentScenarioKey = bestMatch;
+        document.querySelectorAll('.pill-btn').forEach(btn => btn.classList.remove('active'));
+        const activeBtn = document.getElementById(`pill-${bestMatch}`);
+        if (activeBtn) activeBtn.classList.add('active');
+
+        // Dynamic Confidence
+        const confidence = Math.min(99.2, 72 + (highestScore * 5.5)).toFixed(1);
+        document.getElementById('confidenceScore').innerText = `${confidence}%`;
+        document.getElementById('confidenceFill').style.width = `${confidence}%`;
+        document.getElementById('bannerCategoryTag').innerText = `Tier 1 • ${LEGAL_DATASETS[bestMatch].category}`;
+        document.getElementById('bannerQueryDisplay').innerText = `"${val}"`;
+
+        renderScenario(LEGAL_DATASETS[bestMatch]);
+      } else {
+        // Fallback live display
+        document.getElementById('bannerCategoryTag').innerText = 'Tier 1 • Analyzing Query';
+        document.getElementById('bannerQueryDisplay').innerText = `"${val}"`;
+        document.getElementById('confidenceScore').innerText = '65.0%';
+        document.getElementById('confidenceFill').style.width = '65%';
+      }
+    }
+
+    function clearSearch() {
+      document.getElementById('factualQueryInput').value = '';
+      document.getElementById('clearSearchBtn').style.display = 'none';
+      loadScenario('detention');
+    }
+
+    // -------------------------------------------------------------
+    // Clinical Mode Switch (Layperson vs Legal Practitioner)
+    // -------------------------------------------------------------
+
+    function toggleClinicalMode(enabled) {
+      isClinicalMode = enabled;
+      const label = document.getElementById('clinicalModeLabel');
+      label.innerText = enabled ? 'Practitioner Clinical Mode' : 'Layperson Mode';
+      applyClinicalModeStyles();
+    }
+
+    function applyClinicalModeStyles() {
+      const currentData = LEGAL_DATASETS[currentScenarioKey];
+      if (isClinicalMode) {
+        document.getElementById('t1HarmClassification').innerText = `[CLINICAL TAXONOMY] ${currentData.t1.harm} (Per Se Constitutional Tort)`;
+        document.getElementById('t1JurisdictionTier').innerText = `[COMPETENT FORUM] ${currentData.t1.jurisdictionTier} • Mandamus / Habeas Corpus / Sec 100 BNSS`;
+      } else {
+        document.getElementById('t1HarmClassification').innerText = currentData.t1.harm;
+        document.getElementById('t1JurisdictionTier').innerText = currentData.t1.jurisdictionTier;
+      }
+    }
+
+    // -------------------------------------------------------------
+    // Export Case Brief Modal & Print Formatter
+    // -------------------------------------------------------------
+
+    function openExportModal() {
+      const currentData = LEGAL_DATASETS[currentScenarioKey];
+      const query = document.getElementById('factualQueryInput').value || currentData.sampleQuery;
+      
+      document.getElementById('briefFactQuery').innerText = query;
+      document.getElementById('briefHarm').innerText = currentData.t1.harm;
+      document.getElementById('briefRights').innerText = currentData.t1.fundamentalRight;
+      document.getElementById('briefSeverity').innerText = currentData.t1.tags[0] || "Critical Severity";
+      document.getElementById('briefForumPrimary').innerText = currentData.t3.forums[0].name;
+
+      // Statutory Grounds
+      const statContainer = document.getElementById('briefStatutoryGrounds');
+      statContainer.innerHTML = '';
+      currentData.t2.domestic.forEach(d => {
+        statContainer.innerHTML += `
+          <div style="margin-bottom:0.45rem;">
+            <strong>${escapeHtml(d.code)} (${escapeHtml(d.transitional)}):</strong> ${escapeHtml(d.desc)}
+          </div>
+        `;
+      });
+      currentData.t2.international.forEach(i => {
+        statContainer.innerHTML += `
+          <div style="margin-bottom:0.45rem; color:#1e3a8a;">
+            <strong>${escapeHtml(i.treaty)}:</strong> ${escapeHtml(i.operativeText)}
+          </div>
+        `;
+      });
+
+      // Motions
+      const motionsList = document.getElementById('briefMotionsList');
+      motionsList.innerHTML = '';
+      currentData.t3.actionSteps.forEach(s => {
+        motionsList.innerHTML += `<li><strong>${escapeHtml(s.title)}:</strong> ${escapeHtml(s.desc)}</li>`;
+      });
+
+      // Evidence Items
+      const evList = document.getElementById('briefEvidenceItems');
+      evList.innerHTML = '';
+      currentData.evidence.forEach(e => {
+        evList.innerHTML += `
+          <li>
+            ${e.checked ? '☑ [ATTACHED]' : '☐ [PENDING]'} 
+            <strong>${escapeHtml(e.name)}:</strong> ${escapeHtml(e.rationale)} (${e.type.toUpperCase()})
+          </li>
+        `;
+      });
+
+      const total = currentData.evidence.length;
+      const checked = currentData.evidence.filter(i => i.checked).length;
+      const pct = Math.round((checked / total) * 100);
+      document.getElementById('briefEvidenceScore').innerText = `${pct}% threshold verified`;
+
+      document.getElementById('exportModal').classList.add('open');
+    }
+
+    function closeExportModal() {
+      document.getElementById('exportModal').classList.remove('open');
+    }
+
+    // Helper
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // Initialize with detention scenario on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      loadScenario('detention');
+    });
+  </script>
+</body>
+</html>
