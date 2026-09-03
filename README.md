@@ -1,6 +1,11 @@
 # Human Rights Law & Remedy Index
 **Pilot Legal Aid Engine • Factual Harm Parsing • Statutory-Treaty Mapping • Procedural Remedy Directives**
 
+[![Deploy to GitHub Pages](https://github.com/DHANANAN/Humanknow/actions/workflows/deploy.yml/badge.svg)](https://github.com/DHANANAN/Humanknow/actions/workflows/deploy.yml)
+[![Live App](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-10b981?style=flat&logo=github)](https://dhananan.github.io/Humanknow/)
+
+🌐 **Live Deployment**: [https://dhananan.github.io/Humanknow/](https://dhananan.github.io/Humanknow/)
+
 ---
 
 ## ⚖️ Overview
